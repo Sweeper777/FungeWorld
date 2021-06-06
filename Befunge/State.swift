@@ -11,3 +11,18 @@ public protocol IOProtocol {
 public enum Direction {
     case up, down, left, right
 }
+
+public class State {
+    public var stack: [Int] = []
+    public var playfield = Array2D<Character>(columns: 80, rows: 25, initialValue: " ")
+    public var instructionPointer = Position(0, 0)
+    public var direction = Direction.right
+    public var io: IOProtocol
+
+    public var stringMode = false
+    public var terminated = false
+
+    public init(io: IOProtocol) {
+        self.io = io
+    }
+}
