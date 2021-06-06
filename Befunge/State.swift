@@ -12,6 +12,15 @@ public enum Direction {
     case up, down, left, right
 }
 
+public enum StateChange {
+    case push(Int)
+    case pop
+    case turn(to: Direction)
+    case stringMode(Bool)
+    case move
+    case terminate
+}
+
 public class State {
     public var stack: [Int] = []
     public var playfield = Array2D<Character>(columns: 80, rows: 25, initialValue: " ")
@@ -21,6 +30,8 @@ public class State {
 
     public var stringMode = false
     public var terminated = false
+
+    private var currentStateChanges: [StateChange] = []
 
     public init(io: IOProtocol) {
         self.io = io
