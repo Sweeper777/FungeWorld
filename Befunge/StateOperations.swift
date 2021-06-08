@@ -71,4 +71,8 @@ extension State {
         executeChangeDirection(value == 0 ? .down : .up)
     }
 
+    func executeToggleStringMode() {
+        stringMode.toggle()
+        currentStateChanges.append(.stringMode(stringMode))
+    }
 }
