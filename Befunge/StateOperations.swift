@@ -52,4 +52,23 @@ extension State {
         executePush(b > a ? 1 : 0)
     }
 
+    func executeChangeDirection(_ newDirection: Direction) {
+        direction = newDirection
+        currentStateChanges.append(.turn(to: newDirection))
+    }
+
+    func executeRandomDirection() {
+        executeChangeDirection(Direction.allCases.randomElement()!)
+    }
+
+    func executeHorizontalConditional() {
+        let value = executePop()
+        executeChangeDirection(value == 0 ? .right : .left)
+    }
+
+    func executeVerticalConditional() {
+        let value = executePop()
+        executeChangeDirection(value == 0 ? .down : .up)
+    }
+
 }
