@@ -11,4 +11,35 @@ extension State {
         currentStateChanges.append(.pop)
         return popped
     }
+
+    func executeAdd() {
+        let a = executePop()
+        let b = executePop()
+        executePush(a &+ b)
+    }
+
+    func executeSubtract() {
+        let a = executePop()
+        let b = executePop()
+        executePush(b &- a)
+    }
+
+    func executeMultiply() {
+        let a = executePop()
+        let b = executePop()
+        executePush(a &* b)
+    }
+
+    func executeDivide() {
+        let a = executePop()
+        let b = executePop()
+        executePush(b / a)
+    }
+
+    func executeModulo() {
+        let a = executePop()
+        let b = executePop()
+        executePush(b % a)
+    }
+
 }
