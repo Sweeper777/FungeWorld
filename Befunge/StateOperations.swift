@@ -42,4 +42,14 @@ extension State {
         executePush(b % a)
     }
 
+    func executeNot() {
+        executePush(executePop() == 0 ? 1 : 0)
+    }
+
+    func executeGreaterThan() {
+        let a = executePop()
+        let b = executePop()
+        executePush(b > a ? 1 : 0)
+    }
+
 }
