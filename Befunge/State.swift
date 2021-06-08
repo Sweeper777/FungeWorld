@@ -8,7 +8,7 @@ public protocol IOProtocol {
     func readChar(completion: @escaping (UnicodeScalar) -> Void)
 }
 
-public enum Direction {
+public enum Direction : CaseIterable {
     case up, down, left, right
 }
 
@@ -31,7 +31,7 @@ public class State {
     public var stringMode = false
     public var terminated = false
 
-    private var currentStateChanges: [StateChange] = []
+    var currentStateChanges: [StateChange] = []
 
     public init(io: IOProtocol) {
         self.io = io
