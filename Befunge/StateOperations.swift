@@ -75,4 +75,17 @@ extension State {
         stringMode.toggle()
         currentStateChanges.append(.stringMode(stringMode))
     }
+
+    func executeDup() {
+        let value = executePop()
+        executePush(value)
+        executePush(value)
+    }
+
+    func executeSwap() {
+        let a = executePop()
+        let b = executePop()
+        executePush(a)
+        executePush(b)
+    }
 }
