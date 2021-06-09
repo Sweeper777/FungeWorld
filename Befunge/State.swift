@@ -10,6 +10,19 @@ public protocol IOProtocol {
 
 public enum Direction : CaseIterable {
     case up, down, left, right
+
+    var translationFunction: (Position) -> Position {
+        switch self {
+        case .up:
+            return { $0.above() }
+        case .down:
+            return { $0.below() }
+        case .left:
+            return { $0.left() }
+        case .right:
+            return { $0.right() }
+        }
+    }
 }
 
 public enum StateChange {
