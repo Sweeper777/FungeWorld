@@ -95,4 +95,22 @@ extension State {
         executePush(a)
         executePush(b)
     }
+
+    func executeOutputChar() throws {
+        io.writeChar(UnicodeScalar(try executePop()) ?? "?")
+    }
+
+    func executeOutputInt() throws {
+        io.writeInt(try executePop())
+    }
+
+    func executeInputInt(completion: () -> Void) {
+        io.readNumber(completion: executePush)
+    }
+
+    func executeInputChar(completion: () -> Void) {
+        io.readChar(completion: { [weak self] in
+            self?.executePush(Int($0.value))
+        })
+    }
 }
