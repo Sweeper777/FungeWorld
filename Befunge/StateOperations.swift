@@ -1,15 +1,22 @@
 import Foundation
 
+enum StateError: Error {
+    case stackEmpty
+}
+
 extension State {
     func executePush(_ element: Int) {
         stack.append(element)
         currentStateChanges.append(.push(element))
     }
 
-    func executePop() -> Int {
-        let popped = stack.removeLast()
-        currentStateChanges.append(.pop)
-        return popped
+    func executePop() throws -> Int{
+        if let popped = stack.popLast() {
+            currentStateChanges.append(.pop)
+            return popped
+        } else {
+            throw StateError.stackEmpty
+        }
     }
 
     func executeAdd() {
