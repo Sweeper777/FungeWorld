@@ -19,43 +19,43 @@ extension State {
         }
     }
 
-    func executeAdd() {
-        let a = executePop()
-        let b = executePop()
+    func executeAdd() throws {
+        let a = try executePop()
+        let b = try executePop()
         executePush(a &+ b)
     }
 
-    func executeSubtract() {
-        let a = executePop()
-        let b = executePop()
+    func executeSubtract() throws {
+        let a = try executePop()
+        let b = try executePop()
         executePush(b &- a)
     }
 
-    func executeMultiply() {
-        let a = executePop()
-        let b = executePop()
+    func executeMultiply() throws {
+        let a = try executePop()
+        let b = try executePop()
         executePush(a &* b)
     }
 
-    func executeDivide() {
-        let a = executePop()
-        let b = executePop()
+    func executeDivide() throws {
+        let a = try executePop()
+        let b = try executePop()
         executePush(b / a)
     }
 
-    func executeModulo() {
-        let a = executePop()
-        let b = executePop()
+    func executeModulo() throws {
+        let a = try executePop()
+        let b = try executePop()
         executePush(b % a)
     }
 
-    func executeNot() {
-        executePush(executePop() == 0 ? 1 : 0)
+    func executeNot() throws {
+        executePush(try executePop() == 0 ? 1 : 0)
     }
 
-    func executeGreaterThan() {
-        let a = executePop()
-        let b = executePop()
+    func executeGreaterThan() throws {
+        let a = try executePop()
+        let b = try executePop()
         executePush(b > a ? 1 : 0)
     }
 
@@ -68,13 +68,13 @@ extension State {
         executeChangeDirection(Direction.allCases.randomElement()!)
     }
 
-    func executeHorizontalConditional() {
-        let value = executePop()
+    func executeHorizontalConditional() throws {
+        let value = try executePop()
         executeChangeDirection(value == 0 ? .right : .left)
     }
 
-    func executeVerticalConditional() {
-        let value = executePop()
+    func executeVerticalConditional() throws {
+        let value = try executePop()
         executeChangeDirection(value == 0 ? .down : .up)
     }
 
@@ -83,15 +83,15 @@ extension State {
         currentStateChanges.append(.stringMode(stringMode))
     }
 
-    func executeDup() {
-        let value = executePop()
+    func executeDup() throws {
+        let value = try executePop()
         executePush(value)
         executePush(value)
     }
 
-    func executeSwap() {
-        let a = executePop()
-        let b = executePop()
+    func executeSwap() throws {
+        let a = try executePop()
+        let b = try executePop()
         executePush(a)
         executePush(b)
     }
