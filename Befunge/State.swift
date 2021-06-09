@@ -21,9 +21,11 @@ public enum StateChange {
     case terminate
 }
 
-public class State {
+public final class State {
     public var stack: [Int] = []
-    public var playfield = Array2D<Character>(columns: 80, rows: 25, initialValue: " ")
+    public static let columns = 80
+    public static let rows = 25
+    public var playfield = Array2D<UnicodeScalar>(columns: columns, rows: rows, initialValue: " ")
     public var instructionPointer = Position(0, 0)
     public var direction = Direction.right
     public var io: IOProtocol
