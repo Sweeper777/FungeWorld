@@ -2,6 +2,8 @@ import Foundation
 
 enum StateError: Error {
     case stackEmpty
+    case movedOutOfBounds
+    case unknownUnicodeScalar
 }
 
 extension State {
@@ -113,4 +115,20 @@ extension State {
             self?.executePush(Int($0.value))
         })
     }
+
+    func executeMove() throws {
+        let translationFunction = direction.translationFunction
+        instructionPointer = translationFunction(instructionPointer)
+        if !(0..<State.columns).contains(instructionPointer.x) ||
+                !(0..<State.rows).contains(instructionPointer.y) {
+            throw StateError.movedOutOfBounds
+        }
+        currentStateChanges.append(.move)
+    }
+
+    func executeTerminate() {
+        terminated = true
+        currentStateChanges.append(.terminate)
+    }
+
 }
