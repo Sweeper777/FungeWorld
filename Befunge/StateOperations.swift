@@ -107,13 +107,17 @@ public extension State {
         io.writeInt(try executePop())
     }
 
-    func executeInputInt(completion: () -> Void) {
-        io.readNumber(completion: executePush)
+    func executeInputInt(completion: @escaping () -> Void) {
+        io.readNumber(completion: { [weak self] in
+            self?.executePush($0)
+            completion()
+        })
     }
 
-    func executeInputChar(completion: () -> Void) {
+    func executeInputChar(completion: @escaping () -> Void) {
         io.readChar(completion: { [weak self] in
             self?.executePush(Int($0.value))
+            completion()
         })
     }
 
