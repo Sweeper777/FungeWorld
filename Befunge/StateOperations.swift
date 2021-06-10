@@ -4,6 +4,7 @@ public enum StateError: Error {
     case stackEmpty
     case movedOutOfBounds
     case unknownUnicodeScalar
+    case unknownOperation
 }
 
 public extension State {
