@@ -1,12 +1,12 @@
 import Foundation
 
-enum StateError: Error {
+public enum StateError: Error {
     case stackEmpty
     case movedOutOfBounds
     case unknownUnicodeScalar
 }
 
-extension State {
+public extension State {
     func executePush(_ element: Int) {
         stack.append(element)
         currentStateChanges.append(.push(element))
