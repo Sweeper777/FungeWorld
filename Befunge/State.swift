@@ -51,4 +51,76 @@ public final class State {
     public init(io: IOProtocol) {
         self.io = io
     }
+
+    public func nextStep(completion: @escaping () -> Void) {
+        do {
+            let currentInstruction = playfield[instructionPointer]
+            if stringMode {
+                executePush(Int(currentInstruction.value))
+            } else {
+                switch currentInstruction {
+                case "0"..."9":
+                    executePush(Int(currentInstruction.value - UnicodeScalar("0").value))
+                case "+":
+                    try executeAdd()
+                case "-":
+                    try executeSubtract()
+                case "*":
+                    try executeMultiply()
+                case "/":
+                    try executeDivide()
+                case "%":
+                    try executeModulo()
+                case "!":
+                    try executeNot()
+                case "`":
+                    try executeGreaterThan()
+                case ">":
+                    executeChangeDirection(.right)
+                case "<":
+                    executeChangeDirection(.left)
+                case "v":
+                    executeChangeDirection(.down)
+                case "^":
+                    executeChangeDirection(.up)
+                case "?":
+                    executeRandomDirection()
+                case "_":
+                    try executeHorizontalConditional()
+                case "|":
+                    try executeVerticalConditional()
+                case "\"":
+                    executeToggleStringMode()
+                case ":":
+                    try executeDup()
+                case "\\":
+                    try executeSwap()
+                case "$":
+                    _ = try executePop()
+                case ".":
+                    try executeOutputInt()
+                case ",":
+                    try executeOutputChar()
+                case "#":
+                    try executeMove()
+                case "p":
+                    try executePut()
+                case "g":
+                    try executeGet()
+                case "&":
+                    executeInputInt(completion: completion)
+                case "~":
+                    executeInputChar(completion: completion)
+                case "@":
+                    executeTerminate()
+                case " ":
+                    break
+                default:
+                    throw StateError.unknownOperation
+                }
+            }
+        } catch {
+
+        }
+    }
 }
