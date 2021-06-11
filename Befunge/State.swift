@@ -128,7 +128,23 @@ public final class State {
         } catch {
             handleError(error: error)
         }
+    }
 
+    func handleError(error: Error) {
+        if let stateError = error as? StateError {
+            switch stateError {
+            case .stackEmpty:
+                io.writeError("The stack is empty!")
+            case .movedOutOfBounds:
+                io.writeError("That is the edge of the playfield!")
+            case .unknownUnicodeScalar:
+                io.writeError("That is not a valid Unicode Scalar!")
+            case .unknownOperation:
+                io.writeError("That is an unknown operation!")
+            }
+        } else {
+            io.writeError("An unknown error occurred!")
         }
+        executeTerminate()
     }
 }
