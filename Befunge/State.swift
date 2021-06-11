@@ -120,6 +120,14 @@ public final class State {
                 }
             }
         } catch {
+    }
+
+    func postExecute() {
+        do {
+            try executeMove()
+        } catch {
+            handleError(error: error)
+        }
 
         }
     }
