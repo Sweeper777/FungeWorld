@@ -108,18 +108,30 @@ public final class State {
                 case "g":
                     try executeGet()
                 case "&":
-                    executeInputInt(completion: completion)
+                    executeInputInt(completion: { [weak self] in
+                        self?.postExecute()
+                        completion()
+                    })
+                    return
                 case "~":
-                    executeInputChar(completion: completion)
+                    executeInputChar(completion: { [weak self] in
+                        self?.postExecute()
+                        completion()
+                    })
+                    return
                 case "@":
                     executeTerminate()
+                    return
                 case " ":
                     break
                 default:
                     throw StateError.unknownOperation
                 }
             }
+            postExecute()
         } catch {
+            handleError(error: error)
+        }
     }
 
     func postExecute() {
