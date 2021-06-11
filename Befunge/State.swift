@@ -48,8 +48,22 @@ public final class State {
 
     var currentStateChanges: [StateChange] = []
 
-    public init(io: IOProtocol) {
+    public init(io: IOProtocol, code: String) {
         self.io = io
+
+        var row = 0
+        var column = 0
+        for unicodeScalar in code.unicodeScalars {
+            if unicodeScalar == "\n" {
+                column = 0
+                row += 1
+                continue
+            }
+            if row < State.rows && column < State.columns {
+                playfield[column, row] = unicodeScalar
+            }
+            column += 1
+        }
     }
 
     public func nextStep(completion: @escaping () -> Void) {
