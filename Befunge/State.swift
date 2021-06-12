@@ -69,7 +69,7 @@ public final class State {
     public func nextStep(completion: @escaping () -> Void) {
         do {
             let currentInstruction = playfield[instructionPointer]
-            if stringMode {
+            if stringMode && currentInstruction != "\"" {
                 executePush(Int(currentInstruction.value))
             } else {
                 switch currentInstruction {
