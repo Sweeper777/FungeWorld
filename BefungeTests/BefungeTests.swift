@@ -32,8 +32,6 @@ class TestIO: IOProtocol {
     func readChar(completion: @escaping (UnicodeScalar) -> Void) {
         completion(charSupplier())
     }
-
-
 }
 
 extension State {
@@ -60,6 +58,17 @@ class BefungeTests: XCTestCase {
         state.runUntilTerminated {
             expectation.fulfill()
             XCTAssertEqual(io.outputBuffer, "Hello, World!\n")
+        }
+        wait(for: [expectation], timeout: 1)
+    }
+
+    func testDNA() throws {
+        let expectation = XCTestExpectation(description: "program terminates")
+        let io = TestIO()
+        let state = State(io: io, code: "7^DN>vA\nv_#v? v\n7^<\"\"\"\"\n3  ACGT\n90!\"\"\"\"\n4*:>>>v\n+8^-1,<\n> ,+,@)")
+        state.runUntilTerminated {
+            expectation.fulfill()
+            print(io.outputBuffer)
         }
         wait(for: [expectation], timeout: 1)
     }
