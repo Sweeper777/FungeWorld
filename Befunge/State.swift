@@ -175,7 +175,7 @@ public final class State {
     }
 }
 
-func printPlayfield(_ playfield: Array2D<UnicodeScalar>) {
+public func printPlayfield(_ playfield: Array2D<UnicodeScalar>) {
     for row in (0..<playfield.rows) {
         for col in (0..<playfield.columns) {
             print(playfield[col, row], terminator: "")
