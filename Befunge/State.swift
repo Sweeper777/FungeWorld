@@ -143,8 +143,10 @@ public final class State {
                 }
             }
             postExecute()
+            completion()
         } catch {
             handleError(error: error)
+            completion()
         }
     }
 
