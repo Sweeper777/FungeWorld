@@ -53,7 +53,15 @@ extension State {
 class BefungeTests: XCTestCase {
 
 
+    func testHelloWorld() throws {
+        let expectation = XCTestExpectation(description: "program terminates")
+        let io = TestIO()
+        let state = State(io: io, code: "64+\"!dlroW ,olleH\">:#,_@")
+        state.runUntilTerminated {
+            expectation.fulfill()
+            XCTAssertEqual(io.outputBuffer, "Hello, World!\n")
         }
+        wait(for: [expectation], timeout: 1)
     }
 
 }
