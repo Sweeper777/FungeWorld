@@ -135,6 +135,7 @@ public final class State {
                     return
                 case "@":
                     executeTerminate()
+                    completion()
                     return
                 case " ":
                     break
