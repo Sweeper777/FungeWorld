@@ -36,10 +36,10 @@ class TestIO: IOProtocol {
 
 extension State {
     func runUntilTerminated(completion: @escaping () -> Void) {
-        nextStep {
-            if !(self.terminated ?? true) {
+        nextStep { [weak self] in
+            if !(self?.terminated ?? true) {
                 DispatchQueue.main.async {
-                    self.runUntilTerminated(completion: completion)
+                    self?.runUntilTerminated(completion: completion)
                 }
             } else {
                 completion()
