@@ -68,6 +68,7 @@ class BefungeTests: XCTestCase {
         let state = State(io: io, code: "7^DN>vA\nv_#v? v\n7^<\"\"\"\"\n3  ACGT\n90!\"\"\"\"\n4*:>>>v\n+8^-1,<\n> ,+,@)")
         state.runUntilTerminated {
             expectation.fulfill()
+            XCTAssertEqual(io.outputBuffer.filter("ACGT".contains).count, 56)
             print(io.outputBuffer)
         }
         wait(for: [expectation], timeout: 1)
