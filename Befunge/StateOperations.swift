@@ -2,7 +2,6 @@ import Foundation
 
 public enum StateError: Error {
     case stackEmpty
-    case movedOutOfBounds
     case unknownUnicodeScalar
     case unknownOperation
 }
@@ -124,10 +123,10 @@ public extension State {
     func executeMove() throws {
         let translationFunction = direction.translationFunction
         instructionPointer = translationFunction(instructionPointer)
-        if !(0..<State.columns).contains(instructionPointer.x) ||
-                !(0..<State.rows).contains(instructionPointer.y) {
-            throw StateError.movedOutOfBounds
-        }
+        instructionPointer = Position(
+                instructionPointer.x %% State.columns,
+                instructionPointer.y %% State.rows
+                )
         currentStateChanges.append(.move)
     }
 

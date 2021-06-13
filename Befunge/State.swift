@@ -163,8 +163,6 @@ public final class State {
             switch stateError {
             case .stackEmpty:
                 io.writeError("The stack is empty!")
-            case .movedOutOfBounds:
-                io.writeError("That is the edge of the playfield!")
             case .unknownUnicodeScalar:
                 io.writeError("That is not a valid Unicode Scalar!")
             case .unknownOperation:
