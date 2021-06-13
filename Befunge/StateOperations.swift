@@ -1,7 +1,6 @@
 import Foundation
 
 public enum StateError: Error {
-    case stackEmpty
     case unknownUnicodeScalar
     case unknownOperation
 }
@@ -17,7 +16,7 @@ public extension State {
             currentStateChanges.append(.pop)
             return popped
         } else {
-            throw StateError.stackEmpty
+            return 0
         }
     }
 

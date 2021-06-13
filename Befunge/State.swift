@@ -161,8 +161,6 @@ public final class State {
     func handleError(error: Error) {
         if let stateError = error as? StateError {
             switch stateError {
-            case .stackEmpty:
-                io.writeError("The stack is empty!")
             case .unknownUnicodeScalar:
                 io.writeError("That is not a valid Unicode Scalar!")
             case .unknownOperation:
