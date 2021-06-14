@@ -6,6 +6,7 @@ class TestIO: IOProtocol {
     let charSupplier: () -> UnicodeScalar
 
     var outputBuffer = ""
+    var hasError = false
 
     init(numberSupplier: @escaping () -> Int = { fatalError() },
          charSupplier: @escaping () -> UnicodeScalar = { fatalError() }) {
@@ -23,6 +24,7 @@ class TestIO: IOProtocol {
 
     func writeError(_ message: String) {
         print("Error: \(message)")
+        hasError = true
     }
 
     func readNumber(completion: @escaping (Int) -> Void) {
@@ -58,6 +60,7 @@ class BefungeTests: XCTestCase {
         state.runUntilTerminated {
             expectation.fulfill()
             XCTAssertEqual(io.outputBuffer, "Hello, World!\n")
+            XCTAssertFalse(io.hasError)
         }
         wait(for: [expectation], timeout: 1)
     }
@@ -69,6 +72,7 @@ class BefungeTests: XCTestCase {
         state.runUntilTerminated {
             expectation.fulfill()
             XCTAssertEqual(io.outputBuffer.filter("ACGT".contains).count, 56)
+            XCTAssertFalse(io.hasError)
             print(io.outputBuffer)
         }
         wait(for: [expectation], timeout: 1)
@@ -80,6 +84,8 @@ class BefungeTests: XCTestCase {
         let state = State(io: io, code: "01->1# +# :# 0# g# ,# :# 5# 8# *# 4# +# -# _@")
         state.runUntilTerminated {
             expectation.fulfill()
+            XCTAssertEqual(io.outputBuffer, "01->1# +# :# 0# g# ,# :# 5# 8# *# 4# +# -# _@")
+            XCTAssertFalse(io.hasError)
             print(io.outputBuffer)
         }
         wait(for: [expectation], timeout: 1)
