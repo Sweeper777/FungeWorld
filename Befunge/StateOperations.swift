@@ -135,14 +135,14 @@ public extension State {
     }
 
     func executeGet() throws {
-        let x = try executePop()
         let y = try executePop()
+        let x = try executePop()
         executePush(Int(playfield[x, y].value))
     }
 
     func executePut() throws {
-        let x = try executePop()
         let y = try executePop()
+        let x = try executePop()
         let v = try executePop()
         if let char = UnicodeScalar(v) {
             playfield[x, y] = char
