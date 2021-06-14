@@ -102,4 +102,16 @@ class BefungeTests: XCTestCase {
         wait(for: [expectation], timeout: 1)
     }
 
+    func testSieveOfEratosthenes() throws {
+        let expectation = XCTestExpectation(description: "program terminates")
+        let io = TestIO()
+        let state = State(io: io, code: "2>:3g\" \"-!v\\  g30          <\n |!`\"O\":+1_:.:03p>03g+:\"O\"`|\n @               ^  p3\\\" \":<\n2 234567890123456789012345678901234567890123456789012345678901234567890123456789")
+        state.runUntilTerminated {
+            expectation.fulfill()
+            XCTAssertFalse(io.hasError)
+            print(io.outputBuffer)
+        }
+        wait(for: [expectation], timeout: 1)
+    }
+
 }
