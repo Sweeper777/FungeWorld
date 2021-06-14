@@ -14,7 +14,7 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>BefungeTests.testHelloWorld.xcscheme</key>
+		<key>BefungeTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
