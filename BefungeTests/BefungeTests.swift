@@ -74,4 +74,15 @@ class BefungeTests: XCTestCase {
         wait(for: [expectation], timeout: 1)
     }
 
+    func testQuine() throws {
+        let expectation = XCTestExpectation(description: "program terminates")
+        let io = TestIO()
+        let state = State(io: io, code: "01->1# +# :# 0# g# ,# :# 5# 8# *# 4# +# -# _@")
+        state.runUntilTerminated {
+            expectation.fulfill()
+            print(io.outputBuffer)
+        }
+        wait(for: [expectation], timeout: 1)
+    }
+
 }
