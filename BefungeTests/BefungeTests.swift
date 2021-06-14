@@ -52,6 +52,17 @@ extension State {
 
 class BefungeTests: XCTestCase {
 
+    func testSanity() throws {
+        let expectation = XCTestExpectation(description: "program terminates")
+        let io = TestIO()
+        let state = State(io: io, code: "9876543210 ..... ..... #@ Intentionally invalid instruction, should reflect")
+        state.runUntilTerminated {
+            expectation.fulfill()
+            XCTAssertEqual(io.outputBuffer, "0 1 2 3 4 5 6 7 8 9 ")
+            XCTAssertTrue(io.hasError)
+        }
+        wait(for: [expectation], timeout: 1)
+    }
 
     func testHelloWorld() throws {
         let expectation = XCTestExpectation(description: "program terminates")
