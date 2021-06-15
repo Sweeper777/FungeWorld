@@ -142,4 +142,18 @@ class BefungeTests: XCTestCase {
         wait(for: [expectation], timeout: 1)
     }
 
+    func testMycouser() throws {
+        let expectation = XCTestExpectation(description: "program terminates")
+        let io = TestIO(numberSupplier: { Int.random(in: 1..<100) },
+                charSupplier: { "abcdefghijklmnopqrstuvwxyz".randomElement()!.unicodeScalars.first! })
+        let code = try! String(contentsOf: Bundle(identifier: "io.github.sweeper777.Befunge")!.url(forResource: "mycouser", withExtension: "b98")!);
+        let state = State(io: io, code: code)
+        state.runUntilTerminated {
+            expectation.fulfill()
+            XCTAssertFalse(io.hasError)
+            XCTAssertFalse(io.outputBuffer.contains("BAD:"))
+            print(io.outputBuffer)
+        }
+        wait(for: [expectation], timeout: 1)
+    }
 }
