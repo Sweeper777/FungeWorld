@@ -67,6 +67,7 @@ public final class State {
     }
 
     public func nextStep(completion: @escaping () -> Void) {
+        currentStateChanges = []
         do {
             let currentInstruction = playfield[instructionPointer]
             if stringMode && currentInstruction != "\"" {
@@ -82,9 +83,17 @@ public final class State {
                 case "*":
                     try executeMultiply()
                 case "/":
-                    try executeDivide()
+                    try executeDivide(completion: { [weak self] in
+                        self?.postExecute()
+                        completion()
+                    })
+                    return
                 case "%":
-                    try executeModulo()
+                    try executeModulo(completion: { [weak self] in
+                        self?.postExecute()
+                        completion()
+                    })
+                    return
                 case "!":
                     try executeNot()
                 case "`":
