@@ -38,16 +38,26 @@ public extension State {
         executePush(a &* b)
     }
 
-    func executeDivide() throws {
+    func executeDivide(completion: @escaping () -> Void) throws {
         let a = try executePop()
         let b = try executePop()
-        executePush(b / a)
+        if a == 0 {
+            executeInputInt(completion: completion)
+        } else {
+            executePush(b / a)
+            completion()
+        }
     }
 
-    func executeModulo() throws {
+    func executeModulo(completion: @escaping () -> Void) throws {
         let a = try executePop()
         let b = try executePop()
-        executePush(b % a)
+        if a == 0 {
+            executeInputInt(completion: completion)
+        } else {
+            executePush(b % a)
+            completion()
+        }
     }
 
     func executeNot() throws {
