@@ -150,7 +150,6 @@ class BefungeTests: XCTestCase {
         let state = State(io: io, code: code)
         state.runUntilTerminated {
             expectation.fulfill()
-            XCTAssertFalse(io.hasError)
             XCTAssertFalse(io.outputBuffer.contains("BAD:"))
             print(io.outputBuffer)
         }
