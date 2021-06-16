@@ -147,17 +147,23 @@ public extension State {
     func executeGet() throws {
         let y = try executePop()
         let x = try executePop()
-        executePush(Int(playfield[x, y].value))
+        if (0..<State.rows).contains(y) && (0..<State.columns).contains(x) {
+            executePush(Int(playfield[x, y].value))
+        } else {
+            executePush(0)
+        }
     }
 
     func executePut() throws {
         let y = try executePop()
         let x = try executePop()
         let v = try executePop()
-        if let char = UnicodeScalar(v) {
-            playfield[x, y] = char
-        } else {
-            throw StateError.unknownUnicodeScalar(v)
+        if (0..<State.rows).contains(y) && (0..<State.columns).contains(x) {
+            if let char = UnicodeScalar(v) {
+                playfield[x, y] = char
+            } else {
+                throw StateError.unknownUnicodeScalar(v)
+            }
         }
     }
 }
