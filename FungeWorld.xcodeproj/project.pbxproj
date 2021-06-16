@@ -10,6 +10,8 @@
 		25EF01CBC8FB524D12498E0B /* StateOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EF0CFC6482B46B1487D5DC /* StateOperations.swift */; };
 		25EF03A9E2AD8A1C5381B737 /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EF0D814001F6648171D578 /* Array2D.swift */; };
 		25EF03D41D75A944FCF9504A /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EF0AD8BFDC58AD4945F7F9 /* Helpers.swift */; };
+		25EF089CB6E8F0A1CE25623B /* mycouser.b98 in Resources */ = {isa = PBXBuildFile; fileRef = 25EF0466B899A0166D2567B7 /* mycouser.b98 */; };
+		25EF0A4E75E61BE6943631E9 /* mycorand.b98 in Sources */ = {isa = PBXBuildFile; fileRef = 25EF0F8BFB750A3BABA4757B /* mycorand.b98 */; };
 		25EF0D9CCE7C315529C99121 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EF00B486BF25A12DF2C740 /* State.swift */; };
 		5A5DA9E0266B0CDC00F5001C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5DA9DF266B0CDC00F5001C /* AppDelegate.swift */; };
 		5A5DA9E2266B0CDC00F5001C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5DA9E1266B0CDC00F5001C /* SceneDelegate.swift */; };
@@ -22,6 +24,8 @@
 		5A5DAA24266B80BB00F5001C /* Befunge.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A5DAA14266B80BB00F5001C /* Befunge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5A5DAA27266B80BB00F5001C /* Befunge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A5DAA12266B80BB00F5001C /* Befunge.framework */; };
 		5A5DAA28266B80BB00F5001C /* Befunge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5A5DAA12266B80BB00F5001C /* Befunge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5A8EDF292676F8C400645353 /* mycology.b98 in Resources */ = {isa = PBXBuildFile; fileRef = 25EF024BC90C0A67A662C461 /* mycology.b98 */; };
+		5A8EDF302676FCFD00645353 /* mycorand.b98 in Resources */ = {isa = PBXBuildFile; fileRef = 25EF0F8BFB750A3BABA4757B /* mycorand.b98 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,9 +68,12 @@
 
 /* Begin PBXFileReference section */
 		25EF00B486BF25A12DF2C740 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		25EF024BC90C0A67A662C461 /* mycology.b98 */ = {isa = PBXFileReference; lastKnownFileType = file.b98; path = mycology.b98; sourceTree = "<group>"; };
+		25EF0466B899A0166D2567B7 /* mycouser.b98 */ = {isa = PBXFileReference; lastKnownFileType = file.b98; path = mycouser.b98; sourceTree = "<group>"; };
 		25EF0AD8BFDC58AD4945F7F9 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		25EF0CFC6482B46B1487D5DC /* StateOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateOperations.swift; sourceTree = "<group>"; };
 		25EF0D814001F6648171D578 /* Array2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array2D.swift; sourceTree = "<group>"; };
+		25EF0F8BFB750A3BABA4757B /* mycorand.b98 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.b98; path = mycorand.b98; sourceTree = "<group>"; };
 		5A5DA9DC266B0CDC00F5001C /* FungeWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FungeWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A5DA9DF266B0CDC00F5001C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A5DA9E1266B0CDC00F5001C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -162,6 +169,9 @@
 			children = (
 				5A5DAA21266B80BB00F5001C /* BefungeTests.swift */,
 				5A5DAA23266B80BB00F5001C /* Info.plist */,
+				25EF024BC90C0A67A662C461 /* mycology.b98 */,
+				25EF0F8BFB750A3BABA4757B /* mycorand.b98 */,
+				25EF0466B899A0166D2567B7 /* mycouser.b98 */,
 			);
 			path = BefungeTests;
 			sourceTree = "<group>";
@@ -291,6 +301,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A8EDF302676FCFD00645353 /* mycorand.b98 in Resources */,
+				5A8EDF292676F8C400645353 /* mycology.b98 in Resources */,
+				25EF089CB6E8F0A1CE25623B /* mycouser.b98 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +335,7 @@
 				25EF0D9CCE7C315529C99121 /* State.swift in Sources */,
 				25EF01CBC8FB524D12498E0B /* StateOperations.swift in Sources */,
 				25EF03D41D75A944FCF9504A /* Helpers.swift in Sources */,
+				25EF0A4E75E61BE6943631E9 /* mycorand.b98 in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
