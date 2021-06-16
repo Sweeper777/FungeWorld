@@ -171,10 +171,10 @@ public final class State {
     func handleError(error: Error) {
         if let stateError = error as? StateError {
             switch stateError {
-            case .unknownUnicodeScalar:
-                io.writeError("That is not a valid Unicode Scalar!")
-            case .unknownOperation:
-                io.writeError("That is an unknown operation!")
+            case .unknownUnicodeScalar(let number):
+                io.writeError("\(number) is not a valid Unicode Scalar!")
+            case .unknownOperation(let c):
+                io.writeError("'\(c)' is an unknown operation!")
             }
         } else {
             io.writeError("An unknown error occurred!")
