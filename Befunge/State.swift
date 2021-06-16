@@ -149,7 +149,7 @@ public final class State {
                 case " ":
                     break
                 default:
-                    throw StateError.unknownOperation
+                    throw StateError.unknownOperation(currentInstruction)
                 }
             }
             postExecute()
