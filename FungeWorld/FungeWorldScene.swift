@@ -2,6 +2,14 @@ import SceneKit
 
 class FungeWorldScene : SCNScene {
     var cameraNode: SCNNode!
+    func setup() {
+        setupCamera()
+        setupFloor()
+        addLight(position: SCNVector3(-10, 10, -10))
+        addLight(position: SCNVector3(-10, 10, 20))
+        addLight(position: SCNVector3(20, 10, 20))
+        addLight(position: SCNVector3(20, 10, -10))
+    }
 
     private func setupCamera() {
         cameraNode = SCNNode()
