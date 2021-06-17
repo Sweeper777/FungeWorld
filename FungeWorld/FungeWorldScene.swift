@@ -11,4 +11,12 @@ class FungeWorldScene : SCNScene {
         cameraNode.eulerAngles.y = -.pi / 2
     }
 
+    func addLight(position: SCNVector3) {
+        let lightNode = SCNNode()
+        lightNode.position = position
+        lightNode.light = SCNLight()
+        lightNode.light?.type = .omni
+        rootNode.addChildNode(lightNode)
+    }
+
 }
