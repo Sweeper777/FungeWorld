@@ -19,4 +19,14 @@ class FungeWorldScene : SCNScene {
         rootNode.addChildNode(lightNode)
     }
 
+    private func setupFloor() {
+        let floorGeometry = SCNFloor()
+        floorGeometry.firstMaterial = SCNMaterial()
+        floorGeometry.firstMaterial?.diffuse.contents = UIImage(named: "grass")
+        floorGeometry.firstMaterial?.diffuse.contentsTransform = SCNMatrix4MakeScale(32, 32, 0)
+        floorGeometry.firstMaterial?.diffuse.wrapS = .repeat
+        floorGeometry.firstMaterial?.diffuse.wrapT = .repeat
+        let floor = SCNNode(geometry: floorGeometry)
+        rootNode.addChildNode(floor)
+    }
 }
