@@ -90,6 +90,7 @@
 		5A5DAA1A266B80BB00F5001C /* BefungeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BefungeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A5DAA21266B80BB00F5001C /* BefungeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BefungeTests.swift; sourceTree = "<group>"; };
 		5A5DAA23266B80BB00F5001C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A92D3CB267AEB6D005CDFD6 /* FungeWorld.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FungeWorld.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +143,7 @@
 		5A5DA9DE266B0CDC00F5001C /* FungeWorld */ = {
 			isa = PBXGroup;
 			children = (
+				5A92D3CB267AEB6D005CDFD6 /* FungeWorld.entitlements */,
 				5A5DA9DF266B0CDC00F5001C /* AppDelegate.swift */,
 				5A5DA9E1266B0CDC00F5001C /* SceneDelegate.swift */,
 				5A5DA9E3266B0CDC00F5001C /* ViewController.swift */,
@@ -512,6 +514,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FungeWorld/FungeWorld.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E9MW74DJ4Y;
 				INFOPLIST_FILE = FungeWorld/Info.plist;
@@ -521,6 +524,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.sweeper777.FungeWorld;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -531,6 +535,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FungeWorld/FungeWorld.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E9MW74DJ4Y;
 				INFOPLIST_FILE = FungeWorld/Info.plist;
@@ -540,6 +545,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.sweeper777.FungeWorld;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
