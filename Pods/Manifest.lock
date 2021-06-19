@@ -1,0 +1,16 @@
+PODS:
+  - SwiftyUtils (5.2.0)
+
+DEPENDENCIES:
+  - SwiftyUtils
+
+SPEC REPOS:
+  trunk:
+    - SwiftyUtils
+
+SPEC CHECKSUMS:
+  SwiftyUtils: 4c99e810e769063dbd5d4e83b486961a5d470aeb
+
+PODFILE CHECKSUM: 76a311ff0470036b3ef0656e6a9555ca6a12f3a6
+
+COCOAPODS: 1.10.1

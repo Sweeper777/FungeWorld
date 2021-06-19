@@ -1,0 +1,6 @@
+framework module Pods_FungeWorld {
+  umbrella header "Pods-FungeWorld-umbrella.h"
+
+  export *
+  module * { export * }
+}
