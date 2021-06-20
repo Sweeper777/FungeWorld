@@ -9,10 +9,10 @@ class FungeWorldScene : SCNScene, IOProtocol {
     func setup() {
         setupCamera()
         setupFloor()
-        addLight(position: SCNVector3(-10, 10, -10))
-        addLight(position: SCNVector3(-10, 10, 20))
-        addLight(position: SCNVector3(20, 10, 20))
-        addLight(position: SCNVector3(20, 10, -10))
+        addLight(position: SCNVector3(0, 10, State.rows))
+        addLight(position: SCNVector3(State.columns, 10, 0))
+        addLight(position: SCNVector3(State.columns, 10, State.rows))
+        addLight(position: SCNVector3(0, 10, 0))
     }
 
     private func setupCamera() {
@@ -20,7 +20,8 @@ class FungeWorldScene : SCNScene, IOProtocol {
         cameraNode.camera = SCNCamera()
         cameraNode.position.y = 10
         cameraNode.eulerAngles.x = -0.523599
-        cameraNode.eulerAngles.y = -.pi / 2
+        cameraNode.position.x = Float(State.columns) / 2
+        cameraNode.position.z = Float(State.rows)
     }
 
     func addLight(position: SCNVector3) {
@@ -52,6 +53,7 @@ class FungeWorldScene : SCNScene, IOProtocol {
                 rootNode.addChildNode(node)
             }
         }
+    }
     func writeChar(_ char: UnicodeScalar) {
 
     }
