@@ -1,7 +1,11 @@
 import SceneKit
+import Befunge
 
-class FungeWorldScene : SCNScene {
+class FungeWorldScene : SCNScene, IOProtocol {
+
     var cameraNode: SCNNode!
+    weak var state: State!
+
     func setup() {
         setupCamera()
         setupFloor()
@@ -36,5 +40,24 @@ class FungeWorldScene : SCNScene {
         floorGeometry.firstMaterial?.diffuse.wrapT = .repeat
         let floor = SCNNode(geometry: floorGeometry)
         rootNode.addChildNode(floor)
+
+    func writeChar(_ char: UnicodeScalar) {
+
+    }
+
+    func writeInt(_ int: Int) {
+
+    }
+
+    func writeError(_ message: String) {
+
+    }
+
+    func readNumber(completion: @escaping (Int) -> Void) {
+
+    }
+
+    func readChar(completion: @escaping (UnicodeScalar) -> Void) {
+
     }
 }
