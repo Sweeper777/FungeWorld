@@ -51,6 +51,15 @@ enum BefungeNodeGenerator {
     static let befungeNodeSize = 0.9.f
     private static let befungeNodeHeight = 0.5.f
 
+    static func node(for instruction: String) -> SCNNode {
+        let geometry = SCNCylinder(radius: befungeNodeSize / 2, height: befungeNodeHeight)
+        geometry.radialSegmentCount = 20
+        geometry.materials = materials(for: instruction)
+        let node = SCNNode(geometry: geometry)
+        node.pivot = SCNMatrix4MakeTranslation(0, -Float(befungeNodeHeight / 2), 0)
+        node.eulerAngles.y = .pi / 2
+        return node
+    }
 }
 
 extension UIImage {
