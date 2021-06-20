@@ -35,6 +35,18 @@ enum BefungeNodeGenerator {
         return image
     }
 
+    static func materials(for instruction: String) -> [SCNMaterial] {
+        let topFace = texture(for: instruction)
+        let topFaceMaterial = SCNMaterial()
+        topFaceMaterial.diffuse.contents = topFace
+        topFaceMaterial.specular.contents = UIColor.white
+        topFaceMaterial.shininess = 1
+        let bottomFaceMaterial = SCNMaterial()
+        bottomFaceMaterial.diffuse.contents = background
+        bottomFaceMaterial.specular.contents = UIColor.white
+        bottomFaceMaterial.shininess = 1
+        return [bottomFaceMaterial, topFaceMaterial, bottomFaceMaterial]
+    }
 
     static let befungeNodeSize = 0.9.f
     private static let befungeNodeHeight = 0.5.f
