@@ -41,6 +41,17 @@ class FungeWorldScene : SCNScene, IOProtocol {
         let floor = SCNNode(geometry: floorGeometry)
         rootNode.addChildNode(floor)
 
+        let squareGeometry = SCNPlane(width: 0.9, height: 0.9)
+        squareGeometry.cornerRadius = 0.1
+        squareGeometry.firstMaterial?.diffuse.contents = UIColor.white
+        for x in 0..<State.columns {
+            for y in 0..<State.rows {
+                let node = SCNNode(geometry: squareGeometry)
+                node.position = SCNVector3(x.f, 0.001, y.f)
+                node.eulerAngles.x = -.pi / 2
+                rootNode.addChildNode(node)
+            }
+        }
     func writeChar(_ char: UnicodeScalar) {
 
     }
