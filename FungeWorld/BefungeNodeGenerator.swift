@@ -7,30 +7,38 @@ enum BefungeNodeGenerator {
     static let background = UIColor.black
     static let foreground = UIColor.white
 
-    static func texture(for instruction: String) -> UIImage {
-        if let cached = textureCache[instruction] {
-            return cached
-        }
-
-        let size = 500
-        let textSize = 400
-        let offset = (size - textSize) / 2
-
-        let fontSize = fontSizeThatFits(size: CGSize(width: textSize, height: textSize), text: instruction as NSString, font: UIFont.monospacedSystemFont(ofSize: 0, weight: .regular))
-        UIGraphicsBeginImageContext(CGSize(width: size, height: size))
+    private static func imageFromText(_ string: String, size: CGSize, inset: CGFloat, font: UIFont, background: UIColor, foreground: UIColor) -> UIImage {
+        let textSize = CGSize(width: size.width - inset * 2, height: size.height - inset * 2)
+        let fontSize = fontSizeThatFits(size: textSize, text: string as NSString, font: font)
+        UIGraphicsBeginImageContext(size)
         background.setFill()
-        UIRectFill(CGRect(x: 0, y: 0, width: size, height: size))
+        UIRectFill(CGRect(origin: .zero, size: size))
         let paraStyle = NSMutableParagraphStyle()
         paraStyle.alignment = .center
-        (instruction as NSString).draw(in: CGRect(x: offset, y: offset, width: textSize, height: textSize), withAttributes: [
-            .font: UIFont.monospacedSystemFont(ofSize: fontSize, weight: .regular),
+        (string as NSString).draw(in: CGRect(x: inset, y: inset, width: textSize.width, height: textSize.height), withAttributes: [
+            .font: font.withSize(fontSize),
             .foregroundColor: foreground,
             .paragraphStyle: paraStyle
         ])
         let context = UIGraphicsGetCurrentContext()!
         context.scaleBy(x: -1, y: 1)
-        context.translateBy(x: -size.f, y: 0)
-        let image = UIGraphicsGetImageFromCurrentImageContext()!.flipImage()!
+        context.translateBy(x: -size.width, y: 0)
+        let image = UIGraphicsGetImageFromCurrentImageContext()!
+        return image
+    }
+
+    static func texture(for instruction: String) -> UIImage {
+        if let cached = textureCache[instruction] {
+            return cached
+        }
+
+        let image = imageFromText(
+                instruction,
+                size: CGSize(width: 500, height: 500),
+                inset: 50,
+                font: UIFont.monospacedSystemFont(ofSize: 0, weight: .regular),
+                background: background,
+                foreground: foreground).flipImage()!
         textureCache[instruction] = image
         return image
     }
