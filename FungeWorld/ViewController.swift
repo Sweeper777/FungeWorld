@@ -15,5 +15,6 @@ class ViewController: UIViewController {
         sceneView.scene = scene
         sceneView.pointOfView = scene.cameraNode
         sceneView.allowsCameraControl = true
+        sceneView.defaultCameraController.interactionMode = .pan
     }
 }
