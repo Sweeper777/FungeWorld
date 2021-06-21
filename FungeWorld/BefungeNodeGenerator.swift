@@ -68,6 +68,28 @@ enum BefungeNodeGenerator {
         node.eulerAngles.y = .pi / 2
         return node
     }
+
+    static let stackBlockLength = 3.f
+    static let stackBlockHeight = 0.5.f
+
+    static func stackNode(for string: String) -> SCNNode {
+        let geometry = SCNBox(width: stackBlockLength, height: stackBlockHeight, length: stackBlockLength, chamferRadius: 0.05)
+        let sideMaterial = SCNMaterial()
+        sideMaterial.diffuse.contents = imageFromText(
+                string,
+                size: CGSize(width: 600, height: 100),
+                inset: 10, font: UIFont.monospacedSystemFont(ofSize: 0, weight: .regular),
+                background: .green, foreground: .black)
+        let topMaterial = SCNMaterial()
+        topMaterial.diffuse.contents = UIColor.green
+        geometry.materials = [
+            sideMaterial, sideMaterial, sideMaterial, sideMaterial,
+            topMaterial, topMaterial
+        ]
+        let node = SCNNode(geometry: geometry)
+        node.pivot = SCNMatrix4MakeTranslation(0, -Float(stackBlockHeight / 2), 0)
+        return node
+    }
 }
 
 extension UIImage {
