@@ -9,6 +9,7 @@ class FungeWorldScene : SCNScene, IOProtocol {
     func setup() {
         setupCamera()
         setupFloor()
+        setupInstructions()
         addLight(position: SCNVector3(0, 10, State.rows))
         addLight(position: SCNVector3(State.columns, 10, 0))
         addLight(position: SCNVector3(State.columns, 10, State.rows))
@@ -54,6 +55,19 @@ class FungeWorldScene : SCNScene, IOProtocol {
             }
         }
     }
+
+    private func setupInstructions() {
+        for x in 0..<State.columns {
+            for y in 0..<State.rows {
+                if state.playfield[x, y] != " " {
+                    let node = BefungeNodeGenerator.node(for: "\(state.playfield[x, y])")
+                    node.position = SCNVector3(x.f, 0.001, y.f)
+                    rootNode.addChildNode(node)
+                }
+            }
+        }
+    }
+
     func writeChar(_ char: UnicodeScalar) {
 
     }
