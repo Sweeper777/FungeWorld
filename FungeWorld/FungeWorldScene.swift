@@ -20,9 +20,9 @@ class FungeWorldScene : SCNScene, IOProtocol {
         cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
         cameraNode.position.y = 10
-        cameraNode.eulerAngles.x = -0.523599
-        cameraNode.position.x = Float(State.columns) / 2
-        cameraNode.position.z = Float(State.rows)
+        cameraNode.eulerAngles.x = -.pi / 2
+        cameraNode.position.x = 0
+        cameraNode.position.z = 0
     }
 
     func addLight(position: SCNVector3) {
