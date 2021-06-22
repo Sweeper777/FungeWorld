@@ -42,6 +42,20 @@ class FungeWorldCamera {
         }
     }
 
+    func toggleOrientation() {
+        SCNTransaction.begin()
+        SCNTransaction.animationDuration = 0.5
+        switch orientation {
+        case .vertical:
+             orientation = .horizontal
+            cameraNode.eulerAngles.x = 0
+        case .horizontal:
+            orientation = .vertical
+            cameraNode.eulerAngles.x = -1
+        }
+        SCNTransaction.commit()
+        SCNTransaction.animationDuration = 0
+    }
 }
 
 extension ClosedRange {
