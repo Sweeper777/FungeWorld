@@ -29,6 +29,19 @@ class FungeWorldCamera {
         self.zRange = zRange
     }
 
+    func move(dx: Float, dy: Float) {
+        cameraNode.position.x += dx
+        cameraNode.position.x = xRange.clamp(cameraNode.position.x)
+        switch orientation {
+        case .vertical:
+            cameraNode.position.z += dy
+            cameraNode.position.z = xRange.clamp(cameraNode.position.z)
+        case .horizontal:
+            cameraNode.position.y += dy
+            cameraNode.position.y = xRange.clamp(cameraNode.position.y)
+        }
+    }
+
 }
 
 extension ClosedRange {
