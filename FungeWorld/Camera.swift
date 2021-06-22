@@ -12,6 +12,15 @@ class FungeWorldCamera {
     private let zoomRange: ClosedRange<CGFloat> = 30...90
     private (set)var orientation = Orientation.vertical
 
+    var zoom: CGFloat {
+        get {
+            cameraNode.camera!.fieldOfView
+        }
+        set {
+            cameraNode.camera!.fieldOfView = newValue
+            cameraNode.camera!.fieldOfView = zoomRange.clamp(cameraNode.camera!.fieldOfView)
+        }
+    }
 
     init(cameraNode: SCNNode, xRange: ClosedRange<Float>, yRange: ClosedRange<Float>, zRange: ClosedRange<Float>) {
         self.cameraNode = cameraNode
