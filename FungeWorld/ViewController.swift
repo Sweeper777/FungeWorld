@@ -16,11 +16,24 @@ class ViewController: UIViewController {
         scene.setup()
         sceneView.scene = scene
         sceneView.pointOfView = scene.cameraNode
+        scene.camera = FungeWorldCamera(
+                cameraNode: sceneView.pointOfView!,
+                xRange: -1...Float(State.columns),
+                yRange: 5...16,
+                zRange: -1...Float(State.rows)
+        )
         zoomGR = UIPinchGestureRecognizer(target: self, action: #selector(didZoom))
         sceneView.addGestureRecognizer(zoomGR)
     }
 
+    var prevZoom: CGFloat = 0
     @objc func didZoom(_ gr: UIPinchGestureRecognizer) {
+        if gr.state == .changed {
+            scene.camera.zoom = prevZoom / gr.scale
+            sceneView.setNeedsDisplay()
+        } else if gr.state == .began {
+            prevZoom = scene.camera.zoom
+        }
     }
 
     }
