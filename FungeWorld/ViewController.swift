@@ -36,5 +36,15 @@ class ViewController: UIViewController {
         }
     }
 
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        let location = touch.preciseLocation(in: sceneView)
+        let prevLocation = touch.precisePreviousLocation(in: sceneView)
+        let dx = location.x - prevLocation.x
+        let dy = location.y - prevLocation.y
+        scene.camera.move(dx: -Float(dx) / 50, dy: -Float(dy) / 50)
+        sceneView.setNeedsDisplay()
+        scene.cameraNode.camera?.xFov
+        super.touchesMoved(touches, with: event)
     }
 }
