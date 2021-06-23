@@ -6,6 +6,8 @@ class FungeWorldScene : SCNScene, IOProtocol {
     var cameraNode: SCNNode!
     weak var state: State!
 
+    var camera: FungeWorldCamera!
+
     func setup() {
         setupCamera()
         setupFloor()
@@ -20,7 +22,7 @@ class FungeWorldScene : SCNScene, IOProtocol {
         cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
         cameraNode.position.y = 10
-        cameraNode.eulerAngles.x = -.pi / 2
+        cameraNode.eulerAngles.x = -1
         cameraNode.position.x = 0
         cameraNode.position.z = 0
     }
