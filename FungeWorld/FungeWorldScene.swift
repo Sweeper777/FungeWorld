@@ -66,6 +66,9 @@ class FungeWorldScene : SCNScene, IOProtocol {
                 }
             }
         }
+        let stackNode = BefungeNodeGenerator.stackNode(for: "Hello")
+        stackNode.position = SCNVector3(7, 0, -7)
+        rootNode.addChildNode(stackNode)
     }
 
     func writeChar(_ char: UnicodeScalar) {
