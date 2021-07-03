@@ -37,7 +37,7 @@ class FungeWorldCamera {
             cameraNode.position.z += dy
             cameraNode.position.z = xRange.clamp(cameraNode.position.z)
         case .horizontal:
-            cameraNode.position.y += dy
+            cameraNode.position.y -= dy
             cameraNode.position.y = xRange.clamp(cameraNode.position.y)
         }
     }
