@@ -47,4 +47,13 @@ class ViewController: UIViewController {
         scene.cameraNode.camera?.xFov
         super.touchesMoved(touches, with: event)
     }
+
+    func updateCameraOrientationToggleButtonTitle() {
+        switch scene.camera.orientation {
+        case .vertical:
+            cameraOrientationToggleButton.setTitle("Show Stack", for: .normal)
+        case .horizontal:
+            cameraOrientationToggleButton.setTitle("Show Playfield", for: .normal)
+        }
+    }
 }
