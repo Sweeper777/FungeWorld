@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,6 +19,18 @@
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oHM-Cp-Mzp">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </sceneKitView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0G-Hv-jGL">
+                                <rect key="frame" x="274" y="802" width="120" height="40"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="WyM-PH-qtm"/>
+                                    <constraint firstAttribute="width" constant="120" id="udg-jX-eeo"/>
+                                </constraints>
+                                <state key="normal" title="Show Playfield"/>
+                                <connections>
+                                    <action selector="cameraOrientationToggleButtonDidTap" destination="BYZ-38-t0r" eventType="touchUpInside" id="HN3-Gd-taX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -26,10 +38,13 @@
                             <constraint firstItem="oHM-Cp-Mzp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Bq8-bb-4FS"/>
                             <constraint firstAttribute="bottom" secondItem="oHM-Cp-Mzp" secondAttribute="bottom" id="JKQ-jt-GRD"/>
                             <constraint firstItem="oHM-Cp-Mzp" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="L7R-pc-Hse"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="g0G-Hv-jGL" secondAttribute="bottom" constant="20" id="N8R-OS-OF3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="g0G-Hv-jGL" secondAttribute="trailing" constant="20" id="Umq-vP-vQe"/>
                             <constraint firstItem="oHM-Cp-Mzp" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="hUr-l7-6Sd"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cameraOrientationToggleButton" destination="g0G-Hv-jGL" id="NmF-Si-C7m"/>
                         <outlet property="sceneView" destination="oHM-Cp-Mzp" id="C8q-kW-zlt"/>
                     </connections>
                 </viewController>
