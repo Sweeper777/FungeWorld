@@ -84,9 +84,9 @@
 		092162E57187E96CCECD0B747D36BB2F /* UILabelExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UILabelExtension.swift; path = Sources/Extensions/UIKit/UILabel/UILabelExtension.swift; sourceTree = "<group>"; };
 		09A54148D793B356F1178DD9D859F633 /* UIStoryboardExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIStoryboardExtension.swift; path = Sources/Extensions/UIKit/UIStoryboard/UIStoryboardExtension.swift; sourceTree = "<group>"; };
 		172D97E1C0A6EFBF121EB8B9A1F6105C /* StringExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = Sources/Extensions/Swift/String/StringExtension.swift; sourceTree = "<group>"; };
-		1B75B5C4FF78C41C3D8CB1870C8D2E6F /* Pods_Befunge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Befunge.framework; path = "Pods-Befunge.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B75B5C4FF78C41C3D8CB1870C8D2E6F /* Pods_Befunge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Befunge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B7C78173CE30A827906A6513DD595D8 /* Pods-Befunge-BefungeTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Befunge-BefungeTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		1BC2964324ACB043280C4FC235F7D0F0 /* Pods_Befunge_BefungeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Befunge_BefungeTests.framework; path = "Pods-Befunge-BefungeTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BC2964324ACB043280C4FC235F7D0F0 /* Pods_Befunge_BefungeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Befunge_BefungeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BF4206356DD42F3F84B7808F4CB1433 /* UITesting.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UITesting.swift; path = Sources/Others/UITesting.swift; sourceTree = "<group>"; };
 		1CEE99749A1ADDD46067EDB207B6C407 /* TimerExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TimerExtension.swift; path = Sources/Extensions/Foundation/Timer/TimerExtension.swift; sourceTree = "<group>"; };
 		274C303E1C2150D0BBF644EDD2AB51B6 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UserDefaultsExtension.swift; path = Sources/Extensions/Foundation/UserDefaults/UserDefaultsExtension.swift; sourceTree = "<group>"; };
@@ -125,7 +125,7 @@
 		98E3C260F3A47B107978596F6B82ABEE /* Pods-FungeWorld-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FungeWorld-dummy.m"; sourceTree = "<group>"; };
 		9B3B3F235601135D48FCF0F2D43AAF13 /* Pods-FungeWorld-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FungeWorld-frameworks.sh"; sourceTree = "<group>"; };
 		9D3EFBA179839F570076D55D47044B7E /* CGFloatLiteral.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CGFloatLiteral.swift; path = Sources/Extensions/CoreGraphics/CGFloatLiteral/CGFloatLiteral.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A6AFA128F5CA5DF68DC4FEAA6403766E /* UIDeviceExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIDeviceExtension.swift; path = Sources/Extensions/UIKit/UIDevice/UIDeviceExtension.swift; sourceTree = "<group>"; };
 		AD280A1207C7289ABE7EB67FF6554337 /* SwiftyUtils.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyUtils.modulemap; sourceTree = "<group>"; };
 		AE0721C2174BC52E45B200AF598C0D10 /* NSRangeExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NSRangeExtension.swift; path = Sources/Extensions/Foundation/NSRange/NSRangeExtension.swift; sourceTree = "<group>"; };
@@ -142,14 +142,14 @@
 		C57ECBF2B095A9DFC31864C8176A1670 /* Pods-FungeWorld.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FungeWorld.release.xcconfig"; sourceTree = "<group>"; };
 		CCA336402C0158625E288C0C8ED87286 /* DictionaryExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DictionaryExtension.swift; path = Sources/Extensions/Swift/Dictionary/DictionaryExtension.swift; sourceTree = "<group>"; };
 		CF56A2158B2593BB57BAD290AEC1E70B /* IntExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IntExtension.swift; path = Sources/Extensions/Swift/Int/IntExtension.swift; sourceTree = "<group>"; };
-		CF93078AF186D59313265B45D71A7D0E /* Pods_FungeWorld.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FungeWorld.framework; path = "Pods-FungeWorld.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF93078AF186D59313265B45D71A7D0E /* Pods_FungeWorld.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FungeWorld.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D12A9D31DE01FF717BE44C96F393E685 /* UnitTesting.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UnitTesting.swift; path = Sources/Others/UnitTesting.swift; sourceTree = "<group>"; };
 		D161ADB2B544FA48D340C6D2002E0ACE /* BundleExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BundleExtension.swift; path = Sources/Extensions/Foundation/Bundle/BundleExtension.swift; sourceTree = "<group>"; };
 		D17ED7262671904EC662E224B18368AE /* ColorExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorExtension.swift; path = Sources/Extensions/Foundation/Color/ColorExtension.swift; sourceTree = "<group>"; };
 		D4DD100C10B01BB082292E568BF12130 /* Injectable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Injectable.swift; path = Sources/Protocols/Injectable.swift; sourceTree = "<group>"; };
 		DAE9D71C22219EB9AC21C0D6ECE3EFC5 /* NSObjectExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NSObjectExtension.swift; path = Sources/Extensions/Foundation/NSObject/NSObjectExtension.swift; sourceTree = "<group>"; };
 		DE711D4B19B4E421823B64AAB04B95F2 /* ReusableFormatters.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReusableFormatters.swift; path = Sources/Extensions/Foundation/ReusableFormatters/ReusableFormatters.swift; sourceTree = "<group>"; };
-		E088AF8F3DC3A04112863D2643EB35ED /* SwiftyUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyUtils.framework; path = SwiftyUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E088AF8F3DC3A04112863D2643EB35ED /* SwiftyUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2D2D1B5925BD65DBD0D254D6730CD9A /* DataExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DataExtension.swift; path = Sources/Extensions/Swift/Data/DataExtension.swift; sourceTree = "<group>"; };
 		E30A2022DFBCFF59261D7538BBC8962E /* SwiftyUtils-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftyUtils-Info.plist"; sourceTree = "<group>"; };
 		E629FC332ADFD27EB83710D4A91501B0 /* FileManagerExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileManagerExtension.swift; path = Sources/Extensions/Foundation/FileManager/FileManagerExtension.swift; sourceTree = "<group>"; };
@@ -279,7 +279,6 @@
 				274C303E1C2150D0BBF644EDD2AB51B6 /* UserDefaultsExtension.swift */,
 				16C63685A7F3243019B1CC5E6AF039AF /* Support Files */,
 			);
-			name = SwiftyUtils;
 			path = SwiftyUtils;
 			sourceTree = "<group>";
 		};
@@ -496,7 +495,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1250;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 9.3";
@@ -972,7 +971,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftyUtils/SwiftyUtils-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftyUtils/SwiftyUtils-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1007,7 +1006,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftyUtils/SwiftyUtils-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftyUtils/SwiftyUtils-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
