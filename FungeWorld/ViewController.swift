@@ -25,6 +25,12 @@ class ViewController: UIViewController {
         )
         zoomGR = UIPinchGestureRecognizer(target: self, action: #selector(didZoom))
         sceneView.addGestureRecognizer(zoomGR)
+
+        updateCameraOrientationToggleButtonTitle()
+        cameraOrientationToggleButton.layer.cornerRadius = cameraOrientationToggleButton.height / 2
+        cameraOrientationToggleButton.layer.shadowColor = UIColor.black.cgColor
+        cameraOrientationToggleButton.layer.shadowOpacity = 0.5
+        cameraOrientationToggleButton.layer.shadowRadius = 4
     }
 
     var prevZoom: CGFloat = 0
@@ -51,7 +57,6 @@ class ViewController: UIViewController {
         let dy = location.y - prevLocation.y
         scene.camera.move(dx: -Float(dx) / 50, dy: -Float(dy) / 50)
         sceneView.setNeedsDisplay()
-        scene.cameraNode.camera?.xFov
         super.touchesMoved(touches, with: event)
     }
 
