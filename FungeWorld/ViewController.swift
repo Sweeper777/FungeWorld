@@ -4,6 +4,7 @@ import SceneKit
 
 class ViewController: UIViewController {
     @IBOutlet var sceneView: SCNView!
+    @IBOutlet var cameraOrientationToggleButton: UIButton!
     lazy var state = State(io: scene, code: "64+\"!dlroW ,olleH\">:#,_@")
 
     var zoomGR: UIPinchGestureRecognizer!
@@ -34,6 +35,12 @@ class ViewController: UIViewController {
         } else if gr.state == .began {
             prevZoom = scene.camera.zoom
         }
+    }
+
+    @IBAction func cameraOrientationToggleButtonDidTap() {
+        sceneView.setNeedsDisplay()
+        scene.camera.toggleOrientation()
+        updateCameraOrientationToggleButtonTitle()
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
