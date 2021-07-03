@@ -27,10 +27,6 @@ class ViewController: UIViewController {
         sceneView.addGestureRecognizer(zoomGR)
 
         updateCameraOrientationToggleButtonTitle()
-        cameraOrientationToggleButton.layer.cornerRadius = cameraOrientationToggleButton.height / 2
-        cameraOrientationToggleButton.layer.shadowColor = UIColor.black.cgColor
-        cameraOrientationToggleButton.layer.shadowOpacity = 0.5
-        cameraOrientationToggleButton.layer.shadowRadius = 4
     }
 
     var prevZoom: CGFloat = 0

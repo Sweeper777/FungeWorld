@@ -15,6 +15,7 @@
 		25EF07573899263DE380A088 /* FontSizeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EF06A7D40938BDCB70B67B /* FontSizeHelper.swift */; };
 		25EF089CB6E8F0A1CE25623B /* mycouser.b98 in Resources */ = {isa = PBXBuildFile; fileRef = 25EF0466B899A0166D2567B7 /* mycouser.b98 */; };
 		25EF0A4E75E61BE6943631E9 /* mycorand.b98 in Sources */ = {isa = PBXBuildFile; fileRef = 25EF0F8BFB750A3BABA4757B /* mycorand.b98 */; };
+		25EF0B8E241C3628E2691DCE /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EF09C09490E0BEF77B27F8 /* RoundedButton.swift */; };
 		25EF0CD82AF707B2EA9CEA8D /* BefungeNodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EF0648E8DD5FC1625AA123 /* BefungeNodeGenerator.swift */; };
 		25EF0D9CCE7C315529C99121 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EF00B486BF25A12DF2C740 /* State.swift */; };
 		2F406DB42186E363796E3CD8 /* Pods_Befunge_BefungeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A8B96CEFC9449AC1AD6AC8 /* Pods_Befunge_BefungeTests.framework */; };
@@ -81,6 +82,7 @@
 		25EF0648E8DD5FC1625AA123 /* BefungeNodeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BefungeNodeGenerator.swift; sourceTree = "<group>"; };
 		25EF06A7D40938BDCB70B67B /* FontSizeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontSizeHelper.swift; sourceTree = "<group>"; };
 		25EF07B49D10EA755AEC8B6A /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		25EF09C09490E0BEF77B27F8 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		25EF0AD8BFDC58AD4945F7F9 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		25EF0CFAE143ADDA4DE7FBAE /* FungeWorldScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FungeWorldScene.swift; sourceTree = "<group>"; };
 		25EF0CFC6482B46B1487D5DC /* StateOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateOperations.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				25EF0648E8DD5FC1625AA123 /* BefungeNodeGenerator.swift */,
 				25EF06A7D40938BDCB70B67B /* FontSizeHelper.swift */,
 				25EF07B49D10EA755AEC8B6A /* Camera.swift */,
+				25EF09C09490E0BEF77B27F8 /* RoundedButton.swift */,
 			);
 			path = FungeWorld;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				25EF0CD82AF707B2EA9CEA8D /* BefungeNodeGenerator.swift in Sources */,
 				25EF07573899263DE380A088 /* FontSizeHelper.swift in Sources */,
 				25EF05E2561F5C1C2E5CF280 /* Camera.swift in Sources */,
+				25EF0B8E241C3628E2691DCE /* RoundedButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

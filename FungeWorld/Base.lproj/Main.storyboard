@@ -19,12 +19,12 @@
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oHM-Cp-Mzp">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </sceneKitView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0G-Hv-jGL">
-                                <rect key="frame" x="274" y="802" width="120" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0G-Hv-jGL" customClass="RoundedButton" customModule="FungeWorld" customModuleProvider="target">
+                                <rect key="frame" x="254" y="802" width="140" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="WyM-PH-qtm"/>
-                                    <constraint firstAttribute="width" constant="120" id="udg-jX-eeo"/>
+                                    <constraint firstAttribute="width" constant="140" id="udg-jX-eeo"/>
                                 </constraints>
                                 <state key="normal" title="Show Playfield"/>
                                 <connections>
