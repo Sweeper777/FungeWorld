@@ -43,18 +43,17 @@ class FungeWorldCamera {
     }
 
     func toggleOrientation() {
-        SCNTransaction.begin()
         SCNTransaction.animationDuration = 0.5
+        SCNTransaction.begin()
         switch orientation {
         case .vertical:
              orientation = .horizontal
-            cameraNode.eulerAngles.x = 0
+            cameraNode.eulerAngles = SCNVector3(0, cameraNode.eulerAngles.y, cameraNode.eulerAngles.z)
         case .horizontal:
             orientation = .vertical
-            cameraNode.eulerAngles.x = -1
+            cameraNode.eulerAngles = SCNVector3(-1, cameraNode.eulerAngles.y, cameraNode.eulerAngles.z)
         }
         SCNTransaction.commit()
-        SCNTransaction.animationDuration = 0
     }
 }
 

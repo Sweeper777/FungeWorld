@@ -16,6 +16,7 @@ class ViewController: UIViewController {
         scene.state = state
         scene.setup()
         sceneView.scene = scene
+        sceneView.allowsCameraControl = true
         sceneView.pointOfView = scene.cameraNode
         scene.camera = FungeWorldCamera(
                 cameraNode: sceneView.pointOfView!,
@@ -40,7 +41,6 @@ class ViewController: UIViewController {
     }
 
     @IBAction func cameraOrientationToggleButtonDidTap() {
-        sceneView.setNeedsDisplay()
         scene.camera.toggleOrientation()
         updateCameraOrientationToggleButtonTitle()
     }
