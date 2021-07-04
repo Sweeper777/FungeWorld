@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         scene.camera = FungeWorldCamera(
                 cameraNode: sceneView.pointOfView!,
                 xRange: -1...Float(State.columns),
-                yRange: 5...16,
+                yRange: 3...16,
                 zRange: -1...Float(State.rows)
         )
         zoomGR = UIPinchGestureRecognizer(target: self, action: #selector(didZoom))

@@ -35,10 +35,10 @@ class FungeWorldCamera {
         switch orientation {
         case .vertical:
             cameraNode.position.z += dy
-            cameraNode.position.z = xRange.clamp(cameraNode.position.z)
+            cameraNode.position.z = zRange.clamp(cameraNode.position.z)
         case .horizontal:
             cameraNode.position.y -= dy
-            cameraNode.position.y = xRange.clamp(cameraNode.position.y)
+            cameraNode.position.y = yRange.clamp(cameraNode.position.y)
         }
     }
 
