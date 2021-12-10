@@ -38,25 +38,23 @@ public extension State {
         executePush(a &* b)
     }
 
-    func executeDivide(completion: @escaping () -> Void) throws {
+    func executeDivide() async throws -> Void {
         let a = try executePop()
         let b = try executePop()
         if a == 0 {
-            executeInputInt(completion: completion)
+            await executeInputInt()
         } else {
             executePush(b / a)
-            completion()
         }
     }
 
-    func executeModulo(completion: @escaping () -> Void) throws {
+    func executeModulo() async throws -> Void {
         let a = try executePop()
         let b = try executePop()
         if a == 0 {
-            executeInputInt(completion: completion)
+            await executeInputInt()
         } else {
             executePush(b % a)
-            completion()
         }
     }
 
@@ -115,18 +113,12 @@ public extension State {
         io.writeInt(try executePop())
     }
 
-    func executeInputInt(completion: @escaping () -> Void) {
-        io.readNumber(completion: { [weak self] in
-            self?.executePush($0)
-            completion()
-        })
+    func executeInputInt() async -> Void {
+        executePush(await io.readNumber())
     }
 
-    func executeInputChar(completion: @escaping () -> Void) {
-        io.readChar(completion: { [weak self] in
-            self?.executePush(Int($0.value))
-            completion()
-        })
+    func executeInputChar() async -> Void {
+        self.executePush(Int(await io.readChar().value))
     }
 
     func executeMove() throws {
