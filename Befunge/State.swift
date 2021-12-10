@@ -4,8 +4,8 @@ public protocol IOProtocol {
     func writeChar(_ char: UnicodeScalar)
     func writeInt(_ int: Int)
     func writeError(_ message: String)
-    func readNumber(completion: @escaping (Int) -> Void)
-    func readChar(completion: @escaping (UnicodeScalar) -> Void)
+    func readNumber() async -> Int
+    func readChar() async -> UnicodeScalar
 }
 
 public enum Direction : CaseIterable {
@@ -66,7 +66,7 @@ public final class State {
         }
     }
 
-    public func nextStep(completion: @escaping () -> Void) {
+    public func nextStep() async -> Void {
         currentStateChanges = []
         do {
             let currentInstruction = playfield[instructionPointer]
@@ -83,17 +83,9 @@ public final class State {
                 case "*":
                     try executeMultiply()
                 case "/":
-                    try executeDivide(completion: { [weak self] in
-                        self?.postExecute()
-                        completion()
-                    })
-                    return
+                    try await executeDivide()
                 case "%":
-                    try executeModulo(completion: { [weak self] in
-                        self?.postExecute()
-                        completion()
-                    })
-                    return
+                    try await executeModulo()
                 case "!":
                     try executeNot()
                 case "`":
@@ -131,20 +123,11 @@ public final class State {
                 case "g":
                     try executeGet()
                 case "&":
-                    executeInputInt(completion: { [weak self] in
-                        self?.postExecute()
-                        completion()
-                    })
-                    return
+                    await executeInputInt()
                 case "~":
-                    executeInputChar(completion: { [weak self] in
-                        self?.postExecute()
-                        completion()
-                    })
-                    return
+                    await executeInputChar()
                 case "@":
                     executeTerminate()
-                    completion()
                     return
                 case " ":
                     break
@@ -152,16 +135,6 @@ public final class State {
                     throw StateError.unknownOperation(currentInstruction)
                 }
             }
-            postExecute()
-            completion()
-        } catch {
-            handleError(error: error)
-            completion()
-        }
-    }
-
-    func postExecute() {
-        do {
             try executeMove()
         } catch {
             handleError(error: error)
