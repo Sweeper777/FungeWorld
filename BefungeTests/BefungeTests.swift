@@ -27,12 +27,12 @@ class TestIO: IOProtocol {
         hasError = true
     }
 
-    func readNumber(completion: @escaping (Int) -> Void) {
-        completion(numberSupplier())
+    func readNumber() async -> Int {
+        numberSupplier()
     }
-
-    func readChar(completion: @escaping (UnicodeScalar) -> Void) {
-        completion(charSupplier())
+    
+    func readChar() async -> UnicodeScalar {
+        charSupplier()
     }
 }
 
