@@ -37,15 +37,9 @@ class TestIO: IOProtocol {
 }
 
 extension State {
-    func runUntilTerminated(completion: @escaping () -> Void) {
-        nextStep { [weak self] in
-            if !(self?.terminated ?? true) {
-                DispatchQueue.main.async {
-                    self?.runUntilTerminated(completion: completion)
-                }
-            } else {
-                completion()
-            }
+    func runUntilTerminated() async -> Void {
+        while !self.terminated {
+            await nextStep()
         }
     }
 }
