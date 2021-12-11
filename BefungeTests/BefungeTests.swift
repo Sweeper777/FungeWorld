@@ -46,107 +46,75 @@ extension State {
 
 class BefungeTests: XCTestCase {
 
-    func testSanity() throws {
-        let expectation = XCTestExpectation(description: "program terminates")
+    func testSanity() async {
         let io = TestIO()
         let state = State(io: io, code: "9876543210 ..... ..... #@ Intentionally invalid instruction, should reflect")
-        state.runUntilTerminated {
-            expectation.fulfill()
-            XCTAssertEqual(io.outputBuffer, "0 1 2 3 4 5 6 7 8 9 ")
-            XCTAssertTrue(io.hasError)
-        }
-        wait(for: [expectation], timeout: 1)
+        await state.runUntilTerminated()
+        XCTAssertEqual(io.outputBuffer, "0 1 2 3 4 5 6 7 8 9 ")
+        XCTAssertTrue(io.hasError)
     }
 
-    func testHelloWorld() throws {
-        let expectation = XCTestExpectation(description: "program terminates")
+    func testHelloWorld() async {
         let io = TestIO()
         let state = State(io: io, code: "64+\"!dlroW ,olleH\">:#,_@")
-        state.runUntilTerminated {
-            expectation.fulfill()
-            XCTAssertEqual(io.outputBuffer, "Hello, World!\n")
-            XCTAssertFalse(io.hasError)
-        }
-        wait(for: [expectation], timeout: 1)
+        await state.runUntilTerminated()
+        XCTAssertEqual(io.outputBuffer, "Hello, World!\n")
+        XCTAssertFalse(io.hasError)
     }
 
-    func testDNA() throws {
-        let expectation = XCTestExpectation(description: "program terminates")
+    func testDNA() async {
         let io = TestIO()
         let state = State(io: io, code: "7^DN>vA\nv_#v? v\n7^<\"\"\"\"\n3  ACGT\n90!\"\"\"\"\n4*:>>>v\n+8^-1,<\n> ,+,@)")
-        state.runUntilTerminated {
-            expectation.fulfill()
-            XCTAssertEqual(io.outputBuffer.filter("ACGT".contains).count, 56)
-            XCTAssertFalse(io.hasError)
-            print(io.outputBuffer)
-        }
-        wait(for: [expectation], timeout: 1)
+        await state.runUntilTerminated()
+        XCTAssertEqual(io.outputBuffer.filter("ACGT".contains).count, 56)
+        XCTAssertFalse(io.hasError)
+        print(io.outputBuffer)
     }
 
-    func testQuine() throws {
-        let expectation = XCTestExpectation(description: "program terminates")
+    func testQuine() async {
         let io = TestIO()
         let state = State(io: io, code: "01->1# +# :# 0# g# ,# :# 5# 8# *# 4# +# -# _@")
-        state.runUntilTerminated {
-            expectation.fulfill()
-            XCTAssertEqual(io.outputBuffer, "01->1# +# :# 0# g# ,# :# 5# 8# *# 4# +# -# _@")
-            XCTAssertFalse(io.hasError)
-            print(io.outputBuffer)
-        }
-        wait(for: [expectation], timeout: 1)
+        await state.runUntilTerminated()
+        XCTAssertEqual(io.outputBuffer, "01->1# +# :# 0# g# ,# :# 5# 8# *# 4# +# -# _@")
+        XCTAssertFalse(io.hasError)
+        print(io.outputBuffer)
     }
 
-    func testSieveOfEratosthenes() throws {
-        let expectation = XCTestExpectation(description: "program terminates")
+    func testSieveOfEratosthenes() async {
         let io = TestIO()
         let state = State(io: io, code: "2>:3g\" \"-!v\\  g30          <\n |!`\"O\":+1_:.:03p>03g+:\"O\"`|\n @               ^  p3\\\" \":<\n2 234567890123456789012345678901234567890123456789012345678901234567890123456789")
-        state.runUntilTerminated {
-            expectation.fulfill()
-            XCTAssertFalse(io.hasError)
-            print(io.outputBuffer)
-        }
-        wait(for: [expectation], timeout: 1)
+        await state.runUntilTerminated()
+        XCTAssertFalse(io.hasError)
+        print(io.outputBuffer)
     }
 
-    func testMycology() throws {
-        let expectation = XCTestExpectation(description: "program terminates")
+    func testMycology() async {
         let io = TestIO()
         let code = try! String(contentsOf: Bundle(identifier: "io.github.sweeper777.Befunge")!.url(forResource: "mycology", withExtension: "b98")!);
         let state = State(io: io, code: code)
-        state.runUntilTerminated {
-            expectation.fulfill()
-            XCTAssertFalse(io.hasError)
-            XCTAssertFalse(io.outputBuffer.contains("BAD:"))
-            print(io.outputBuffer)
-        }
-        wait(for: [expectation], timeout: 1)
+        await state.runUntilTerminated()
+        XCTAssertFalse(io.hasError)
+        XCTAssertFalse(io.outputBuffer.contains("BAD:"))
+        print(io.outputBuffer)
     }
 
-    func testMycorand() throws {
-        let expectation = XCTestExpectation(description: "program terminates")
+    func testMycorand() async {
         let io = TestIO()
         let code = try! String(contentsOf: Bundle(identifier: "io.github.sweeper777.Befunge")!.url(forResource: "mycorand", withExtension: "b98")!);
         let state = State(io: io, code: code)
-        state.runUntilTerminated {
-            expectation.fulfill()
-            XCTAssertFalse(io.hasError)
-            XCTAssertFalse(io.outputBuffer.contains("BAD:"))
-            print(io.outputBuffer)
-        }
-        wait(for: [expectation], timeout: 1)
+        await state.runUntilTerminated()
+        XCTAssertFalse(io.hasError)
+        XCTAssertFalse(io.outputBuffer.contains("BAD:"))
+        print(io.outputBuffer)
     }
 
-    func testMycouser() throws {
-        let expectation = XCTestExpectation(description: "program terminates")
+    func testMycouser() async {
         let io = TestIO(numberSupplier: { Int.random(in: 1..<100) },
                 charSupplier: { "abcdefghijklmnopqrstuvwxyz".randomElement()!.unicodeScalars.first! })
         let code = try! String(contentsOf: Bundle(identifier: "io.github.sweeper777.Befunge")!.url(forResource: "mycouser", withExtension: "b98")!);
         let state = State(io: io, code: code)
-        state.runUntilTerminated {
-            expectation.fulfill()
-            XCTAssertFalse(io.outputBuffer.contains("BAD:"))
-            print(io.outputBuffer)
-        }
-        wait(for: [expectation], timeout: 1)
+        await state.runUntilTerminated()
+        XCTAssertFalse(io.outputBuffer.contains("BAD:"))
+        print(io.outputBuffer)
     }
 }
