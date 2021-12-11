@@ -85,11 +85,11 @@ class FungeWorldScene : SCNScene, IOProtocol {
 
     }
 
-    func readNumber(completion: @escaping (Int) -> Void) {
-
+    func readNumber() async -> Int {
+        return 0
     }
-
-    func readChar(completion: @escaping (UnicodeScalar) -> Void) {
-
+    
+    func readChar() async -> UnicodeScalar {
+        return UnicodeScalar(0)
     }
 }
