@@ -6,6 +6,7 @@ class ViewController: UIViewController {
     @IBOutlet var sceneView: SCNView!
     @IBOutlet var cameraOrientationToggleButton: UIButton!
     lazy var state = State(io: scene, code: "64+\"!dlroW ,olleH\">:#,_@")
+    var hudShown = false
 
     var zoomGR: UIPinchGestureRecognizer!
 
@@ -40,6 +41,12 @@ class ViewController: UIViewController {
     }
 
     @IBAction func cameraOrientationToggleButtonDidTap() {
+        hudShown.toggle()
+        if hudShown {
+            sceneView.overlaySKScene = scene.hudScene
+        } else {
+            sceneView.overlaySKScene = nil
+        }
         updateCameraOrientationToggleButtonTitle()
     }
 
@@ -55,6 +62,10 @@ class ViewController: UIViewController {
     }
 
     func updateCameraOrientationToggleButtonTitle() {
+        if hudShown {
+            cameraOrientationToggleButton.configuration?.title = "Hide HUD"
+        } else {
+            cameraOrientationToggleButton.configuration?.title = "Show HUD"
         }
     }
 }
