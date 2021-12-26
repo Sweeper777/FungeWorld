@@ -10,7 +10,6 @@ class FungeWorldCamera {
     private let yRange: ClosedRange<Float>
     private let zRange: ClosedRange<Float>
     private let zoomRange: ClosedRange<CGFloat> = 30...90
-    private (set)var orientation = Orientation.vertical
 
     var zoom: CGFloat {
         get {
@@ -32,30 +31,8 @@ class FungeWorldCamera {
     func move(dx: Float, dy: Float) {
         cameraNode.position.x += dx
         cameraNode.position.x = xRange.clamp(cameraNode.position.x)
-        switch orientation {
-        case .vertical:
-            cameraNode.position.z += dy
-            cameraNode.position.z = zRange.clamp(cameraNode.position.z)
-        case .horizontal:
-            cameraNode.position.y -= dy
-            cameraNode.position.y = yRange.clamp(cameraNode.position.y)
-        }
-    }
-
-    func toggleOrientation() {
-        let block: (SCNNode) -> Void
-        switch orientation {
-        case .vertical:
-            orientation = .horizontal
-            block = { $0.eulerAngles.x = 0 }
-        case .horizontal:
-            orientation = .vertical
-            block = { $0.eulerAngles.x = -1 }
-        }
-        SCNTransaction.begin()
-        SCNTransaction.animationDuration = 0.5
-        cameraNode.eulerAngles.x = 0
-        SCNTransaction.commit()
+        cameraNode.position.z += dy
+        cameraNode.position.z = zRange.clamp(cameraNode.position.z)
     }
 }
 
