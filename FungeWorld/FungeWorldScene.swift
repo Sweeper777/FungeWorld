@@ -7,8 +7,6 @@ class FungeWorldScene : SCNScene, IOProtocol {
     weak var state: State!
 
     var camera: FungeWorldCamera!
-    
-    var hudScene: HUDScene!
 
     func setup() {
         setupCamera()
@@ -18,9 +16,6 @@ class FungeWorldScene : SCNScene, IOProtocol {
         addLight(position: SCNVector3(State.columns, 10, 0))
         addLight(position: SCNVector3(State.columns, 10, State.rows))
         addLight(position: SCNVector3(0, 10, 0))
-        
-        hudScene = HUDScene(fileNamed: "HUDScene")
-        hudScene.setup()
     }
 
     private func setupCamera() {
