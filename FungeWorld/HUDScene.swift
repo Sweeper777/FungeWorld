@@ -12,4 +12,12 @@ class HUDScene: SKScene {
         let stackString = state.stack.reversed().map(String.init).joined(separator: "\n")
         textNode.text = "Stack:\n\(stackString)"
     }
+    
+    override var canBecomeFirstResponder: Bool {
+        false
+    }
+    
+    override var canBecomeFocused: Bool {
+        false
+    }
 }
