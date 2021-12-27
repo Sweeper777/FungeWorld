@@ -19,7 +19,7 @@ class FungeWorldScene : SCNScene, IOProtocol {
         addLight(position: SCNVector3(State.columns, 10, State.rows))
         addLight(position: SCNVector3(0, 10, 0))
         
-        hudScene = HUDScene(size: UIScreen.size)
+        hudScene = HUDScene(fileNamed: "HUDScene")
         hudScene.setup()
     }
 
