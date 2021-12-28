@@ -38,4 +38,19 @@ class BefungeStackViewController: UIViewController {
         return layout
     }
     
+    private func makeDataSource() -> DataSource {
+        let dataSource = DataSource(
+            collectionView: collectionView,
+            cellProvider: { (collectionView, indexPath, model) ->
+                UICollectionViewCell? in
+                let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: "cell",
+                    for: indexPath) as? BefungeStackCell
+                cell?.valueLabel.text = "\(model.value)"
+                cell?.backgroundColor = model.color
+                return cell
+            })
+        return dataSource
+    }
+    
 }
