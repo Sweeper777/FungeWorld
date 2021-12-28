@@ -32,7 +32,7 @@
                                     <color key="baseBackgroundColor" systemColor="systemBackgroundColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="cameraOrientationToggleButtonDidTap" destination="BYZ-38-t0r" eventType="touchUpInside" id="HN3-Gd-taX"/>
+                                    <action selector="hudToggleButtonDidTap" destination="BYZ-38-t0r" eventType="touchUpInside" id="HN3-Gd-taX"/>
                                 </connections>
                             </button>
                             <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y6H-ol-dOh">

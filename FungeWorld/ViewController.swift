@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         zoomGR = UIPinchGestureRecognizer(target: self, action: #selector(didZoom))
         sceneView.addGestureRecognizer(zoomGR)
 
-        updateCameraOrientationToggleButtonTitle()
+        updateHudToggleButtonTitle()
     }
 
     var prevZoom: CGFloat = 0
@@ -41,10 +41,10 @@ class ViewController: UIViewController {
         }
     }
 
-    @IBAction func cameraOrientationToggleButtonDidTap() {
+    @IBAction func hudToggleButtonDidTap() {
         hudShown.toggle()
         hudView.isHidden = !hudShown
-        updateCameraOrientationToggleButtonTitle()
+        updateHudToggleButtonTitle()
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -58,7 +58,7 @@ class ViewController: UIViewController {
         super.touchesMoved(touches, with: event)
     }
 
-    func updateCameraOrientationToggleButtonTitle() {
+    func updateHudToggleButtonTitle() {
         if hudShown {
             cameraOrientationToggleButton.configuration?.title = "Hide HUD"
         } else {
