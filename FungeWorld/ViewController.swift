@@ -7,6 +7,7 @@ class ViewController: UIViewController {
     @IBOutlet var cameraOrientationToggleButton: UIButton!
     lazy var state = State(io: scene, code: "64+\"!dlroW ,olleH\">:#,_@")
     var hudShown = false
+    @IBOutlet var hudView: UIView!
 
     var zoomGR: UIPinchGestureRecognizer!
 
@@ -42,11 +43,7 @@ class ViewController: UIViewController {
 
     @IBAction func cameraOrientationToggleButtonDidTap() {
         hudShown.toggle()
-        if hudShown {
-            sceneView.overlaySKScene = scene.hudScene
-        } else {
-            sceneView.overlaySKScene = nil
-        }
+        hudView.isHidden = !hudShown
         updateCameraOrientationToggleButtonTitle()
     }
 
