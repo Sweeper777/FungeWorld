@@ -35,20 +35,29 @@
                                     <action selector="cameraOrientationToggleButtonDidTap" destination="BYZ-38-t0r" eventType="touchUpInside" id="HN3-Gd-taX"/>
                                 </connections>
                             </button>
+                            <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y6H-ol-dOh">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="oHM-Cp-Mzp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Bq8-bb-4FS"/>
+                            <constraint firstItem="Y6H-ol-dOh" firstAttribute="leading" secondItem="oHM-Cp-Mzp" secondAttribute="leading" id="91q-d5-yX7"/>
+                            <constraint firstItem="oHM-Cp-Mzp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Bq8-bb-4FS"/>
                             <constraint firstAttribute="bottom" secondItem="oHM-Cp-Mzp" secondAttribute="bottom" id="JKQ-jt-GRD"/>
-                            <constraint firstItem="oHM-Cp-Mzp" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="L7R-pc-Hse"/>
+                            <constraint firstItem="oHM-Cp-Mzp" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="L7R-pc-Hse"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="g0G-Hv-jGL" secondAttribute="bottom" constant="20" id="N8R-OS-OF3"/>
+                            <constraint firstItem="Y6H-ol-dOh" firstAttribute="top" secondItem="oHM-Cp-Mzp" secondAttribute="top" id="SlO-EN-ojZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="g0G-Hv-jGL" secondAttribute="trailing" constant="20" id="Umq-vP-vQe"/>
                             <constraint firstItem="oHM-Cp-Mzp" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="hUr-l7-6Sd"/>
+                            <constraint firstItem="Y6H-ol-dOh" firstAttribute="bottom" secondItem="oHM-Cp-Mzp" secondAttribute="bottom" id="rba-TD-ymZ"/>
+                            <constraint firstItem="Y6H-ol-dOh" firstAttribute="trailing" secondItem="oHM-Cp-Mzp" secondAttribute="trailing" id="yIV-Te-DdZ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cameraOrientationToggleButton" destination="g0G-Hv-jGL" id="NmF-Si-C7m"/>
+                        <outlet property="hudView" destination="Y6H-ol-dOh" id="f0r-dr-H02"/>
                         <outlet property="sceneView" destination="oHM-Cp-Mzp" id="C8q-kW-zlt"/>
                     </connections>
                 </viewController>
