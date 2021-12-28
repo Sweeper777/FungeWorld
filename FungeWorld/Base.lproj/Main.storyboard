@@ -37,7 +37,24 @@
                             </button>
                             <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y6H-ol-dOh">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="utn-gB-fUI">
+                                        <rect key="frame" x="8" y="445" width="139" height="409"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="409" id="1mc-6D-9gG"/>
+                                            <constraint firstAttribute="width" constant="139" id="s8s-Jh-h35"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="2OL-v2-PCi" kind="embed" id="c4X-4P-5DC"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="utn-gB-fUI" firstAttribute="leading" secondItem="Y6H-ol-dOh" secondAttribute="leading" constant="8" id="eIa-b2-H0V"/>
+                                    <constraint firstAttribute="bottom" secondItem="utn-gB-fUI" secondAttribute="bottom" constant="42" id="poO-mU-MFf"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -64,6 +81,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="13.043478260869566" y="67.633928571428569"/>
+        </scene>
+        <!--Befunge Stack View Controller-->
+        <scene sceneID="jr8-sF-1SN">
+            <objects>
+                <viewController id="2OL-v2-PCi" customClass="BefungeStackViewController" customModule="FungeWorld" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="32l-gt-fby">
+                        <rect key="frame" x="0.0" y="0.0" width="139" height="409"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="J1N-2t-4Fi">
+                                <rect key="frame" x="0.0" y="0.0" width="139" height="409"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stack" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTB-Z9-0zl">
+                                        <rect key="frame" x="0.0" y="0.0" width="139" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Cnq-PC-vzB">
+                                        <rect key="frame" x="0.0" y="40" width="139" height="369"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" priority="750" id="tuw-oI-eZU"/>
+                                        </constraints>
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CI0-DW-2AF">
+                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                    </collectionView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="J1N-2t-4Fi" secondAttribute="trailing" id="LN4-EM-kbu"/>
+                            <constraint firstItem="J1N-2t-4Fi" firstAttribute="leading" secondItem="32l-gt-fby" secondAttribute="leading" id="SZD-PS-FAc"/>
+                            <constraint firstAttribute="bottom" secondItem="J1N-2t-4Fi" secondAttribute="bottom" id="T1d-dg-IkZ"/>
+                            <constraint firstItem="J1N-2t-4Fi" firstAttribute="top" secondItem="32l-gt-fby" secondAttribute="top" id="vcL-nf-tMN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="Cnq-PC-vzB" id="qvP-sC-jbV"/>
+                        <outlet property="collectionViewHeightConstraint" destination="tuw-oI-eZU" id="HFW-rv-Nkg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7EJ-eP-sz7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="590.57971014492762" y="67.96875"/>
         </scene>
     </scenes>
     <resources>
