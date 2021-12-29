@@ -75,6 +75,6 @@ class ViewController: UIViewController {
     }
     
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        stackController.displayStack([1,2,3], animated: true)
+        stackController.displayStack([1, 2], animated: true)
     }
 }

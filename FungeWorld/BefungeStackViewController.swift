@@ -26,7 +26,7 @@ class BefungeStackViewController: UIViewController {
         
         collectionView.collectionViewLayout = makeLayout()
         collectionView.dataSource = dataSource
-        displayStack([], animated: false)
+        displayStack([1, 2, 3], animated: false)
     }
     
     private func makeLayout() -> UICollectionViewLayout {
