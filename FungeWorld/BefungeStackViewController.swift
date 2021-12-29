@@ -20,6 +20,15 @@ class BefungeStackViewController: UIViewController {
     
     let stackItemHeight = CGFloat(44)
     
+    override func viewDidLoad() {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.register(UINib(nibName: "BefungeStackCell", bundle: nil), forCellWithReuseIdentifier: "cell")
+        
+        collectionView.collectionViewLayout = makeLayout()
+        collectionView.dataSource = dataSource
+        displayStack([], animated: false)
+    }
+    
     private func makeLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                              heightDimension: .fractionalHeight(1.0))
