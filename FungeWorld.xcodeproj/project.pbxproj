@@ -32,6 +32,9 @@
 		5A5DAA28266B80BB00F5001C /* Befunge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5A5DAA12266B80BB00F5001C /* Befunge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5A8EDF292676F8C400645353 /* mycology.b98 in Resources */ = {isa = PBXBuildFile; fileRef = 25EF024BC90C0A67A662C461 /* mycology.b98 */; };
 		5A8EDF302676FCFD00645353 /* mycorand.b98 in Resources */ = {isa = PBXBuildFile; fileRef = 25EF0F8BFB750A3BABA4757B /* mycorand.b98 */; };
+		5A910BCC277B0FEC00D268B2 /* BefungeStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A910BCB277B0FEC00D268B2 /* BefungeStackViewController.swift */; };
+		5A910BCE277B134700D268B2 /* BefungeStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A910BCD277B134700D268B2 /* BefungeStackCell.swift */; };
+		5A910BD0277B138A00D268B2 /* BefungeStackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A910BCF277B138A00D268B2 /* BefungeStackCell.xib */; };
 		69C35B0FE24E65AED8C763D0 /* Pods_FungeWorld.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E4536BAD62C8561486ABFE /* Pods_FungeWorld.framework */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +105,9 @@
 		5A5DAA1A266B80BB00F5001C /* BefungeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BefungeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A5DAA21266B80BB00F5001C /* BefungeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BefungeTests.swift; sourceTree = "<group>"; };
 		5A5DAA23266B80BB00F5001C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A910BCB277B0FEC00D268B2 /* BefungeStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BefungeStackViewController.swift; sourceTree = "<group>"; };
+		5A910BCD277B134700D268B2 /* BefungeStackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BefungeStackCell.swift; sourceTree = "<group>"; };
+		5A910BCF277B138A00D268B2 /* BefungeStackCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BefungeStackCell.xib; sourceTree = "<group>"; };
 		5A92D3CB267AEB6D005CDFD6 /* FungeWorld.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FungeWorld.entitlements; sourceTree = "<group>"; };
 		91E61D4B626293C71E57C28E /* Pods-Befunge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Befunge.debug.xcconfig"; path = "Target Support Files/Pods-Befunge/Pods-Befunge.debug.xcconfig"; sourceTree = "<group>"; };
 		96A8B96CEFC9449AC1AD6AC8 /* Pods_Befunge_BefungeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Befunge_BefungeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,6 +176,9 @@
 				5A5DA9DF266B0CDC00F5001C /* AppDelegate.swift */,
 				5A5DA9E1266B0CDC00F5001C /* SceneDelegate.swift */,
 				5A5DA9E3266B0CDC00F5001C /* ViewController.swift */,
+				5A910BCB277B0FEC00D268B2 /* BefungeStackViewController.swift */,
+				5A910BCD277B134700D268B2 /* BefungeStackCell.swift */,
+				5A910BCF277B138A00D268B2 /* BefungeStackCell.xib */,
 				5A5DA9E5266B0CDC00F5001C /* Main.storyboard */,
 				5A5DA9E8266B0CDF00F5001C /* Assets.xcassets */,
 				5A5DA9EA266B0CDF00F5001C /* LaunchScreen.storyboard */,
@@ -352,6 +361,7 @@
 				5A5DA9EC266B0CDF00F5001C /* LaunchScreen.storyboard in Resources */,
 				5A5DA9E9266B0CDF00F5001C /* Assets.xcassets in Resources */,
 				5A5DA9E7266B0CDC00F5001C /* Main.storyboard in Resources */,
+				5A910BD0277B138A00D268B2 /* BefungeStackCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,11 +475,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A910BCC277B0FEC00D268B2 /* BefungeStackViewController.swift in Sources */,
 				5A5DA9E4266B0CDC00F5001C /* ViewController.swift in Sources */,
 				5A5DA9E0266B0CDC00F5001C /* AppDelegate.swift in Sources */,
 				5A5DA9E2266B0CDC00F5001C /* SceneDelegate.swift in Sources */,
 				25EF0603CF61906D69DE37C1 /* FungeWorldScene.swift in Sources */,
 				25EF0CD82AF707B2EA9CEA8D /* BefungeNodeGenerator.swift in Sources */,
+				5A910BCE277B134700D268B2 /* BefungeStackCell.swift in Sources */,
 				25EF07573899263DE380A088 /* FontSizeHelper.swift in Sources */,
 				25EF05E2561F5C1C2E5CF280 /* Camera.swift in Sources */,
 			);
