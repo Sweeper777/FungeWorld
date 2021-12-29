@@ -66,17 +66,21 @@ class BefungeStackViewController: UIViewController {
         var snapshot = Snapshot()
         snapshot.appendSections([.main])
         snapshot.appendItems(stack.map { .init(value: $0, color: .yellow) })
-        dataSource.apply(snapshot, animatingDifferences: animated)
         if animated {
-            UIView.animate(withDuration: 0.2) {
+            UIView.animate(withDuration: 0.2) { [weak self] in
+                guard let `self` = self else { return }
                 self.collectionViewHeightConstraint.constant =
                     snapshot.numberOfItems.f * (self.stackItemHeight + 8) - 8
                 if snapshot.numberOfItems == 0 {
                     self.collectionViewHeightConstraint.constant = 0
                 }
+            } completion: { [weak self] _ in
+                guard let `self` = self else { return }
+                self.dataSource.apply(snapshot, animatingDifferences: true)
             }
         } else {
             collectionViewHeightConstraint.constant = snapshot.numberOfItems.f * stackItemHeight
+            dataSource.apply(snapshot, animatingDifferences: false)
         }
     }
 }
