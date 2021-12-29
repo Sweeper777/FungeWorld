@@ -10,6 +10,8 @@ class ViewController: UIViewController {
     @IBOutlet var hudView: UIView!
 
     var zoomGR: UIPinchGestureRecognizer!
+    
+    var stackController: BefungeStackViewController!
 
     var scene: FungeWorldScene!
     override func viewDidLoad() {
@@ -64,5 +66,15 @@ class ViewController: UIViewController {
         } else {
             cameraOrientationToggleButton.configuration?.title = "Show HUD"
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? BefungeStackViewController {
+            stackController = vc
+        }
+    }
+    
+    override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        stackController.displayStack([1,2,3], animated: true)
     }
 }
