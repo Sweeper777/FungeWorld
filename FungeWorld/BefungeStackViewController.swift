@@ -28,7 +28,6 @@ class BefungeStackViewController: UIViewController {
         
         collectionView.collectionViewLayout = makeLayout()
         collectionView.dataSource = dataSource
-        displayStack([1, 2, 3], animated: false)
         collectionView.transform = .init(scaleX: 1, y: -1)
     }
     
@@ -60,7 +59,9 @@ class BefungeStackViewController: UIViewController {
                     for: indexPath) as? BefungeStackCell
                 cell?.valueLabel.text = "\(model.value)"
                 cell?.backgroundColor = model.color
-                cell?.transform = .init(scaleX: 1, y: -1)
+                DispatchQueue.main.async {
+                    cell?.transform = .init(scaleX: 1, y: -1)
+                }
                 return cell
             })
         return dataSource
