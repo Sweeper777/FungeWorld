@@ -64,23 +64,23 @@ class BefungeStackViewController: UIViewController {
         return dataSource
     }
     
-    func displayStack(_ stack: [Int], animated: Bool) {
+    func animateStack(_ stack: [Int]) async {
+        self.stack = stack
         var snapshot = Snapshot()
         snapshot.appendSections([.main])
         snapshot.appendItems(stack.map { .init(value: $0, color: .yellow) })
-        if animated {
+        self.view.layoutIfNeeded()
+        await UIView.asyncAnimate(withDuration: 0.2) { [weak self] in
+            guard let `self` = self else { return }
+            self.collectionViewHeightConstraint.constant =
+                snapshot.numberOfItems.f * self.stackItemHeight
+            if snapshot.numberOfItems == 0 {
+                self.collectionViewHeightConstraint.constant = 0
+            }
             self.view.layoutIfNeeded()
-            UIView.animate(withDuration: 0.2) { [weak self] in
-                guard let `self` = self else { return }
-                self.collectionViewHeightConstraint.constant =
-                    snapshot.numberOfItems.f * (self.stackItemHeight + 8) - 8
-                if snapshot.numberOfItems == 0 {
-                    self.collectionViewHeightConstraint.constant = 0
-                }
-                self.view.layoutIfNeeded()
-            } completion: { [weak self] _ in
-                guard let `self` = self else { return }
-                self.dataSource.apply(snapshot, animatingDifferences: true)
+        }
+        await self.dataSource.apply(snapshot, animatingDifferences: true)
+    }
 }
 
 extension UIView {
