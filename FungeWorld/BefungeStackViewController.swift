@@ -20,6 +20,8 @@ class BefungeStackViewController: UIViewController {
     
     let stackItemHeight = CGFloat(44)
     
+    private var stack: [Int] = []
+    
     override func viewDidLoad() {
         view.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(UINib(nibName: "BefungeStackCell", bundle: nil), forCellWithReuseIdentifier: "cell")
@@ -80,6 +82,17 @@ class BefungeStackViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
         await self.dataSource.apply(snapshot, animatingDifferences: true)
+    }
+    
+    func animatePush(_ item: Int) async {
+        stack.append(item)
+        await animateStack(stack)
+    }
+    func animatePop() async {
+        if stack.isNotEmpty {
+            stack.removeLast()
+            await animateStack(stack)
+        }
     }
 }
 
