@@ -69,6 +69,7 @@ class BefungeStackViewController: UIViewController {
         snapshot.appendSections([.main])
         snapshot.appendItems(stack.map { .init(value: $0, color: .yellow) })
         if animated {
+            self.view.layoutIfNeeded()
             UIView.animate(withDuration: 0.2) { [weak self] in
                 guard let `self` = self else { return }
                 self.collectionViewHeightConstraint.constant =
@@ -76,6 +77,7 @@ class BefungeStackViewController: UIViewController {
                 if snapshot.numberOfItems == 0 {
                     self.collectionViewHeightConstraint.constant = 0
                 }
+                self.view.layoutIfNeeded()
             } completion: { [weak self] _ in
                 guard let `self` = self else { return }
                 self.dataSource.apply(snapshot, animatingDifferences: true)
