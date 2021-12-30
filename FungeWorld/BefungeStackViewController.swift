@@ -81,10 +81,17 @@ class BefungeStackViewController: UIViewController {
             } completion: { [weak self] _ in
                 guard let `self` = self else { return }
                 self.dataSource.apply(snapshot, animatingDifferences: true)
+}
+
+extension UIView {
+    @discardableResult
+    static func asyncAnimate(withDuration duration: TimeInterval, animations: @escaping () -> Void)
+        async -> Bool
+    {
+        await withCheckedContinuation { continuation in
+            UIView.animate(withDuration: duration, animations: animations) { completed in
+                continuation.resume(returning: completed)
             }
-        } else {
-            collectionViewHeightConstraint.constant = snapshot.numberOfItems.f * stackItemHeight
-            dataSource.apply(snapshot, animatingDifferences: false)
         }
     }
 }
