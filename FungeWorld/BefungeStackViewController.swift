@@ -76,7 +76,7 @@ class BefungeStackViewController: UIViewController {
         var snapshot = Snapshot()
         snapshot.appendSections([.main])
         snapshot.appendItems(stack.map { .init(value: $0, color: .yellow) })
-        self.view.layoutIfNeeded()
+        view.layoutIfNeeded()
         await UIView.asyncAnimate(withDuration: 0.2) { [weak self] in
             guard let `self` = self else { return }
             self.collectionViewHeightConstraint.constant =
@@ -86,7 +86,10 @@ class BefungeStackViewController: UIViewController {
             }
             self.view.layoutIfNeeded()
         }
-        await self.dataSource.apply(snapshot, animatingDifferences: true)
+        await dataSource.apply(snapshot, animatingDifferences: true)
+        DispatchQueue.main.async {
+            self.collectionView.scrollToItem(at: IndexPath(item: stack.count - 1, section: 0), at: .bottom, animated: true)
+        }
     }
     
     func animatePush(_ item: Int) async {
