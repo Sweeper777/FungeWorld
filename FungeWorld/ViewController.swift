@@ -75,6 +75,8 @@ class ViewController: UIViewController {
     }
     
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        stackController.displayStack([1, 2], animated: true)
+        _ = Task { [weak self] in
+            await self?.stackController.animatePush(Int.random(in: 0..<100))
+        }
     }
 }
