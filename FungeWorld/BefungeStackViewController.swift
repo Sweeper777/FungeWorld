@@ -7,6 +7,7 @@ private enum Section: CaseIterable {
 private struct StackItem: Hashable {
     let value: Int
     let color: UIColor
+    let id = UUID()
 }
 
 private typealias DataSource = UICollectionViewDiffableDataSource<Section, StackItem>
