@@ -8,6 +8,7 @@ class ViewController: UIViewController {
     lazy var state = State(io: scene, code: "64+\"!dlroW ,olleH\">:#,_@")
     var hudShown = false
     @IBOutlet var hudView: UIView!
+    @IBOutlet var stringModeLabel: UILabel!
 
     var zoomGR: UIPinchGestureRecognizer!
     
