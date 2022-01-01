@@ -68,6 +68,35 @@ enum BefungeNodeGenerator {
         node.eulerAngles.y = .pi / 2
         return node
     }
+    
+    
+    
+    static func instructionPointerNode() -> SCNNode {
+        let path = UIBezierPath()
+        let halfNodeSize = befungeNodeSize / 2
+        let thirdNodeSize = befungeNodeSize / 3
+        path.move(to: CGPoint(x: 0, y: halfNodeSize))
+        path.addLine(to: CGPoint(x: -halfNodeSize, y: 0))
+        path.addLine(to: CGPoint(x: -halfNodeSize + thirdNodeSize, y: 0))
+        path.addLine(to: CGPoint(x: -halfNodeSize + thirdNodeSize, y: -halfNodeSize))
+        path.addLine(to: CGPoint(x: -halfNodeSize + 2 * thirdNodeSize, y: -halfNodeSize))
+        path.addLine(to: CGPoint(x: -halfNodeSize + 2 * thirdNodeSize, y: 0))
+        path.addLine(to: CGPoint(x: halfNodeSize, y: 0))
+        path.addLine(to: CGPoint(x: 0, y: halfNodeSize))
+        path.close()
+        let geometry = SCNShape(path: path, extrusionDepth: befungeNodeHeight)
+        geometry.chamferRadius = befungeNodeSize / 5
+        let node = SCNNode(geometry: geometry)
+        
+        let material = SCNMaterial()
+        material.diffuse.contents = UIColor.green
+        material.specular.contents = UIColor.white
+        material.shininess = 1
+        node.geometry?.firstMaterial = material
+        node.eulerAngles.x = .pi / 2
+        
+        return node
+    }
 }
 
 extension UIImage {
