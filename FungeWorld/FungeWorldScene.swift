@@ -4,6 +4,7 @@ import Befunge
 class FungeWorldScene : SCNScene, IOProtocol {
 
     var cameraNode: SCNNode!
+    var instructionPointer: SCNNode!
     weak var state: State!
 
     var camera: FungeWorldCamera!
@@ -12,6 +13,7 @@ class FungeWorldScene : SCNScene, IOProtocol {
         setupCamera()
         setupFloor()
         setupInstructions()
+        setupInstructionPointer()
         addLight(position: SCNVector3(0, 10, State.rows))
         addLight(position: SCNVector3(State.columns, 10, 0))
         addLight(position: SCNVector3(State.columns, 10, State.rows))
@@ -69,6 +71,14 @@ class FungeWorldScene : SCNScene, IOProtocol {
             }
         }
     }
+    
+    let instructionPointerNormalHeight = 1.f
+    
+    private func setupInstructionPointer() {
+        instructionPointer = BefungeNodeGenerator.instructionPointerNode()
+        rootNode.addChildNode(instructionPointer)
+    }
+    
 
     func writeChar(_ char: UnicodeScalar) {
 
