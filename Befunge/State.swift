@@ -46,7 +46,7 @@ public final class State {
     public var stringMode = false
     public var terminated = false
 
-    var currentStateChanges: [StateChange] = []
+    public var currentStateChanges: [StateChange] = []
 
     public init(io: IOProtocol, code: String) {
         self.io = io
