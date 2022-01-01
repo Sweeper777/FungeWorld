@@ -77,8 +77,24 @@ class FungeWorldScene : SCNScene, IOProtocol {
     private func setupInstructionPointer() {
         instructionPointer = BefungeNodeGenerator.instructionPointerNode()
         rootNode.addChildNode(instructionPointer)
+        synchroniseInstructionPointerWithState()
     }
     
+    func synchroniseInstructionPointerWithState() {
+        instructionPointer.position = SCNVector3(state.instructionPointer.x.f,
+                                                 instructionPointerNormalHeight,
+                                                 state.instructionPointer.y.f)
+        switch state.direction {
+        case .up:
+            instructionPointer.eulerAngles.y = 0
+        case .down:
+            instructionPointer.eulerAngles.y = .pi
+        case .left:
+            instructionPointer.eulerAngles.y = 3 * .pi / 2
+        case .right:
+            instructionPointer.eulerAngles.y = .pi / 2
+        }
+    }
 
     func writeChar(_ char: UnicodeScalar) {
 
