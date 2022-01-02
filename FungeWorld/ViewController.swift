@@ -9,6 +9,7 @@ class ViewController: UIViewController {
     var hudShown = false
     @IBOutlet var hudView: UIView!
     @IBOutlet var stringModeLabel: UILabel!
+    @IBOutlet var outputLabel: UITextView!
 
     var zoomGR: UIPinchGestureRecognizer!
     

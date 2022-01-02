@@ -57,11 +57,20 @@
                                         <color key="textColor" systemColor="systemRedColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mK0-Ri-veX">
+                                        <rect key="frame" x="16" y="81" width="382" height="356"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="Ocp-ac-Mgq" firstAttribute="leading" secondItem="Y6H-ol-dOh" secondAttribute="leading" constant="8" id="1n5-28-pIj"/>
                                     <constraint firstAttribute="trailing" secondItem="Ocp-ac-Mgq" secondAttribute="trailing" constant="8" id="k2t-DF-eGZ"/>
+                                    <constraint firstItem="utn-gB-fUI" firstAttribute="top" secondItem="mK0-Ri-veX" secondAttribute="bottom" constant="8" symbolic="YES" id="nE1-xK-tO4"/>
+                                    <constraint firstItem="mK0-Ri-veX" firstAttribute="top" secondItem="Ocp-ac-Mgq" secondAttribute="bottom" constant="8" symbolic="YES" id="nO2-Pc-Fe2"/>
                                     <constraint firstItem="Ocp-ac-Mgq" firstAttribute="top" secondItem="Y6H-ol-dOh" secondAttribute="topMargin" id="njk-5e-Ms4"/>
                                 </constraints>
                             </view>
@@ -77,6 +86,8 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="g0G-Hv-jGL" secondAttribute="bottom" constant="20" id="N8R-OS-OF3"/>
                             <constraint firstItem="Y6H-ol-dOh" firstAttribute="top" secondItem="oHM-Cp-Mzp" secondAttribute="top" id="SlO-EN-ojZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="g0G-Hv-jGL" secondAttribute="trailing" constant="20" id="Umq-vP-vQe"/>
+                            <constraint firstItem="mK0-Ri-veX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Y4z-PP-JS0"/>
+                            <constraint firstItem="mK0-Ri-veX" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-16" id="c94-pm-0RI"/>
                             <constraint firstItem="oHM-Cp-Mzp" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="hUr-l7-6Sd"/>
                             <constraint firstItem="utn-gB-fUI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="oLN-2Y-uGF"/>
                             <constraint firstItem="Y6H-ol-dOh" firstAttribute="bottom" secondItem="oHM-Cp-Mzp" secondAttribute="bottom" id="rba-TD-ymZ"/>
@@ -86,6 +97,7 @@
                     <connections>
                         <outlet property="cameraOrientationToggleButton" destination="g0G-Hv-jGL" id="NmF-Si-C7m"/>
                         <outlet property="hudView" destination="Y6H-ol-dOh" id="f0r-dr-H02"/>
+                        <outlet property="outputLabel" destination="mK0-Ri-veX" id="C0d-ED-dAt"/>
                         <outlet property="sceneView" destination="oHM-Cp-Mzp" id="C8q-kW-zlt"/>
                         <outlet property="stringModeLabel" destination="Ocp-ac-Mgq" id="kkl-yq-Ybm"/>
                     </connections>
@@ -147,6 +159,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
