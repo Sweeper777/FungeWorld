@@ -98,14 +98,18 @@ class FungeWorldScene : SCNScene, IOProtocol {
         case .right:
             return .pi / 2
         }
+    }
+    
+    func unitVector(forDirection direction: Direction) -> SCNVector3 {
+        switch direction {
         case .up:
-            instructionPointer.eulerAngles.y = 0
+            return SCNVector3(x: 0, y: 0, z: -1)
         case .down:
-            instructionPointer.eulerAngles.y = .pi
+            return SCNVector3(x: 0, y: 0, z: 1)
         case .left:
-            instructionPointer.eulerAngles.y = 3 * .pi / 2
+            return SCNVector3(x: -1, y: 0, z: 0)
         case .right:
-            instructionPointer.eulerAngles.y = .pi / 2
+            return SCNVector3(x: 1, y: 0, z: 0)
         }
     }
 
