@@ -77,21 +77,35 @@ class ViewController: UIViewController {
     
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         _ = Task { [weak self] in
-            await self?.stackController.animatePop()
-            await Task.sleep(200_000_000)
-            await self?.stackController.animatePop()
-            await Task.sleep(200_000_000)
-            await self?.stackController.animatePop()
-            await Task.sleep(200_000_000)
-            await self?.stackController.animatePop()
-            await Task.sleep(200_000_000)
-            await self?.stackController.animatePush(4)
-            await Task.sleep(200_000_000)
-            await self?.stackController.animatePush(5)
-            await Task.sleep(200_000_000)
-            await self?.stackController.animatePush(6)
-            await Task.sleep(200_000_000)
-            await self?.stackController.animatePush(7)
+            guard let `self` = self else { return }
+            var currentDirection = self.state.direction
+            await self.state.nextStep()
+            for stateChange in self.state.currentStateChanges {
+                switch stateChange {
+                case .push(let number):
+                    await self.stackController.animatePush(number)
+                    await Task.sleep(200_000_000)
+                case .pop:
+                    await self.stackController.animatePop()
+                    await Task.sleep(200_000_000)
+                case .turn(to: let direction):
+                    await self.scene.instructionPointer.runAction(
+                        SCNAction.rotateTo(x: .pi / 2,
+                                           y: CGFloat(self.scene.eulerY(forDirection: direction)),
+                                           z: 0,
+                                           duration: 0.2)
+                    )
+                    currentDirection = direction
+                case .stringMode(let stringModeOn):
+                    self.stringModeLabel.isHidden = !stringModeOn
+                case .move:
+                    await self.scene.instructionPointer.runAction(
+                        SCNAction.move(by: self.scene.unitVector(forDirection: currentDirection), duration: 0.2)
+                    )
+                case .terminate:
+                    print("TODO: Terminate")
+                }
+            }
         }
     }
 }
