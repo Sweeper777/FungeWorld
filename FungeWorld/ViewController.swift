@@ -2,10 +2,10 @@ import UIKit
 import Befunge
 import SceneKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, IOProtocol {
     @IBOutlet var sceneView: SCNView!
     @IBOutlet var cameraOrientationToggleButton: UIButton!
-    lazy var state = State(io: scene, code: "64+\"!dlroW ,olleH\">:#,_@")
+    lazy var state = State(io: self, code: "64+\"!dlroW ,olleH\">:#,_@")
     var hudShown = false
     @IBOutlet var hudView: UIView!
     @IBOutlet var stringModeLabel: UILabel!
@@ -108,5 +108,25 @@ class ViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    func writeChar(_ char: UnicodeScalar) {
+
+    }
+
+    func writeInt(_ int: Int) {
+
+    }
+
+    func writeError(_ message: String) {
+
+    }
+
+    func readNumber() async -> Int {
+        return 0
+    }
+    
+    func readChar() async -> UnicodeScalar {
+        return UnicodeScalar(0)
     }
 }

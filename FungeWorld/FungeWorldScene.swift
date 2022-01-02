@@ -1,7 +1,7 @@
 import SceneKit
 import Befunge
 
-class FungeWorldScene : SCNScene, IOProtocol {
+class FungeWorldScene : SCNScene {
 
     var cameraNode: SCNNode!
     var instructionPointer: SCNNode!
@@ -111,25 +111,5 @@ class FungeWorldScene : SCNScene, IOProtocol {
         case .right:
             return SCNVector3(x: 1, y: 0, z: 0)
         }
-    }
-
-    func writeChar(_ char: UnicodeScalar) {
-
-    }
-
-    func writeInt(_ int: Int) {
-
-    }
-
-    func writeError(_ message: String) {
-
-    }
-
-    func readNumber() async -> Int {
-        return 0
-    }
-    
-    func readChar() async -> UnicodeScalar {
-        return UnicodeScalar(0)
     }
 }
