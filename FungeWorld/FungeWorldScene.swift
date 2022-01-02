@@ -84,7 +84,20 @@ class FungeWorldScene : SCNScene, IOProtocol {
         instructionPointer.position = SCNVector3(state.instructionPointer.x.f,
                                                  instructionPointerNormalHeight,
                                                  state.instructionPointer.y.f)
-        switch state.direction {
+        instructionPointer.eulerAngles.y = eulerY(forDirection: state.direction)
+    }
+    
+    func eulerY(forDirection direction: Direction) -> Float {
+        switch direction {
+        case .up:
+            return 0
+        case .down:
+            return .pi
+        case .left:
+            return 3 * .pi / 2
+        case .right:
+            return .pi / 2
+        }
         case .up:
             instructionPointer.eulerAngles.y = 0
         case .down:
