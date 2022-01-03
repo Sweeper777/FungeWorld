@@ -1,8 +1,10 @@
 import Foundation
 
-public enum StateError: Error {
+public enum BefungeError: Error {
     case unknownUnicodeScalar(Int)
     case unknownOperation(UnicodeScalar)
+    case noCharInput
+    case invalidNumberInput
 }
 
 public extension State {
@@ -154,7 +156,7 @@ public extension State {
             if let char = UnicodeScalar(v) {
                 playfield[x, y] = char
             } else {
-                throw StateError.unknownUnicodeScalar(v)
+                throw BefungeError.unknownUnicodeScalar(v)
             }
         }
     }

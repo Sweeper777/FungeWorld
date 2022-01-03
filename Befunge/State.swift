@@ -132,7 +132,7 @@ public final class State {
                 case " ":
                     break
                 default:
-                    throw StateError.unknownOperation(currentInstruction)
+                    throw BefungeError.unknownOperation(currentInstruction)
                 }
             }
             try executeMove()
@@ -142,7 +142,7 @@ public final class State {
     }
 
     func handleError(error: Error) {
-        if let stateError = error as? StateError {
+        if let stateError = error as? BefungeError {
             switch stateError {
             case .unknownUnicodeScalar(let number):
                 io.writeError("\(number) is not a valid Unicode Scalar!")
