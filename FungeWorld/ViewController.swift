@@ -1,6 +1,7 @@
 import UIKit
 import Befunge
 import SceneKit
+import SCLAlertView
 
 class ViewController: UIViewController, IOProtocol {
     @IBOutlet var sceneView: SCNView!
@@ -119,14 +120,14 @@ class ViewController: UIViewController, IOProtocol {
     }
 
     func writeError(_ message: String) {
-
+        SCLAlertView().showError("Error", subTitle: message, closeButtonTitle: "OK")
     }
 
-    func readNumber() async -> Int {
+    func readNumber() async throws -> Int {
         return 0
     }
     
-    func readChar() async -> UnicodeScalar {
+    func readChar() async throws -> UnicodeScalar {
         return UnicodeScalar(0)
     }
 }
