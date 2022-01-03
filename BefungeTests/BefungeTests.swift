@@ -27,11 +27,11 @@ class TestIO: IOProtocol {
         hasError = true
     }
 
-    func readNumber() async -> Int {
+    func readNumber() async throws -> Int {
         numberSupplier()
     }
     
-    func readChar() async -> UnicodeScalar {
+    func readChar() async throws -> UnicodeScalar {
         charSupplier()
     }
 }

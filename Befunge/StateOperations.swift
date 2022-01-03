@@ -44,7 +44,7 @@ public extension State {
         let a = try executePop()
         let b = try executePop()
         if a == 0 {
-            await executeInputInt()
+            try await executeInputInt()
         } else {
             executePush(b / a)
         }
@@ -54,7 +54,7 @@ public extension State {
         let a = try executePop()
         let b = try executePop()
         if a == 0 {
-            await executeInputInt()
+            try await executeInputInt()
         } else {
             executePush(b % a)
         }
@@ -115,12 +115,12 @@ public extension State {
         io.writeInt(try executePop())
     }
 
-    func executeInputInt() async -> Void {
-        executePush(await io.readNumber())
+    func executeInputInt() async throws -> Void {
+        executePush(try await io.readNumber())
     }
 
-    func executeInputChar() async -> Void {
-        self.executePush(Int(await io.readChar().value))
+    func executeInputChar() async throws -> Void {
+        self.executePush(Int(try await io.readChar().value))
     }
 
     func executeMove() throws {

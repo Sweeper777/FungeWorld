@@ -4,8 +4,8 @@ public protocol IOProtocol {
     func writeChar(_ char: UnicodeScalar)
     func writeInt(_ int: Int)
     func writeError(_ message: String)
-    func readNumber() async -> Int
-    func readChar() async -> UnicodeScalar
+    func readNumber() async throws -> Int
+    func readChar() async throws -> UnicodeScalar
 }
 
 public enum Direction : CaseIterable {
@@ -123,9 +123,9 @@ public final class State {
                 case "g":
                     try executeGet()
                 case "&":
-                    await executeInputInt()
+                    try await executeInputInt()
                 case "~":
-                    await executeInputChar()
+                    try await executeInputChar()
                 case "@":
                     executeTerminate()
                     return
@@ -148,6 +148,10 @@ public final class State {
                 io.writeError("\(number) is not a valid Unicode Scalar!")
             case .unknownOperation(let c):
                 io.writeError("'\(c)' is an unknown operation!")
+            case .noCharInput:
+                io.writeError("Please enter a character!")
+            case .invalidNumberInput:
+                io.writeError("Please enter a valid integer!")
             }
         } else {
             io.writeError("An unknown error occurred!")
