@@ -19,4 +19,5 @@ target 'FungeWorld' do
 
   # Pods for FungeWorld
   pod 'SwiftyUtils'
+  pod 'SCLAlertView', :git => 'https://github.com/vikmeup/SCLAlertView-Swift.git'
 end
