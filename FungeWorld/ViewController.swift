@@ -129,5 +129,15 @@ class ViewController: UIViewController, IOProtocol {
     
     func readChar() async throws -> UnicodeScalar {
         return UnicodeScalar(0)
+    
+    func readInput(withPrompt prompt: String) async -> String {
+        return await withCheckedContinuation({ continuation in
+            let alert = SCLAlertView(appearance: .init(showCloseButton: false))
+            let textField = alert.addTextField("Input")
+            alert.addButton("OK") {
+                continuation.resume(returning: textField.text ?? "")
+            }
+            alert.showEdit("Input", subTitle: prompt)
+        })
     }
 }
