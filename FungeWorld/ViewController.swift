@@ -126,7 +126,12 @@ class ViewController: UIViewController, IOProtocol {
     var inputCharBuffer = [UnicodeScalar]()
     
     func readNumber() async throws -> Int {
-        return 0
+        let input = await readInput(withPrompt: "Enter a number:")
+        if let number = Int(input) {
+            return number
+        } else {
+            throw BefungeError.invalidNumberInput
+        }
     }
     
     func readChar() async throws -> UnicodeScalar {
