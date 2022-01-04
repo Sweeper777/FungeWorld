@@ -123,12 +123,21 @@ class ViewController: UIViewController, IOProtocol {
         SCLAlertView().showError("Error", subTitle: message, closeButtonTitle: "OK")
     }
 
+    var inputCharBuffer = [UnicodeScalar]()
+    
     func readNumber() async throws -> Int {
         return 0
     }
     
     func readChar() async throws -> UnicodeScalar {
-        return UnicodeScalar(0)
+        if inputCharBuffer.isEmpty {
+            inputCharBuffer = await readInput(withPrompt: "Enter a character (extra characters will be buffered):").unicodeScalars.reversed()
+        }
+        if inputCharBuffer.isEmpty {
+            throw BefungeError.noCharInput
+        }
+        return inputCharBuffer.removeLast()
+    }
     
     func readInput(withPrompt prompt: String) async -> String {
         return await withCheckedContinuation({ continuation in
