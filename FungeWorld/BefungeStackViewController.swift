@@ -74,7 +74,7 @@ class BefungeStackViewController: UIViewController {
         snapshot.appendSections([.main])
         snapshot.appendItems(stack.map { .init(value: $0, color: .yellow) })
         view.layoutIfNeeded()
-        await UIView.asyncAnimate(withDuration: 0.2) { [weak self] in
+        await UIView.asyncAnimate(withDuration: FungeWorldScene.animationDuration) { [weak self] in
             guard let `self` = self else { return }
             self.collectionViewHeightConstraint.constant =
                 snapshot.numberOfItems.f * self.stackItemHeight

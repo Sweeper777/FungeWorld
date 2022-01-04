@@ -49,6 +49,9 @@ class ViewController: UIViewController, IOProtocol {
     @IBAction func hudToggleButtonDidTap() {
         hudShown.toggle()
         hudView.isHidden = !hudShown
+        Task { [weak self] in
+            await self?.stackController.animateStack(state.stack)
+        }
         updateHudToggleButtonTitle()
     }
 
@@ -85,24 +88,28 @@ class ViewController: UIViewController, IOProtocol {
             for stateChange in self.state.currentStateChanges {
                 switch stateChange {
                 case .push(let number):
-                    await self.stackController.animatePush(number)
-                    await Task.sleep(200_000_000)
+                    if hudShown {
+                        await self.stackController.animatePush(number)
+                        await Task.sleep(UInt64(FungeWorldScene.animationDuration * 1_000_000_000))
+                    }
                 case .pop:
-                    await self.stackController.animatePop()
-                    await Task.sleep(200_000_000)
+                    if hudShown {
+                        await self.stackController.animatePop()
+                        await Task.sleep(UInt64(FungeWorldScene.animationDuration * 1_000_000_000))
+                    }
                 case .turn(to: let direction):
                     await self.scene.instructionPointer.runAction(
                         SCNAction.rotateTo(x: .pi / 2,
                                            y: CGFloat(self.scene.eulerY(forDirection: direction)),
                                            z: 0,
-                                           duration: 0.2)
+                                           duration: FungeWorldScene.animationDuration)
                     )
                     currentDirection = direction
                 case .stringMode(let stringModeOn):
                     self.stringModeLabel.isHidden = !stringModeOn
                 case .move:
                     await self.scene.instructionPointer.runAction(
-                        SCNAction.move(by: self.scene.unitVector(forDirection: currentDirection), duration: 0.2)
+                        SCNAction.move(by: self.scene.unitVector(forDirection: currentDirection), duration: FungeWorldScene.animationDuration)
                     )
                 case .terminate:
                     print("TODO: Terminate")
