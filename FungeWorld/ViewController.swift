@@ -111,12 +111,16 @@ class ViewController: UIViewController, IOProtocol {
         }
     }
     
+    var outputBuffer = [UnicodeScalar]()
+    
     func writeChar(_ char: UnicodeScalar) {
-
+        outputBuffer.append(char)
+        outputLabel.text = String(String.UnicodeScalarView(outputBuffer))
     }
 
     func writeInt(_ int: Int) {
-
+        outputBuffer.append(contentsOf: int.description.unicodeScalars)
+        outputLabel.text = String(String.UnicodeScalarView(outputBuffer))
     }
 
     func writeError(_ message: String) {
