@@ -66,7 +66,7 @@ public final class State {
         }
     }
 
-    public func nextStep() async -> Void {
+    public func nextStep() async {
         currentStateChanges = []
         do {
             let currentInstruction = playfield[instructionPointer]
@@ -77,19 +77,19 @@ public final class State {
                 case "0"..."9":
                     executePush(Int(currentInstruction.value - UnicodeScalar("0").value))
                 case "+":
-                    try executeAdd()
+                    executeAdd()
                 case "-":
-                    try executeSubtract()
+                    executeSubtract()
                 case "*":
-                    try executeMultiply()
+                    executeMultiply()
                 case "/":
                     try await executeDivide()
                 case "%":
                     try await executeModulo()
                 case "!":
-                    try executeNot()
+                    executeNot()
                 case "`":
-                    try executeGreaterThan()
+                    executeGreaterThan()
                 case ">":
                     executeChangeDirection(.right)
                 case "<":
@@ -101,27 +101,27 @@ public final class State {
                 case "?":
                     executeRandomDirection()
                 case "_":
-                    try executeHorizontalConditional()
+                    executeHorizontalConditional()
                 case "|":
-                    try executeVerticalConditional()
+                    executeVerticalConditional()
                 case "\"":
                     executeToggleStringMode()
                 case ":":
-                    try executeDup()
+                    executeDup()
                 case "\\":
-                    try executeSwap()
+                    executeSwap()
                 case "$":
-                    _ = try executePop()
+                    _ = executePop()
                 case ".":
-                    try executeOutputInt()
+                    executeOutputInt()
                 case ",":
-                    try executeOutputChar()
+                    executeOutputChar()
                 case "#":
-                    try executeMove()
+                    executeMove()
                 case "p":
                     try executePut()
                 case "g":
-                    try executeGet()
+                    executeGet()
                 case "&":
                     try await executeInputInt()
                 case "~":
@@ -135,7 +135,7 @@ public final class State {
                     throw BefungeError.unknownOperation(currentInstruction)
                 }
             }
-            try executeMove()
+            executeMove()
         } catch {
             handleError(error: error)
         }

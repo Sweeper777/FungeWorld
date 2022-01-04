@@ -37,7 +37,7 @@ class TestIO: IOProtocol {
 }
 
 extension State {
-    func runUntilTerminated() async -> Void {
+    func runUntilTerminated() async {
         while !self.terminated {
             await nextStep()
         }

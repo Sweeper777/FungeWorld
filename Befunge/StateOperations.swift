@@ -13,7 +13,7 @@ public extension State {
         currentStateChanges.append(.push(element))
     }
 
-    func executePop() throws -> Int{
+    func executePop() -> Int{
         if let popped = stack.popLast() {
             currentStateChanges.append(.pop)
             return popped
@@ -22,27 +22,27 @@ public extension State {
         }
     }
 
-    func executeAdd() throws {
-        let a = try executePop()
-        let b = try executePop()
+    func executeAdd() {
+        let a = executePop()
+        let b = executePop()
         executePush(a &+ b)
     }
 
-    func executeSubtract() throws {
-        let a = try executePop()
-        let b = try executePop()
+    func executeSubtract() {
+        let a = executePop()
+        let b = executePop()
         executePush(b &- a)
     }
 
-    func executeMultiply() throws {
-        let a = try executePop()
-        let b = try executePop()
+    func executeMultiply() {
+        let a = executePop()
+        let b = executePop()
         executePush(a &* b)
     }
 
-    func executeDivide() async throws -> Void {
-        let a = try executePop()
-        let b = try executePop()
+    func executeDivide() async throws {
+        let a = executePop()
+        let b = executePop()
         if a == 0 {
             try await executeInputInt()
         } else {
@@ -50,9 +50,9 @@ public extension State {
         }
     }
 
-    func executeModulo() async throws -> Void {
-        let a = try executePop()
-        let b = try executePop()
+    func executeModulo() async throws {
+        let a = executePop()
+        let b = executePop()
         if a == 0 {
             try await executeInputInt()
         } else {
@@ -60,13 +60,13 @@ public extension State {
         }
     }
 
-    func executeNot() throws {
-        executePush(try executePop() == 0 ? 1 : 0)
+    func executeNot() {
+        executePush(executePop() == 0 ? 1 : 0)
     }
 
-    func executeGreaterThan() throws {
-        let a = try executePop()
-        let b = try executePop()
+    func executeGreaterThan() {
+        let a = executePop()
+        let b = executePop()
         executePush(b > a ? 1 : 0)
     }
 
@@ -79,13 +79,13 @@ public extension State {
         executeChangeDirection(Direction.allCases.randomElement()!)
     }
 
-    func executeHorizontalConditional() throws {
-        let value = try executePop()
+    func executeHorizontalConditional() {
+        let value = executePop()
         executeChangeDirection(value == 0 ? .right : .left)
     }
 
-    func executeVerticalConditional() throws {
-        let value = try executePop()
+    func executeVerticalConditional() {
+        let value = executePop()
         executeChangeDirection(value == 0 ? .down : .up)
     }
 
@@ -94,36 +94,36 @@ public extension State {
         currentStateChanges.append(.stringMode(stringMode))
     }
 
-    func executeDup() throws {
-        let value = try executePop()
+    func executeDup() {
+        let value = executePop()
         executePush(value)
         executePush(value)
     }
 
-    func executeSwap() throws {
-        let a = try executePop()
-        let b = try executePop()
+    func executeSwap() {
+        let a = executePop()
+        let b = executePop()
         executePush(a)
         executePush(b)
     }
 
-    func executeOutputChar() throws {
-        io.writeChar(UnicodeScalar(try executePop()) ?? "?")
+    func executeOutputChar() {
+        io.writeChar(UnicodeScalar(executePop()) ?? "?")
     }
 
-    func executeOutputInt() throws {
-        io.writeInt(try executePop())
+    func executeOutputInt() {
+        io.writeInt(executePop())
     }
 
-    func executeInputInt() async throws -> Void {
+    func executeInputInt() async throws {
         executePush(try await io.readNumber())
     }
 
-    func executeInputChar() async throws -> Void {
+    func executeInputChar() async throws {
         self.executePush(Int(try await io.readChar().value))
     }
 
-    func executeMove() throws {
+    func executeMove() {
         let translationFunction = direction.translationFunction
         instructionPointer = translationFunction(instructionPointer)
         instructionPointer = Position(
@@ -138,9 +138,9 @@ public extension State {
         currentStateChanges.append(.terminate)
     }
 
-    func executeGet() throws {
-        let y = try executePop()
-        let x = try executePop()
+    func executeGet() {
+        let y = executePop()
+        let x = executePop()
         if (0..<State.rows).contains(y) && (0..<State.columns).contains(x) {
             executePush(Int(playfield[x, y].value))
         } else {
@@ -149,9 +149,9 @@ public extension State {
     }
 
     func executePut() throws {
-        let y = try executePop()
-        let x = try executePop()
-        let v = try executePop()
+        let y = executePop()
+        let x = executePop()
+        let v = executePop()
         if (0..<State.rows).contains(y) && (0..<State.columns).contains(x) {
             if let char = UnicodeScalar(v) {
                 playfield[x, y] = char
