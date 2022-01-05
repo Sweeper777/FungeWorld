@@ -11,10 +11,11 @@ class ViewController: UIViewController, IOProtocol {
     @IBOutlet var hudView: UIView!
     @IBOutlet var stringModeLabel: UILabel!
     @IBOutlet var outputLabel: UITextView!
+    @IBOutlet var playPauseButton: UIButton!
 
     var zoomGR: UIPinchGestureRecognizer!
-    
     var stackController: BefungeStackViewController!
+    var animationTask: Task<Void, Never>?
 
     var scene: FungeWorldScene!
     override func viewDidLoad() {
@@ -44,6 +45,15 @@ class ViewController: UIViewController, IOProtocol {
             sceneView.setNeedsDisplay()
         } else if gr.state == .began {
             prevZoom = scene.camera.zoom
+        }
+    }
+    
+    @IBAction func playPauseButtonDidTap() {
+        if let task = animationTask { // should pause
+            playPauseButton.configuration?.image = UIImage(systemName: "play.fill")
+            task.cancel()
+            animationTask = nil
+        } else { // should play
         }
     }
 
