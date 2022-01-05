@@ -19,29 +19,39 @@
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oHM-Cp-Mzp">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </sceneKitView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mK0-Ri-veX">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mK0-Ri-veX">
                                 <rect key="frame" x="16" y="80" width="382" height="773.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0G-Hv-jGL">
-                                <rect key="frame" x="254" y="802" width="140" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="WyM-PH-qtm"/>
-                                    <constraint firstAttribute="width" constant="140" id="udg-jX-eeo"/>
-                                </constraints>
-                                <size key="titleShadowOffset" width="4" height="4"/>
-                                <state key="normal" title="Show HUD"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Show HUD" cornerStyle="capsule">
-                                    <color key="baseForegroundColor" systemColor="tintColor"/>
-                                    <color key="baseBackgroundColor" systemColor="systemBackgroundColor"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="hudToggleButtonDidTap" destination="BYZ-38-t0r" eventType="touchUpInside" id="HN3-Gd-taX"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="TJM-dm-ehB">
+                                <rect key="frame" x="261" y="811" width="133" height="31"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lVQ-5p-ofb">
+                                        <rect key="frame" x="0.0" y="0.0" width="31" height="31"/>
+                                        <size key="titleShadowOffset" width="4" height="4"/>
+                                        <state key="normal" title="Show HUD"/>
+                                        <buttonConfiguration key="configuration" style="filled" image="play.fill" catalog="system" cornerStyle="capsule"/>
+                                        <connections>
+                                            <action selector="playPauseButtonDidTap" destination="BYZ-38-t0r" eventType="touchUpInside" id="D7R-ze-8WR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0G-Hv-jGL">
+                                        <rect key="frame" x="39" y="0.0" width="94" height="31"/>
+                                        <size key="titleShadowOffset" width="4" height="4"/>
+                                        <state key="normal" title="Show HUD"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="Show HUD" cornerStyle="capsule">
+                                            <color key="baseForegroundColor" systemColor="tintColor"/>
+                                            <color key="baseBackgroundColor" systemColor="systemBackgroundColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="hudToggleButtonDidTap" destination="BYZ-38-t0r" eventType="touchUpInside" id="HN3-Gd-taX"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y6H-ol-dOh">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
@@ -77,16 +87,16 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="mK0-Ri-veX" firstAttribute="bottom" secondItem="utn-gB-fUI" secondAttribute="top" constant="-8" id="0n7-p2-Wfv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="TJM-dm-ehB" secondAttribute="bottom" constant="20" id="2Mv-q0-dhs"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mK0-Ri-veX" secondAttribute="trailing" constant="16" id="6dB-Vd-36r"/>
                             <constraint firstItem="Y6H-ol-dOh" firstAttribute="leading" secondItem="oHM-Cp-Mzp" secondAttribute="leading" id="91q-d5-yX7"/>
                             <constraint firstItem="oHM-Cp-Mzp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Bq8-bb-4FS"/>
                             <constraint firstItem="utn-gB-fUI" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-16" id="Fnt-7y-hNK"/>
                             <constraint firstAttribute="bottom" secondItem="oHM-Cp-Mzp" secondAttribute="bottom" id="JKQ-jt-GRD"/>
                             <constraint firstItem="oHM-Cp-Mzp" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="L7R-pc-Hse"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="g0G-Hv-jGL" secondAttribute="bottom" constant="20" id="N8R-OS-OF3"/>
                             <constraint firstItem="Y6H-ol-dOh" firstAttribute="top" secondItem="oHM-Cp-Mzp" secondAttribute="top" id="SlO-EN-ojZ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="g0G-Hv-jGL" secondAttribute="trailing" constant="20" id="Umq-vP-vQe"/>
                             <constraint firstItem="oHM-Cp-Mzp" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="hUr-l7-6Sd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TJM-dm-ehB" secondAttribute="trailing" constant="20" id="oFa-te-jGg"/>
                             <constraint firstItem="utn-gB-fUI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="oLN-2Y-uGF"/>
                             <constraint firstItem="mK0-Ri-veX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ona-d5-20j"/>
                             <constraint firstItem="mK0-Ri-veX" firstAttribute="top" secondItem="Ocp-ac-Mgq" secondAttribute="bottom" constant="8" id="pS9-jf-aVa"/>
@@ -98,6 +108,7 @@
                         <outlet property="cameraOrientationToggleButton" destination="g0G-Hv-jGL" id="NmF-Si-C7m"/>
                         <outlet property="hudView" destination="Y6H-ol-dOh" id="f0r-dr-H02"/>
                         <outlet property="outputLabel" destination="mK0-Ri-veX" id="C0d-ED-dAt"/>
+                        <outlet property="playPauseButton" destination="lVQ-5p-ofb" id="CP3-bC-4MX"/>
                         <outlet property="sceneView" destination="oHM-Cp-Mzp" id="C8q-kW-zlt"/>
                         <outlet property="stringModeLabel" destination="Ocp-ac-Mgq" id="kkl-yq-Ybm"/>
                     </connections>
@@ -159,6 +170,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="play.fill" catalog="system" width="116" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
