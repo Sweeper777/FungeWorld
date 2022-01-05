@@ -34,6 +34,7 @@ class ViewController: UIViewController, IOProtocol {
         sceneView.addGestureRecognizer(zoomGR)
 
         updateHudToggleButtonTitle()
+        updateOutputDisplay()
     }
 
     var prevZoom: CGFloat = 0
@@ -72,6 +73,14 @@ class ViewController: UIViewController, IOProtocol {
         } else {
             cameraOrientationToggleButton.configuration?.title = "Show HUD"
         }
+    }
+    
+    func updateOutputDisplay(withString string: String = "") {
+        var attributedString = AttributedString(string)
+        attributedString.backgroundColor = .black
+        attributedString.font = UIFont.monospacedSystemFont(ofSize: 20, weight: .regular)
+        attributedString.foregroundColor = .green
+        outputLabel.attributedText = NSAttributedString(attributedString)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -122,12 +131,12 @@ class ViewController: UIViewController, IOProtocol {
     
     func writeChar(_ char: UnicodeScalar) {
         outputBuffer.append(char)
-        outputLabel.text = String(String.UnicodeScalarView(outputBuffer))
+        updateOutputDisplay(withString: String(String.UnicodeScalarView(outputBuffer)))
     }
 
     func writeInt(_ int: Int) {
         outputBuffer.append(contentsOf: int.description.unicodeScalars)
-        outputLabel.text = String(String.UnicodeScalarView(outputBuffer))
+        updateOutputDisplay(withString: String(String.UnicodeScalarView(outputBuffer)))
     }
 
     func writeError(_ message: String) {
