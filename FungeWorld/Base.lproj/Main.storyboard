@@ -27,7 +27,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="TJM-dm-ehB">
-                                <rect key="frame" x="261" y="811" width="133" height="31"/>
+                                <rect key="frame" x="261" y="60" width="133" height="31"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lVQ-5p-ofb">
                                         <rect key="frame" x="0.0" y="0.0" width="31" height="31"/>
@@ -69,7 +69,7 @@
                                         </connections>
                                     </containerView>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="String Mode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ocp-ac-Mgq">
-                                        <rect key="frame" x="160.5" y="52" width="93.5" height="20.5"/>
+                                        <rect key="frame" x="171" y="825.5" width="93.5" height="20.5"/>
                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -78,8 +78,8 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="Ocp-ac-Mgq" firstAttribute="centerX" secondItem="Y6H-ol-dOh" secondAttribute="centerX" id="5Eb-p7-NwZ"/>
-                                    <constraint firstItem="Ocp-ac-Mgq" firstAttribute="top" secondItem="Y6H-ol-dOh" secondAttribute="topMargin" id="njk-5e-Ms4"/>
+                                    <constraint firstItem="Ocp-ac-Mgq" firstAttribute="leading" secondItem="utn-gB-fUI" secondAttribute="trailing" constant="16" id="XHd-Nb-XaD"/>
+                                    <constraint firstItem="Ocp-ac-Mgq" firstAttribute="bottom" secondItem="utn-gB-fUI" secondAttribute="bottom" id="gZr-5L-1vp"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -87,9 +87,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="mK0-Ri-veX" firstAttribute="bottom" secondItem="utn-gB-fUI" secondAttribute="top" constant="-8" id="0n7-p2-Wfv"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="TJM-dm-ehB" secondAttribute="bottom" constant="20" id="2Mv-q0-dhs"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="TJM-dm-ehB" secondAttribute="top" constant="-16" id="2Mv-q0-dhs"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mK0-Ri-veX" secondAttribute="trailing" constant="16" id="6dB-Vd-36r"/>
                             <constraint firstItem="Y6H-ol-dOh" firstAttribute="leading" secondItem="oHM-Cp-Mzp" secondAttribute="leading" id="91q-d5-yX7"/>
+                            <constraint firstItem="TJM-dm-ehB" firstAttribute="bottom" secondItem="mK0-Ri-veX" secondAttribute="top" constant="-16" id="BUX-Yx-jFl"/>
                             <constraint firstItem="oHM-Cp-Mzp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Bq8-bb-4FS"/>
                             <constraint firstItem="utn-gB-fUI" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-16" id="Fnt-7y-hNK"/>
                             <constraint firstAttribute="bottom" secondItem="oHM-Cp-Mzp" secondAttribute="bottom" id="JKQ-jt-GRD"/>
@@ -99,7 +100,6 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TJM-dm-ehB" secondAttribute="trailing" constant="20" id="oFa-te-jGg"/>
                             <constraint firstItem="utn-gB-fUI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="oLN-2Y-uGF"/>
                             <constraint firstItem="mK0-Ri-veX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ona-d5-20j"/>
-                            <constraint firstItem="mK0-Ri-veX" firstAttribute="top" secondItem="Ocp-ac-Mgq" secondAttribute="bottom" constant="8" id="pS9-jf-aVa"/>
                             <constraint firstItem="Y6H-ol-dOh" firstAttribute="bottom" secondItem="oHM-Cp-Mzp" secondAttribute="bottom" id="rba-TD-ymZ"/>
                             <constraint firstItem="Y6H-ol-dOh" firstAttribute="trailing" secondItem="oHM-Cp-Mzp" secondAttribute="trailing" id="yIV-Te-DdZ"/>
                         </constraints>
