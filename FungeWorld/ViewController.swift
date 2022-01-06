@@ -148,7 +148,7 @@ class ViewController: UIViewController, IOProtocol {
     }
 
     func writeInt(_ int: Int) {
-        outputBuffer.append(contentsOf: int.description.unicodeScalars)
+        outputBuffer.append(contentsOf: "\(int) ".unicodeScalars)
         updateOutputDisplay(withString: String(String.UnicodeScalarView(outputBuffer)))
     }
 
