@@ -3,7 +3,7 @@ import Befunge
 
 class FungeWorldScene : SCNScene {
 
-    static let animationDuration = 0.001
+    static let animationDuration = 0.1
     var cameraNode: SCNNode!
     var instructionPointer: SCNNode!
     weak var state: State!
