@@ -48,6 +48,46 @@ class ViewController: UIViewController, IOProtocol {
         }
     }
     
+    func makeAnimationTask() -> Task<Void, Never> {
+        Task { [weak self] in
+            guard let `self` = self else { return }
+            while !Task.isCancelled {
+                var currentDirection = self.state.direction
+                await self.state.nextStep()
+                for stateChange in self.state.currentStateChanges {
+                    switch stateChange {
+                    case .push(let number):
+                        if hudShown {
+                            await self.stackController.animatePush(number)
+                            await Task.sleep(UInt64(FungeWorldScene.animationDuration * 1_000_000_000))
+                        }
+                    case .pop:
+                        if hudShown {
+                            await self.stackController.animatePop()
+                            await Task.sleep(UInt64(FungeWorldScene.animationDuration * 1_000_000_000))
+                        }
+                    case .turn(to: let direction):
+                        await self.scene.instructionPointer.runAction(
+                            SCNAction.rotateTo(x: .pi / 2,
+                                               y: CGFloat(self.scene.eulerY(forDirection: direction)),
+                                               z: 0,
+                                               duration: FungeWorldScene.animationDuration)
+                        )
+                        currentDirection = direction
+                    case .stringMode(let stringModeOn):
+                        self.stringModeLabel.isHidden = !stringModeOn
+                    case .move:
+                        await self.scene.instructionPointer.runAction(
+                            SCNAction.move(by: self.scene.unitVector(forDirection: currentDirection), duration: FungeWorldScene.animationDuration)
+                        )
+                    case .terminate:
+                        print("TODO: Terminate")
+                    }
+                }
+            }
+        }
+    }
+    
     @IBAction func playPauseButtonDidTap() {
         if let task = animationTask { // should pause
             playPauseButton.configuration?.image = UIImage(systemName: "play.fill")
@@ -55,43 +95,7 @@ class ViewController: UIViewController, IOProtocol {
             animationTask = nil
         } else { // should play
             playPauseButton.configuration?.image = UIImage(systemName: "pause.fill")
-            animationTask = Task { [weak self] in
-                guard let `self` = self else { return }
-                while !Task.isCancelled {
-                    var currentDirection = self.state.direction
-                    await self.state.nextStep()
-                    for stateChange in self.state.currentStateChanges {
-                        switch stateChange {
-                        case .push(let number):
-                            if hudShown {
-                                await self.stackController.animatePush(number)
-                                await Task.sleep(UInt64(FungeWorldScene.animationDuration * 1_000_000_000))
-                            }
-                        case .pop:
-                            if hudShown {
-                                await self.stackController.animatePop()
-                                await Task.sleep(UInt64(FungeWorldScene.animationDuration * 1_000_000_000))
-                            }
-                        case .turn(to: let direction):
-                            await self.scene.instructionPointer.runAction(
-                                SCNAction.rotateTo(x: .pi / 2,
-                                                   y: CGFloat(self.scene.eulerY(forDirection: direction)),
-                                                   z: 0,
-                                                   duration: FungeWorldScene.animationDuration)
-                            )
-                            currentDirection = direction
-                        case .stringMode(let stringModeOn):
-                            self.stringModeLabel.isHidden = !stringModeOn
-                        case .move:
-                            await self.scene.instructionPointer.runAction(
-                                SCNAction.move(by: self.scene.unitVector(forDirection: currentDirection), duration: FungeWorldScene.animationDuration)
-                            )
-                        case .terminate:
-                            print("TODO: Terminate")
-                        }
-                    }
-                }
-            }
+            animationTask = makeAnimationTask()
         }
     }
 
