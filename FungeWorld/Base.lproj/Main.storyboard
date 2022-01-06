@@ -69,16 +69,16 @@
                                         </connections>
                                     </containerView>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="String Mode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ocp-ac-Mgq">
-                                        <rect key="frame" x="8" y="52" width="398" height="20.5"/>
+                                        <rect key="frame" x="160.5" y="52" width="93.5" height="20.5"/>
+                                        <color key="backgroundColor" systemColor="systemRedColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" systemColor="systemRedColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="Ocp-ac-Mgq" firstAttribute="leading" secondItem="Y6H-ol-dOh" secondAttribute="leading" constant="8" id="1n5-28-pIj"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ocp-ac-Mgq" secondAttribute="trailing" constant="8" id="k2t-DF-eGZ"/>
+                                    <constraint firstItem="Ocp-ac-Mgq" firstAttribute="centerX" secondItem="Y6H-ol-dOh" secondAttribute="centerX" id="5Eb-p7-NwZ"/>
                                     <constraint firstItem="Ocp-ac-Mgq" firstAttribute="top" secondItem="Y6H-ol-dOh" secondAttribute="topMargin" id="njk-5e-Ms4"/>
                                 </constraints>
                             </view>
