@@ -15,6 +15,9 @@ class ViewController: UIViewController, IOProtocol {
     @IBOutlet var stringModeLabel: UILabel!
     @IBOutlet var outputLabel: UITextView!
     @IBOutlet var playPauseButton: UIButton!
+    @IBOutlet var stepButton: UIButton!
+    @IBOutlet var menuButton: UIButton!
+    @IBOutlet var buttonsStackView: UIStackView!
 
     var zoomGR: UIPinchGestureRecognizer!
     var stackController: BefungeStackViewController!

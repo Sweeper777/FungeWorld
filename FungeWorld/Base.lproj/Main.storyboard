@@ -125,11 +125,14 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buttonsStackView" destination="TJM-dm-ehB" id="hyB-KT-SdX"/>
                         <outlet property="cameraOrientationToggleButton" destination="g0G-Hv-jGL" id="NmF-Si-C7m"/>
                         <outlet property="hudView" destination="Y6H-ol-dOh" id="f0r-dr-H02"/>
+                        <outlet property="menuButton" destination="DSe-1T-vQ9" id="ZB8-4H-ddR"/>
                         <outlet property="outputLabel" destination="mK0-Ri-veX" id="C0d-ED-dAt"/>
                         <outlet property="playPauseButton" destination="lVQ-5p-ofb" id="CP3-bC-4MX"/>
                         <outlet property="sceneView" destination="oHM-Cp-Mzp" id="C8q-kW-zlt"/>
+                        <outlet property="stepButton" destination="oaj-Hd-buX" id="16q-Xl-iaR"/>
                         <outlet property="stringModeLabel" destination="Ocp-ac-Mgq" id="kkl-yq-Ybm"/>
                     </connections>
                 </viewController>
