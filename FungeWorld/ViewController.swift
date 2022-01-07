@@ -47,6 +47,8 @@ class ViewController: UIViewController, IOProtocol {
 
         updateHudToggleButtonTitle()
         updateOutputDisplay()
+        setupMenu()
+        buttonsStackView.layer.cornerRadius = buttonsStackView.height / 2
     }
 
     var prevZoom: CGFloat = 0
@@ -59,6 +61,23 @@ class ViewController: UIViewController, IOProtocol {
         }
     }
     
+    func setupMenu() {
+        menuButton.menu = UIMenu(children: [
+            UIAction(title: "Edit Code...", image: UIImage(systemName: "pencil")) { _ in
+                
+            },
+            UIAction(title: "Import...", image: UIImage(systemName: "doc")) { _ in
+                
+            },
+            UIAction(title: "Save...", image: UIImage(systemName: "square.and.arrow.down")) { _ in
+                
+            },
+            UIAction(title: "Load...", image: UIImage(systemName: "square.and.arrow.up")) { _ in
+                
+            },
+        ])
+        menuButton.showsMenuAsPrimaryAction = true
+    }
     
     func makeOneStepAnimationTask() -> Task<Void, Never> {
         Task { [weak self] in
