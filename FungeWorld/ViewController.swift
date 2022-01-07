@@ -110,26 +110,40 @@ class ViewController: UIViewController, IOProtocol {
     }
     
     @IBAction func playPauseButtonDidTap() {
+        guard (animationTask == nil) == isPaused else { return }
+        
         if let task = animationTask { // should pause
             playPauseButton.configuration?.image = UIImage(systemName: "play.fill")
             task.cancel()
             animationTask = nil
+            isPaused = true
         } else { // should play
+            isPaused = false
             playPauseButton.configuration?.image = UIImage(systemName: "pause.fill")
             animationTask = makeAnimationTask()
         }
     }
 
     @IBAction func hudToggleButtonDidTap() {
-        hudShown.toggle()
-        hudView.isHidden = !hudShown
+        guard (animationTask == nil) == isPaused else { return }
+        
         Task { [weak self] in
-            await self?.stackController.animateStack(state.stack)
+            guard let `self` = self else { return }
+            self.hudShown.toggle()
+            self.hudView.isHidden = !self.hudShown
+            if let animationTask = self.animationTask {
+                animationTask.cancel()
+            }
+            self.updateHudToggleButtonTitle()
+            await self.stackController.animateStack(state.stack)
+            if self.animationTask != nil {
+                self.animationTask = self.makeAnimationTask()
+            }
+        }
     }
     
     @IBAction func stepButtonDidTap() {
         }
-        updateHudToggleButtonTitle()
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
