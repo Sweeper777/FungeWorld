@@ -110,6 +110,9 @@ class ViewController: UIViewController, IOProtocol {
         hudView.isHidden = !hudShown
         Task { [weak self] in
             await self?.stackController.animateStack(state.stack)
+    }
+    
+    @IBAction func stepButtonDidTap() {
         }
         updateHudToggleButtonTitle()
     }

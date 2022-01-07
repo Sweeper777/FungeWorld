@@ -44,6 +44,9 @@
                                         <buttonConfiguration key="configuration" style="filled" image="arrow.right.to.line" catalog="system" cornerStyle="capsule">
                                             <directionalEdgeInsets key="contentInsets" top="10" leading="10" bottom="10" trailing="10"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="stepButtonDidTap" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZNv-sf-gtw"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lVQ-5p-ofb">
                                         <rect key="frame" x="90" y="0.0" width="37" height="37"/>
