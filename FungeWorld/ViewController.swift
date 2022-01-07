@@ -143,6 +143,10 @@ class ViewController: UIViewController, IOProtocol {
     }
     
     @IBAction func stepButtonDidTap() {
+        Task {
+            animationTask = makeOneStepAnimationTask()
+            await animationTask?.value
+            animationTask = nil
         }
     }
 
