@@ -22,6 +22,11 @@ class ViewController: UIViewController, IOProtocol {
     var zoomGR: UIPinchGestureRecognizer!
     var stackController: BefungeStackViewController!
     var animationTask: Task<Void, Never>?
+    var isPaused = false {
+        didSet {
+            stepButton.isEnabled = isPaused
+        }
+    }
 
     var scene: FungeWorldScene!
     override func viewDidLoad() {
