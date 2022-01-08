@@ -79,6 +79,7 @@ class FungeWorldScene : SCNScene {
     private func setupInstructionPointer() {
         instructionPointer = BefungeNodeGenerator.instructionPointerNode()
         rootNode.addChildNode(instructionPointer)
+        instructionPointer.opacity = 0.5
         synchroniseInstructionPointerWithState()
     }
     
