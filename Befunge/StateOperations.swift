@@ -155,6 +155,7 @@ public extension State {
         if (0..<State.rows).contains(y) && (0..<State.columns).contains(x) {
             if let char = UnicodeScalar(v) {
                 playfield[x, y] = char
+                currentStateChanges.append(.playfieldChange(x: x, y: y, newInstruction: char))
             } else {
                 throw BefungeError.unknownUnicodeScalar(v)
             }

@@ -31,6 +31,7 @@ public enum StateChange {
     case turn(to: Direction)
     case stringMode(Bool)
     case move
+    case playfieldChange(x: Int, y: Int, newInstruction: UnicodeScalar)
     case terminate
 }
 
