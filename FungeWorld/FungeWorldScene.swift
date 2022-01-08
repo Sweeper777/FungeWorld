@@ -67,6 +67,7 @@ class FungeWorldScene : SCNScene {
                 if state.playfield[x, y] != " " {
                     let node = BefungeNodeGenerator.node(for: "\(state.playfield[x, y])")
                     node.position = SCNVector3(x.f, 0.001, y.f)
+                    node.name = "instruction \(x),\(y)"
                     rootNode.addChildNode(node)
                 }
             }
@@ -111,6 +112,34 @@ class FungeWorldScene : SCNScene {
             return SCNVector3(x: -1, y: 0, z: 0)
         case .right:
             return SCNVector3(x: 1, y: 0, z: 0)
+        }
+    }
+    
+    func animatePlayfieldChange(x: Int, y: Int, newInstruction: UnicodeScalar) async {
+        guard state.playfield[x, y] != newInstruction else { return }
+        let originalNode = rootNode.childNode(withName: "instruction \(x),\(y)", recursively: false)
+        let hideAction = SCNAction.sequence([.fadeOut(duration: FungeWorldScene.animationDuration), .removeFromParentNode()])
+        let appearAction = SCNAction.fadeIn(duration: FungeWorldScene.animationDuration)
+        switch (originalNode, newInstruction) {
+        case (let node?, " "):
+            await node.runAction(hideAction)
+        case (nil, let instr) where instr != " ":
+            let node = BefungeNodeGenerator.node(for: "\(state.playfield[x, y])")
+            node.position = SCNVector3(x.f, 0.001, y.f)
+            node.name = "instruction \(x),\(y)"
+            node.opacity = 0
+            rootNode.addChildNode(node)
+            await node.runAction(appearAction)
+        case (let node?, let instr) where instr != " ":
+            let newNode = BefungeNodeGenerator.node(for: "\(state.playfield[x, y])")
+            newNode.position = SCNVector3(x.f, 0.001, y.f)
+            newNode.name = "instruction \(x),\(y)"
+            newNode.opacity = 0
+            rootNode.addChildNode(newNode)
+            await node.runAction(hideAction)
+            await newNode.runAction(appearAction)
+        default:
+            break
         }
     }
 }
