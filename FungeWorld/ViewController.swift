@@ -111,6 +111,8 @@ class ViewController: UIViewController, IOProtocol {
                     await self.scene.instructionPointer.runAction(
                         SCNAction.move(by: self.scene.unitVector(forDirection: currentDirection), duration: FungeWorldScene.animationDuration)
                     )
+                case .playfieldChange(x: let x, y: let y, newInstruction: let newInstruction):
+                    await self.scene.animatePlayfieldChange(x: x, y: y, newInstruction: newInstruction)
                 case .terminate:
                     print("TODO: Terminate")
                 }
