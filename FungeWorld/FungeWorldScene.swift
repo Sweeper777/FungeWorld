@@ -102,6 +102,16 @@ class FungeWorldScene : SCNScene {
         }
     }
     
+    func rotateInstructionPointer(to direction: Direction) async {
+        await instructionPointer.runAction(
+            SCNAction.rotateTo(x: .pi / 2,
+                               y: CGFloat(eulerY(forDirection: direction)),
+                               z: 0,
+                               duration: FungeWorldScene.animationDuration,
+                               usesShortestUnitArc: true)
+        )
+    }
+    
     func unitVector(forDirection direction: Direction) -> SCNVector3 {
         switch direction {
         case .up:

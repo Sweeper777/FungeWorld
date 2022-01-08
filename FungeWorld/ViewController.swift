@@ -97,13 +97,7 @@ class ViewController: UIViewController, IOProtocol {
                         await Task.sleep(UInt64(FungeWorldScene.animationDuration * 1_000_000_000))
                     }
                 case .turn(to: let direction):
-                    await self.scene.instructionPointer.runAction(
-                        SCNAction.rotateTo(x: .pi / 2,
-                                           y: CGFloat(self.scene.eulerY(forDirection: direction)),
-                                           z: 0,
-                                           duration: FungeWorldScene.animationDuration,
-                                           usesShortestUnitArc: true)
-                    )
+                    await self.scene.rotateInstructionPointer(to: direction)
                     currentDirection = direction
                 case .stringMode(let stringModeOn):
                     self.stringModeLabel.isHidden = !stringModeOn
