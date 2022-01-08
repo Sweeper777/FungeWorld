@@ -1,6 +1,7 @@
 import SceneKit
 import Befunge
 
+@MainActor
 class FungeWorldScene : SCNScene {
 
     static let animationDuration = 0.1
@@ -93,9 +94,9 @@ class FungeWorldScene : SCNScene {
     func eulerY(forDirection direction: Direction) -> Float {
         switch direction {
         case .up:
-            return 0
-        case .down:
             return .pi
+        case .down:
+            return 0
         case .left:
             return 3 * .pi / 2
         case .right:
