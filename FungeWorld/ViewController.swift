@@ -102,9 +102,7 @@ class ViewController: UIViewController, IOProtocol {
                 case .stringMode(let stringModeOn):
                     self.stringModeLabel.isHidden = !stringModeOn
                 case .move:
-                    await self.scene.instructionPointer.runAction(
-                        SCNAction.move(by: self.scene.unitVector(forDirection: currentDirection), duration: FungeWorldScene.animationDuration)
-                    )
+                    await self.scene.moveInstructionPointer(towards: currentDirection)
                 case .playfieldChange(x: let x, y: let y, newInstruction: let newInstruction):
                     await self.scene.animatePlayfieldChange(x: x, y: y, newInstruction: newInstruction)
                 case .terminate:
