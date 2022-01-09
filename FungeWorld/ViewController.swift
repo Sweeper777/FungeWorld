@@ -4,6 +4,7 @@ import SceneKit
 import SCLAlertView
 
 class ViewController: UIViewController, IOProtocol {
+    
     @IBOutlet var sceneView: SCNView!
     @IBOutlet var cameraOrientationToggleButton: UIButton!
     
@@ -22,7 +23,7 @@ class ViewController: UIViewController, IOProtocol {
     var zoomGR: UIPinchGestureRecognizer!
     var stackController: BefungeStackViewController!
     var animationTask: Task<Void, Never>?
-    var isPaused = false {
+    var isPaused = true {
         didSet {
             stepButton.isEnabled = isPaused
         }
