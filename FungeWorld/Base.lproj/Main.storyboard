@@ -137,11 +137,63 @@
                         <outlet property="sceneView" destination="oHM-Cp-Mzp" id="C8q-kW-zlt"/>
                         <outlet property="stepButton" destination="oaj-Hd-buX" id="16q-Xl-iaR"/>
                         <outlet property="stringModeLabel" destination="Ocp-ac-Mgq" id="kkl-yq-Ybm"/>
+                        <segue destination="eFt-IG-x3L" kind="presentation" identifier="showCodeEditor" modalPresentationStyle="formSheet" id="yjd-Gv-ai0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="13.043478260869566" y="67.633928571428569"/>
+        </scene>
+        <!--Code Editor View Controller-->
+        <scene sceneID="so8-bk-zTI">
+            <objects>
+                <viewController id="eFt-IG-x3L" customClass="CodeEditorViewController" customModule="FungeWorld" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vs8-Te-bga">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8kK-PZ-5pG">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                <items>
+                                    <navigationItem title="Code Editor" id="cZg-Pu-sdD">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Me1-UF-xmq">
+                                            <connections>
+                                                <action selector="cancelDidTap" destination="eFt-IG-x3L" id="eEt-Cc-qZM"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="Y4m-Dk-8id">
+                                            <connections>
+                                                <action selector="doneDidTap" destination="eFt-IG-x3L" id="JjQ-Bs-suD"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wi7-og-RQb">
+                                <rect key="frame" x="0.0" y="55" width="414" height="787"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="Ft8-pk-2JT"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="BcO-In-Yz1"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="CtE-mJ-tnz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="wi7-og-RQb" firstAttribute="top" secondItem="8kK-PZ-5pG" secondAttribute="bottom" id="2ae-jv-slh"/>
+                            <constraint firstItem="wi7-og-RQb" firstAttribute="trailing" secondItem="CtE-mJ-tnz" secondAttribute="trailing" id="I1w-4d-xM3"/>
+                            <constraint firstItem="8kK-PZ-5pG" firstAttribute="trailing" secondItem="vs8-Te-bga" secondAttribute="trailing" id="NCW-5Z-SKX"/>
+                            <constraint firstItem="8kK-PZ-5pG" firstAttribute="top" secondItem="vs8-Te-bga" secondAttribute="top" id="Pul-ti-hI4"/>
+                            <constraint firstAttribute="bottom" secondItem="wi7-og-RQb" secondAttribute="bottom" id="eqs-xC-sDA"/>
+                            <constraint firstItem="8kK-PZ-5pG" firstAttribute="leading" secondItem="vs8-Te-bga" secondAttribute="leading" id="tf2-zH-8MN"/>
+                            <constraint firstItem="wi7-og-RQb" firstAttribute="leading" secondItem="CtE-mJ-tnz" secondAttribute="leading" id="wdG-cB-Z4T"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="wi7-og-RQb" id="26g-pP-kP1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AGr-AS-Ihz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="11.594202898550726" y="782.14285714285711"/>
         </scene>
         <!--Befunge Stack View Controller-->
         <scene sceneID="jr8-sF-1SN">
