@@ -6,9 +6,20 @@ class CodeEditorViewController: UIViewController {
     var code: String?
     
     @IBOutlet var scrollView: UIScrollView!
+    var textView: UITextView!
+    var toolBar: UIToolbar!
+    var keyboard: BefungeKeyboardView!
+    
     override func viewDidLoad() {
         setupTextView()
     }
+    
+    let font = UIFont.monospacedSystemFont(ofSize: 23, weight: .regular)
+    
+    @objc private func endEditing() {
+        view.endEditing(true)
+    }
+    
     func setupTextView() {
         toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 100, height: 44))
         toolBar.items = [
@@ -24,6 +35,27 @@ class CodeEditorViewController: UIViewController {
             }, menu: nil)
         ]
         
+        let line = String(repeating: "a", count: State.columns + 1)
+        let fullPlayfield = Array(repeating: line, count: State.rows + 1).joined(separator: "\n")
+        let unroundedSize = (fullPlayfield as NSString).size(withAttributes: [
+            .font: font
+        ])
+        let size = CGSize(width: ceil(unroundedSize.width), height: ceil(unroundedSize.height))
+        textView = UITextView(frame: CGRect(origin: .zero, size: size))
+        
+        keyboard = (UINib(nibName: "BefungeKeyboardView", bundle: nil)
+                        .instantiate(withOwner: nil, options: nil).first as! BefungeKeyboardView)
+        
+        scrollView.contentSize = size
+        textView.inputView = keyboard
+        textView.inputAccessoryView = toolBar
+        keyboard.textInput = textView
+        textView.spellCheckingType = .no
+        textView.dataDetectorTypes = []
+        textView.font = font
+        textView.text = code
+        textView.delegate = self
+        textView.isScrollEnabled = false
     }
     
     
