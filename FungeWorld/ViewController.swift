@@ -64,8 +64,8 @@ class ViewController: UIViewController, IOProtocol {
     
     func setupMenu() {
         menuButton.menu = UIMenu(children: [
-            UIAction(title: "Edit Code...", image: UIImage(systemName: "pencil")) { _ in
-                
+            UIAction(title: "Edit Code...", image: UIImage(systemName: "pencil")) { [weak self] _ in
+                self?.performSegue(withIdentifier: "showCodeEditor", sender: nil)
             },
             UIAction(title: "Import...", image: UIImage(systemName: "doc")) { _ in
                 
