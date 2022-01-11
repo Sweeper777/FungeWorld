@@ -69,6 +69,12 @@ class CodeEditorViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardAppear(_:)), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        scrollView.maximumZoomScale = 1
+        scrollView.minimumZoomScale = min(scrollView.width / scrollView.contentSize.width,
+                                          min(scrollView.height / scrollView.contentSize.height, 1))
+    }
     
     @IBAction func doneDidTap() {
         
