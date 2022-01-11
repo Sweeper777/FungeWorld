@@ -98,6 +98,10 @@ class CodeEditorViewController: UIViewController {
         scrollView.scrollIndicatorInsets = insets
     }
 
+    @objc func onKeyboardDisappear(_ notification: NSNotification) {
+        scrollView.contentInset = UIEdgeInsets.zero
+        scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
+    }
 }
 
 extension CodeEditorViewController: UIScrollViewDelegate {
