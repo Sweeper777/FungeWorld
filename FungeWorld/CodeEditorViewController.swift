@@ -12,6 +12,7 @@ class CodeEditorViewController: UIViewController {
     
     override func viewDidLoad() {
         setupTextView()
+        setupScrollView()
     }
     
     let font = UIFont.monospacedSystemFont(ofSize: 23, weight: .regular)
@@ -56,6 +57,16 @@ class CodeEditorViewController: UIViewController {
         textView.text = code
         textView.delegate = self
         textView.isScrollEnabled = false
+    }
+    
+    func setupScrollView() {
+        scrollView.addSubview(textView)
+//        scrollView.keyboardDismissMode = .interactive
+        scrollView.delegate = self
+        scrollView.keyboardDismissMode = .none
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardAppear(_:)), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardDisappear(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardAppear(_:)), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
     }
     
     
