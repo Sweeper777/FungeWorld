@@ -86,3 +86,8 @@ class CodeEditorViewController: UIViewController {
     
 }
 
+extension CodeEditorViewController: UIScrollViewDelegate {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        textView
+    }
+}
