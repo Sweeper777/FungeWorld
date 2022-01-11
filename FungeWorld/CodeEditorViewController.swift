@@ -84,6 +84,20 @@ class CodeEditorViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @objc func onKeyboardAppear(_ notification: NSNotification) {
+        guard UIDevice.isPhone else { return }
+        
+        // FIXME: Wrong coordinate system
+        
+        let info = notification.userInfo!
+        let rect: CGRect = info[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
+        let kbSize = rect.size
+
+        let insets = UIEdgeInsets(top: 0, left: 0, bottom: kbSize.height, right: 0)
+        scrollView.contentInset = insets
+        scrollView.scrollIndicatorInsets = insets
+    }
+
 }
 
 extension CodeEditorViewController: UIScrollViewDelegate {
