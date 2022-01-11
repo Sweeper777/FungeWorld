@@ -160,3 +160,17 @@ public final class State {
         executeTerminate()
     }
 }
+
+extension StringProtocol {
+
+    @inline(__always)
+    var trailingSpacesTrimmed: Self.SubSequence {
+        var view = self[...]
+
+        while view.last?.isWhitespace == true {
+            view = view.dropLast()
+        }
+
+        return view
+    }
+}
