@@ -159,6 +159,17 @@ public final class State {
         }
         executeTerminate()
     }
+    
+    public func toSourceCode() -> String {
+        var sourceCode = ""
+        for row in 0..<State.rows {
+            for column in 0..<State.columns {
+                sourceCode.append(String(playfield[column, row]))
+            }
+            sourceCode.append("\n")
+        }
+        return String(sourceCode.trailingSpacesTrimmed)
+    }
 }
 
 extension StringProtocol {
