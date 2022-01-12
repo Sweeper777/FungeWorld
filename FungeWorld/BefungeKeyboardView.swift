@@ -28,5 +28,21 @@ class BefungeKeyboardView: UIView {
         collectionView.dataSource = dataSource
         fillCollectionView()
     }
+    
+    private func makeDataSource() -> DataSource {
+        let dataSource = DataSource(
+            collectionView: collectionView,
+            cellProvider: { (collectionView, indexPath, model) ->
+                UICollectionViewCell? in
+                let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: "cell",
+                    for: indexPath) as? BefungeKeyCell
+                cell?.key = model
+                cell?.delegate = self
+                return cell
+            })
+        return dataSource
+    }
+    
 }
 
