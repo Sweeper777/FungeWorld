@@ -126,6 +126,20 @@ class BefungeKeyboardView: UIView {
             return section
         }
         
+        let config = UICollectionViewCompositionalLayoutConfiguration()
+        config.scrollDirection = .horizontal
+        let layout = UICollectionViewCompositionalLayout(sectionProvider: { i, env in
+            switch i {
+            case 0:
+                return makeNumbersSection()
+            case 1:
+                return makeArithmeticLogicSection()
+            default:
+                return makeOtherKeysSection()
+            }
+        }, configuration: config)
+        
+        return layout
     }
     
     private func makeDataSource() -> DataSource {
