@@ -29,6 +29,27 @@ class BefungeKeyboardView: UIView {
         fillCollectionView()
     }
     
+    private func fillCollectionView() {
+        var snapshot = Snapshot()
+        snapshot.appendSections(Section.allCases)
+        snapshot.appendItems(
+            ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
+            toSection: .numbers)
+        snapshot.appendItems(
+            ["+", "-", "*", "/", "%", "!", "`"],
+            toSection: .arithmeticAndLogic)
+        snapshot.appendItems(
+            ["^", "<", ">", "v", "?", "|", "_", "#"],
+            toSection: .directions)
+        snapshot.appendItems(
+            ["\"", ":", "\\", "$"],
+            toSection: .stack)
+        snapshot.appendItems(
+            [".", ",", "&", "~", "p", "g", "@"],
+            toSection: .io)
+        dataSource.apply(snapshot)
+    }
+    
     private func makeDataSource() -> DataSource {
         let dataSource = DataSource(
             collectionView: collectionView,
