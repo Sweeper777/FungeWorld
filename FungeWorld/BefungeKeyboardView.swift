@@ -163,3 +163,8 @@ class BefungeKeyboardView: UIView {
     }
 }
 
+extension BefungeKeyboardView: BefungeKeyCellDelegate {
+    func didTapKey(_ key: String?) {
+        textInput.insertText(key ?? "")
+    }
+}
