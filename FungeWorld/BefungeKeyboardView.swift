@@ -157,5 +157,9 @@ class BefungeKeyboardView: UIView {
         return dataSource
     }
     
+    
+    override var intrinsicContentSize: CGSize {
+        CGSize(width: 0, height: 270)
+    }
 }
 
