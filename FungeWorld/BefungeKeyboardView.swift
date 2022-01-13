@@ -78,6 +78,38 @@ class BefungeKeyboardView: UIView {
             return section
         }
         
+        func makeArithmeticLogicSection() -> NSCollectionLayoutSection {
+            let arithItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                                       heightDimension: .fractionalHeight(1/4))
+            let arithItem = NSCollectionLayoutItem(layoutSize: arithItemSize)
+            arithItem.contentInsets = contentInsets
+            let logicItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                                       heightDimension: .fractionalHeight(1/3))
+            let logicItem = NSCollectionLayoutItem(layoutSize: logicItemSize)
+            logicItem.contentInsets = contentInsets
+            
+            let columnGroupSize = NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1/2),
+                heightDimension: .fractionalHeight(1)
+            )
+            
+            let arithGroup = NSCollectionLayoutGroup.vertical(
+                layoutSize: columnGroupSize,
+                subitem: arithItem, count: 4)
+            let logicGroup = NSCollectionLayoutGroup.vertical(
+                layoutSize: columnGroupSize,
+                subitem: logicItem, count: 3)
+            
+            let sectionGroup = NSCollectionLayoutGroup.horizontal(
+                layoutSize: .init(widthDimension: .absolute(100),
+                                  heightDimension: .fractionalHeight(1)),
+                subitems: [arithGroup, logicGroup])
+            
+            let section = NSCollectionLayoutSection(group: sectionGroup)
+            section.contentInsets = sectionInsets
+            return section
+        }
+        
     }
     
     private func makeDataSource() -> DataSource {
