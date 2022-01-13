@@ -110,6 +110,22 @@ class BefungeKeyboardView: UIView {
             return section
         }
         
+        func makeOtherKeysSection() -> NSCollectionLayoutSection {
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                                       heightDimension: .fractionalHeight(1/4))
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            item.contentInsets = contentInsets
+            
+            let columnGroup = NSCollectionLayoutGroup.vertical(
+                layoutSize: .init(widthDimension: .absolute(50),
+                                 heightDimension: .fractionalHeight(1)),
+                subitems: [item])
+            
+            let section = NSCollectionLayoutSection(group: columnGroup)
+            section.contentInsets = sectionInsets
+            return section
+        }
+        
     }
     
     private func makeDataSource() -> DataSource {
