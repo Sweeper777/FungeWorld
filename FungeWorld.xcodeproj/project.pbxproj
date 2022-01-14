@@ -30,6 +30,11 @@
 		5A5DAA24266B80BB00F5001C /* Befunge.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A5DAA14266B80BB00F5001C /* Befunge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5A5DAA27266B80BB00F5001C /* Befunge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A5DAA12266B80BB00F5001C /* Befunge.framework */; };
 		5A5DAA28266B80BB00F5001C /* Befunge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5A5DAA12266B80BB00F5001C /* Befunge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5A8A212E2789A3AF00194F00 /* BefungeKeyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8A212D2789A3AF00194F00 /* BefungeKeyCell.xib */; };
+		5A8A21302789A49F00194F00 /* BefungeKeyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8A212F2789A49F00194F00 /* BefungeKeyCell.swift */; };
+		5A8DA358278880BA00A03E7B /* CodeEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DA357278880BA00A03E7B /* CodeEditorViewController.swift */; };
+		5A8DA35A278882A600A03E7B /* BefungeKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DA359278882A600A03E7B /* BefungeKeyboardView.swift */; };
+		5A8DA35C278883B800A03E7B /* BefungeKeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8DA35B278883B800A03E7B /* BefungeKeyboardView.xib */; };
 		5A8EDF292676F8C400645353 /* mycology.b98 in Resources */ = {isa = PBXBuildFile; fileRef = 25EF024BC90C0A67A662C461 /* mycology.b98 */; };
 		5A8EDF302676FCFD00645353 /* mycorand.b98 in Resources */ = {isa = PBXBuildFile; fileRef = 25EF0F8BFB750A3BABA4757B /* mycorand.b98 */; };
 		5A910BCC277B0FEC00D268B2 /* BefungeStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A910BCB277B0FEC00D268B2 /* BefungeStackViewController.swift */; };
@@ -105,6 +110,11 @@
 		5A5DAA1A266B80BB00F5001C /* BefungeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BefungeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A5DAA21266B80BB00F5001C /* BefungeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BefungeTests.swift; sourceTree = "<group>"; };
 		5A5DAA23266B80BB00F5001C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A8A212D2789A3AF00194F00 /* BefungeKeyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BefungeKeyCell.xib; sourceTree = "<group>"; };
+		5A8A212F2789A49F00194F00 /* BefungeKeyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BefungeKeyCell.swift; sourceTree = "<group>"; };
+		5A8DA357278880BA00A03E7B /* CodeEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeEditorViewController.swift; sourceTree = "<group>"; };
+		5A8DA359278882A600A03E7B /* BefungeKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BefungeKeyboardView.swift; sourceTree = "<group>"; };
+		5A8DA35B278883B800A03E7B /* BefungeKeyboardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BefungeKeyboardView.xib; sourceTree = "<group>"; };
 		5A910BCB277B0FEC00D268B2 /* BefungeStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BefungeStackViewController.swift; sourceTree = "<group>"; };
 		5A910BCD277B134700D268B2 /* BefungeStackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BefungeStackCell.swift; sourceTree = "<group>"; };
 		5A910BCF277B138A00D268B2 /* BefungeStackCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BefungeStackCell.xib; sourceTree = "<group>"; };
@@ -177,6 +187,11 @@
 				5A5DA9E1266B0CDC00F5001C /* SceneDelegate.swift */,
 				5A5DA9E3266B0CDC00F5001C /* ViewController.swift */,
 				5A910BCB277B0FEC00D268B2 /* BefungeStackViewController.swift */,
+				5A8DA357278880BA00A03E7B /* CodeEditorViewController.swift */,
+				5A8DA359278882A600A03E7B /* BefungeKeyboardView.swift */,
+				5A8DA35B278883B800A03E7B /* BefungeKeyboardView.xib */,
+				5A8A212F2789A49F00194F00 /* BefungeKeyCell.swift */,
+				5A8A212D2789A3AF00194F00 /* BefungeKeyCell.xib */,
 				5A910BCD277B134700D268B2 /* BefungeStackCell.swift */,
 				5A910BCF277B138A00D268B2 /* BefungeStackCell.xib */,
 				5A5DA9E5266B0CDC00F5001C /* Main.storyboard */,
@@ -359,8 +374,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A5DA9EC266B0CDF00F5001C /* LaunchScreen.storyboard in Resources */,
+				5A8DA35C278883B800A03E7B /* BefungeKeyboardView.xib in Resources */,
 				5A5DA9E9266B0CDF00F5001C /* Assets.xcassets in Resources */,
 				5A5DA9E7266B0CDC00F5001C /* Main.storyboard in Resources */,
+				5A8A212E2789A3AF00194F00 /* BefungeKeyCell.xib in Resources */,
 				5A910BD0277B138A00D268B2 /* BefungeStackCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,7 +500,10 @@
 				25EF0CD82AF707B2EA9CEA8D /* BefungeNodeGenerator.swift in Sources */,
 				5A910BCE277B134700D268B2 /* BefungeStackCell.swift in Sources */,
 				25EF07573899263DE380A088 /* FontSizeHelper.swift in Sources */,
+				5A8A21302789A49F00194F00 /* BefungeKeyCell.swift in Sources */,
+				5A8DA358278880BA00A03E7B /* CodeEditorViewController.swift in Sources */,
 				25EF05E2561F5C1C2E5CF280 /* Camera.swift in Sources */,
+				5A8DA35A278882A600A03E7B /* BefungeKeyboardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
