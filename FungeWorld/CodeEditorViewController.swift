@@ -109,3 +109,12 @@ extension CodeEditorViewController: UIScrollViewDelegate {
         textView
     }
 }
+
+extension CodeEditorViewController: UITextViewDelegate {
+    func textViewDidChangeSelection(_ textView: UITextView) {
+        guard let range = textView.selectedTextRange else { return }
+        let rect = textView.caretRect(for: range.end)
+        guard !CGRect(origin: scrollView.contentOffset, size: scrollView.visibleSize).intersects(rect) else { return }
+        scrollView.scrollRectToVisible(rect, animated: true)
+    }
+}
