@@ -157,6 +157,19 @@ class BefungeKeyboardView: UIView {
         return dataSource
     }
     
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        guard let selectedTextRange = textInput.selectedTextRange else { return }
+//
+//        let selectedPosition: UITextPosition
+//        if textInput.selectionAffinity == .backward {
+//            selectedPosition = selectedTextRange.start
+//        } else {
+//            selectedPosition = selectedTextRange.end
+//        }
+//        let positionAbove = textInput.position(from: selectedPosition, in: .up, offset: 1)
+//                        ?? textInput.beginningOfDocument
+//        textInput.selectedTextRange = textInput.textRange(from: positionAbove, to: positionAbove)
+    }
     
     override var intrinsicContentSize: CGSize {
         CGSize(width: 0, height: 270)
