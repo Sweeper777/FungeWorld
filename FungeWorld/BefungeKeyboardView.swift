@@ -12,7 +12,7 @@ private typealias DataSource = UICollectionViewDiffableDataSource<Section, Strin
 private typealias Snapshot = NSDiffableDataSourceSnapshot<Section, String>
 
 class BefungeKeyboardView: UIView {
-    weak var textInput: UITextInput!
+    weak var textInput: UITextView!
     @IBOutlet var collectionView: UICollectionView!
     private lazy var dataSource = makeDataSource()
     
