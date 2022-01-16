@@ -174,6 +174,27 @@ class BefungeKeyboardView: UIView {
     override var intrinsicContentSize: CGSize {
         CGSize(width: 0, height: 270)
     }
+    
+    @IBAction func didTapDeleteKey() {
+        var selectedRange = textInput.selectedRange
+        if selectedRange.length == 0 {
+            let newStart = max(0, selectedRange.location - 1)
+            selectedRange = NSRange(location: newStart, length: 1)
+        }
+        if textInput.delegate?.textView?(textInput, shouldChangeTextIn: selectedRange, replacementText: "") == true {
+            textInput.deleteBackward()
+        }
+    }
+    
+    @IBAction func didTapReturnKey() {
+        insertText("\n")
+    }
+    
+    
+    @IBAction func didTapSpaceKey() {
+        insertText(" ")
+    }
+    
     func insertText(_ string: String) {
         let range = textInput.selectedRange
         if textInput.delegate?.textView?(textInput, shouldChangeTextIn: range, replacementText: string) == true {
