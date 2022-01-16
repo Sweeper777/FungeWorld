@@ -13,7 +13,7 @@
         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="885-sU-Yx1" customClass="BefungeKeyboardView" customModule="FungeWorld" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="YdL-Ua-QHQ">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" delaysContentTouches="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="YdL-Ua-QHQ">
                     <rect key="frame" x="0.0" y="0.0" width="254" height="502"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PtF-Gf-edb">
@@ -32,6 +32,9 @@
                             <buttonConfiguration key="configuration" style="filled" image="delete.backward.fill" catalog="system" cornerStyle="dynamic">
                                 <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="18"/>
                             </buttonConfiguration>
+                            <connections>
+                                <action selector="didTapDeleteKey" destination="885-sU-Yx1" eventType="touchUpInside" id="G1S-nS-lHf"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BiB-Tj-Z9u">
                             <rect key="frame" x="0.0" y="140" width="50" height="132"/>
@@ -39,6 +42,9 @@
                             <buttonConfiguration key="configuration" style="filled" image="return.left" catalog="system" cornerStyle="dynamic">
                                 <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="18"/>
                             </buttonConfiguration>
+                            <connections>
+                                <action selector="didTapReturnKey" destination="885-sU-Yx1" eventType="touchUpInside" id="zfi-yb-czn"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdc-6e-x3A">
                             <rect key="frame" x="0.0" y="280" width="50" height="132"/>
@@ -46,6 +52,9 @@
                             <buttonConfiguration key="configuration" style="filled" image="arrow.up" catalog="system" cornerStyle="dynamic">
                                 <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
                             </buttonConfiguration>
+                            <connections>
+                                <action selector="didTapUpKey" destination="885-sU-Yx1" eventType="touchUpInside" id="Bj3-TR-DDa"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ulk-Ik-3nc">
                             <rect key="frame" x="0.0" y="420" width="50" height="132"/>
@@ -53,6 +62,9 @@
                             <buttonConfiguration key="configuration" style="filled" image="arrow.down" catalog="system" cornerStyle="dynamic">
                                 <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
                             </buttonConfiguration>
+                            <connections>
+                                <action selector="didTapDownKey" destination="885-sU-Yx1" eventType="touchUpInside" id="ywW-1M-0Hy"/>
+                            </connections>
                         </button>
                     </subviews>
                 </stackView>
@@ -65,6 +77,9 @@
                             <buttonConfiguration key="configuration" style="filled" title="                           ">
                                 <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
                             </buttonConfiguration>
+                            <connections>
+                                <action selector="didTapSpaceKey" destination="885-sU-Yx1" eventType="touchUpInside" id="s5g-Z5-MvX"/>
+                            </connections>
                         </button>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZtE-34-lrg">
                             <rect key="frame" x="161.5" y="0.0" width="84.5" height="50"/>
@@ -75,6 +90,9 @@
                                     <buttonConfiguration key="configuration" style="filled" image="arrow.left" catalog="system" cornerStyle="dynamic">
                                         <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
                                     </buttonConfiguration>
+                                    <connections>
+                                        <action selector="didTapLeftKey" destination="885-sU-Yx1" eventType="touchUpInside" id="zLt-uZ-t1q"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nr7-f8-t5K">
                                     <rect key="frame" x="46.5" y="0.0" width="38" height="50"/>
@@ -82,6 +100,9 @@
                                     <buttonConfiguration key="configuration" style="filled" image="arrow.right" catalog="system" cornerStyle="dynamic">
                                         <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
                                     </buttonConfiguration>
+                                    <connections>
+                                        <action selector="didTapRightKey" destination="885-sU-Yx1" eventType="touchUpInside" id="sMv-Ch-9yV"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
