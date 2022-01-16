@@ -190,6 +190,21 @@ class BefungeKeyboardView: UIView {
         insertText("\n")
     }
     
+    @IBAction func didTapUpKey() {
+        moveCursor(inDirection: .up)
+    }
+    
+    @IBAction func didTapDownKey() {
+        moveCursor(inDirection: .down)
+    }
+    
+    @IBAction func didTapLeftKey() {
+        moveCursor(inDirection: .left)
+    }
+    
+    @IBAction func didTapRightKey() {
+        moveCursor(inDirection: .right)
+    }
     
     @IBAction func didTapSpaceKey() {
         insertText(" ")
