@@ -174,10 +174,16 @@ class BefungeKeyboardView: UIView {
     override var intrinsicContentSize: CGSize {
         CGSize(width: 0, height: 270)
     }
+    func insertText(_ string: String) {
+        let range = textInput.selectedRange
+        if textInput.delegate?.textView?(textInput, shouldChangeTextIn: range, replacementText: string) == true {
+            textInput.insertText(string)
+        }
+    }
 }
 
 extension BefungeKeyboardView: BefungeKeyCellDelegate {
     func didTapKey(_ key: String?) {
-        textInput.insertText(key ?? "")
+        insertText(key ?? "")
     }
 }
