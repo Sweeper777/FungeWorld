@@ -126,11 +126,12 @@ public extension State {
     func executeMove() {
         let translationFunction = direction.translationFunction
         instructionPointer = translationFunction(instructionPointer)
+        let instructionPointerBeforeWrapping = instructionPointer
         instructionPointer = Position(
                 instructionPointer.x %% State.columns,
                 instructionPointer.y %% State.rows
                 )
-        currentStateChanges.append(.move)
+        currentStateChanges.append(.move(wrapped: instructionPointer != instructionPointerBeforeWrapping))
     }
 
     func executeTerminate() {
