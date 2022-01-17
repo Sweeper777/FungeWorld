@@ -48,6 +48,7 @@ class CodeEditorViewController: UIViewController {
                         .instantiate(withOwner: nil, options: nil).first as! BefungeKeyboardView)
         
         scrollView.contentSize = size
+        textView.layoutManager.showsInvisibleCharacters = true
         textView.inputView = keyboard
         textView.inputAccessoryView = toolBar
         keyboard.textInput = textView
