@@ -30,7 +30,7 @@ public enum StateChange {
     case pop
     case turn(to: Direction)
     case stringMode(Bool)
-    case move
+    case move(wrapped: Bool)
     case playfieldChange(x: Int, y: Int, newInstruction: UnicodeScalar)
     case terminate
 }
