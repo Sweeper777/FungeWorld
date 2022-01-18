@@ -161,3 +161,11 @@ class FungeWorldScene : SCNScene {
         }
     }
 }
+
+prefix func -(vector: SCNVector3) -> SCNVector3 {
+    SCNVector3(-vector.x, -vector.y, -vector.z)
+}
+
+func *(v: SCNVector3, s: Float) -> SCNVector3 {
+    SCNVector3(v.x * s, v.y * s, v.z * s)
+}
