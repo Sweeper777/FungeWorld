@@ -8,7 +8,7 @@ class ViewController: UIViewController, IOProtocol {
     @IBOutlet var sceneView: SCNView!
     @IBOutlet var cameraOrientationToggleButton: UIButton!
     
-    let code = "2>:3g\" \"-!v\\  g30          <\n |!`\"O\":+1_:.:03p>03g+:\"O\"`|\n @               ^  p3\\\" \":<\n2 234567890123456789012345678901234567890123456789012345678901234567890123456789"
+    let code = "49*11p"
     
     lazy var state = State(io: self, code: code)
     var hudShown = false
