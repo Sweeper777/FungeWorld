@@ -3,7 +3,7 @@ import Befunge
 import SceneKit
 import SCLAlertView
 
-class ViewController: UIViewController, IOProtocol {
+class FungeWorldViewController: UIViewController, IOProtocol {
     
     @IBOutlet var sceneView: SCNView!
     @IBOutlet var cameraOrientationToggleButton: UIButton!
