@@ -102,8 +102,12 @@ class ViewController: UIViewController, IOProtocol {
                     currentDirection = direction
                 case .stringMode(let stringModeOn):
                     self.stringModeLabel.isHidden = !stringModeOn
-                case .move:
-                    await self.scene.moveInstructionPointer(towards: currentDirection)
+                case .move(let wrapped):
+                    if wrapped {
+                        await self.scene.wrapInstructionPointer(byMovingInDirection: currentDirection)
+                    } else {
+                        await self.scene.moveInstructionPointer(towards: currentDirection)
+                    }
                 case .playfieldChange(x: let x, y: let y, newInstruction: let newInstruction):
                     await self.scene.animatePlayfieldChange(x: x, y: y, newInstruction: newInstruction)
                 case .terminate:
