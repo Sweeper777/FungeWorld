@@ -147,7 +147,7 @@ class FungeWorldScene : SCNScene {
     }
     
     func animatePlayfieldChange(x: Int, y: Int, newInstruction: UnicodeScalar) async {
-        guard state.playfield[x, y] != newInstruction else { return }
+        guard state.playfield[x, y] == newInstruction else { return }
         let originalNode = rootNode.childNode(withName: "instruction \(x),\(y)", recursively: false)
         let hideAction = SCNAction.sequence([.fadeOut(duration: FungeWorldScene.animationDuration), .removeFromParentNode()])
         let appearAction = SCNAction.fadeIn(duration: FungeWorldScene.animationDuration)
