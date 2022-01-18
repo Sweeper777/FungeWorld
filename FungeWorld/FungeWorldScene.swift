@@ -120,6 +120,19 @@ class FungeWorldScene : SCNScene {
         )
     }
     
+    func wrapInstructionPointer(byMovingInDirection direction: Direction) async {
+        let distance: Float
+        switch direction {
+        case .up, .down:
+            distance = Float(State.rows) - 1
+        case .left, .right:
+            distance = Float(State.columns) - 1
+        }
+        await instructionPointer.runAction(
+            SCNAction.move(by: -unitVector(forDirection: direction) * distance, duration: FungeWorldScene.animationDuration)
+        )
+    }
+    
     func unitVector(forDirection direction: Direction) -> SCNVector3 {
         switch direction {
         case .up:
