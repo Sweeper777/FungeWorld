@@ -20,4 +20,21 @@ class CodeEditorView: UIScrollView {
     
     let font = UIFont.monospacedSystemFont(ofSize: 23, weight: .regular)
  
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        commonInit()
+    }
+    func commonInit() {
+        setupTextView()
+        setupScrollView()
+    }
+    func setupTextView() {
+    }
+    
+    func setupScrollView() {
+    }
 }
