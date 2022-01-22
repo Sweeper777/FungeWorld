@@ -9,4 +9,15 @@ class CodeEditorView: UIScrollView {
     
     var oneCharSize: CGSize = .zero
     
+    var code: String? {
+        get {
+            textView?.text
+        }
+        set {
+            textView?.text = newValue
+        }
+    }
+    
+    let font = UIFont.monospacedSystemFont(ofSize: 23, weight: .regular)
+ 
 }
