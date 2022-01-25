@@ -169,7 +169,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wi7-og-RQb">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wi7-og-RQb" customClass="CodeEditorView" customModule="FungeWorld" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55" width="414" height="787"/>
                                 <viewLayoutGuide key="contentLayoutGuide" id="Ft8-pk-2JT"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="BcO-In-Yz1"/>
@@ -188,7 +188,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="scrollView" destination="wi7-og-RQb" id="26g-pP-kP1"/>
+                        <outlet property="codeEditor" destination="wi7-og-RQb" id="Lup-Vs-Iyp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AGr-AS-Ihz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
