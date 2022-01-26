@@ -111,6 +111,26 @@ class CodeEditorView: UIScrollView {
         }
     }
     
+    @objc func onKeyboardAppear(_ notification: NSNotification) {
+        let info = notification.userInfo!
+        let rect: CGRect = info[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
+        let convertedRect = UIScreen.main.coordinateSpace.convert(rect, to: self.coordinateSpace)
+            .intersection(self.bounds)
+        let kbSize = convertedRect.size
+
+        let insets = UIEdgeInsets(top: 0, left: 0, bottom: max(0, kbSize.height), right: 0)
+        contentInset = insets
+        scrollIndicatorInsets = insets
+    }
+
+    @objc func onKeyboardDisappear(_ notification: NSNotification) {
+        contentInset = UIEdgeInsets.zero
+        scrollIndicatorInsets = UIEdgeInsets.zero
+    }
+    
+    @objc func hideKeyboard() {
+        endEditing(true)
+    }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         textView
