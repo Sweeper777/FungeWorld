@@ -83,4 +83,25 @@ class CodeEditorView: UIScrollView {
         NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardDisappear(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardAppear(_:)), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
     }
+ 
+    override func scrollRectToVisible(_ rect: CGRect, animated: Bool) {
+ 
+        if let selectedTextRange = textView.selectedTextRange {
+            let caretPositionRect = textView.caretRect(for: selectedTextRange.start)
+ 
+            var x: CGFloat = contentOffset.x
+ 
+            if caretPositionRect.minX - contentOffset.x < oneCharSize.width {
+                x += (caretPositionRect.minX - contentOffset.x) - oneCharSize.width
+                x = max(0, x)
+            } else if ((caretPositionRect.minX - contentOffset.x) - frame.width) > -oneCharSize.width {
+                x = caretPositionRect.minX - frame.width
+                x += oneCharSize.width
+                x = min(x, contentSize.width - frame.width)
+            }
+ 
+            contentOffset.x = x
+        }
+    }
+    
 }
