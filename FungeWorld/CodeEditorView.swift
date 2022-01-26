@@ -76,5 +76,11 @@ class CodeEditorView: UIScrollView {
     }
     
     func setupScrollView() {
+        addSubview(textView)
+        delegate = self
+        keyboardDismissMode = .interactive
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardAppear(_:)), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardDisappear(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardAppear(_:)), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
     }
 }
