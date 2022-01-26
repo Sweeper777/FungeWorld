@@ -83,6 +83,13 @@ class CodeEditorView: UIScrollView {
         NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardDisappear(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardAppear(_:)), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        maximumZoomScale = 1
+        minimumZoomScale = min(width / contentSize.width,
+                                min(height / contentSize.height, 1))
+    }
  
     override func scrollRectToVisible(_ rect: CGRect, animated: Bool) {
  
@@ -102,6 +109,11 @@ class CodeEditorView: UIScrollView {
  
             contentOffset.x = x
         }
+    }
+    
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        textView
     }
     
 }
