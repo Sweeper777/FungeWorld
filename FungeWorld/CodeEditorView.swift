@@ -136,4 +136,14 @@ class CodeEditorView: UIScrollView {
         textView
     }
     
+
+}
+
+extension CodeEditorView : UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        let lines = newText.split(separator: "\n")
+        return lines.count <= State.rows && lines.allSatisfy { $0.count <= State.columns }
+    }
+    
 }
