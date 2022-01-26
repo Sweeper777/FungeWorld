@@ -58,6 +58,21 @@ class CodeEditorView: UIScrollView {
         oneCharSize = CGSize(width: ceil(unroundedCharSize.width), height: ceil(unroundedCharSize.height))
  
         let size = CGSize(width: ceil(unroundedSize.width), height: ceil(unroundedSize.height))
+        textView = UITextView(frame: CGRect(origin: .zero, size: size))
+        
+        keyboard = (UINib(nibName: "BefungeKeyboardView", bundle: nil)
+                        .instantiate(withOwner: nil, options: nil).first as! BefungeKeyboardView)
+        
+        contentSize = size
+        textView.layoutManager.showsInvisibleCharacters = true
+        textView.inputView = keyboard
+        textView.inputAccessoryView = toolBar
+        keyboard.textInput = textView
+        textView.spellCheckingType = .no
+        textView.dataDetectorTypes = []
+        textView.font = font
+        textView.delegate = self
+        textView.isScrollEnabled = false
     }
     
     func setupScrollView() {
