@@ -47,6 +47,17 @@ class CodeEditorView: UIScrollView {
             }, menu: nil)
         ]
         
+        let line = String(repeating: "a", count: State.columns + 1)
+        let fullPlayfield = Array(repeating: line, count: State.rows + 1).joined(separator: "\n")
+        let unroundedSize = (fullPlayfield as NSString).size(withAttributes: [
+            .font: font
+        ])
+        let unroundedCharSize = ("W" as NSString).size(withAttributes: [
+            .font: font
+        ])
+        oneCharSize = CGSize(width: ceil(unroundedCharSize.width), height: ceil(unroundedCharSize.height))
+ 
+        let size = CGSize(width: ceil(unroundedSize.width), height: ceil(unroundedSize.height))
     }
     
     func setupScrollView() {
