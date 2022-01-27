@@ -5,6 +5,8 @@ class CodeEditorViewController: UIViewController {
     
     var code: String?
     
+    weak var delegate: CodeEditorViewControllerDelegate?
+    
     override func viewDidLoad() {
     }
     
@@ -15,4 +17,8 @@ class CodeEditorViewController: UIViewController {
     @IBAction func cancelDidTap() {
         dismiss(animated: true, completion: nil)
     }
+}
+
+protocol CodeEditorViewControllerDelegate: AnyObject {
+    func didFinishEditingCode(code: String)
 }
