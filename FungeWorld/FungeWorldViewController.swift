@@ -251,6 +251,31 @@ class FungeWorldViewController: UIViewController, IOProtocol {
         })
     }
     
+    func reset() {
+        animationTask?.cancel()
+        animationTask = nil
+        isPaused = true
+        isTerminated = false
+        stringModeLabel.isHidden = true
+        terminatedLabel.isHidden = true
+        updateOutputDisplay()
+        inputCharBuffer = []
+        outputBuffer = []
+        playPauseButton.configuration?.image = UIImage(systemName: "play.fill")
+        playPauseButton.isEnabled = true
+        Task {
+            await stackController.animateStack([])
+        }
+        state = State(io: self, code: code)
+        scene = FungeWorldScene()
+        scene.state = state
+        scene.setup()
+        sceneView.scene = scene
+        sceneView.pointOfView = scene.cameraNode
+        scene.camera = FungeWorldCamera(
+                cameraNode: sceneView.pointOfView!)
+    }
+    
 }
 
 extension FungeWorldViewController: CodeEditorViewControllerDelegate {
