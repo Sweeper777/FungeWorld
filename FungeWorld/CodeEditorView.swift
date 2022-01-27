@@ -146,4 +146,10 @@ extension CodeEditorView : UITextViewDelegate {
         return lines.count <= State.rows && lines.allSatisfy { $0.count <= State.columns }
     }
     
+    func textViewDidChangeSelection(_ textView: UITextView) {
+        guard let range = textView.selectedTextRange else { return }
+        let rect = textView.caretRect(for: range.end)
+        guard !CGRect(origin: self.contentOffset, size: self.visibleSize).intersects(rect) else { return }
+        self.scrollRectToVisible(rect, animated: true)
+    }
 }
