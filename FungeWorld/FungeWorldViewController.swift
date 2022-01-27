@@ -8,12 +8,11 @@ class FungeWorldViewController: UIViewController, IOProtocol {
     @IBOutlet var sceneView: SCNView!
     @IBOutlet var cameraOrientationToggleButton: UIButton!
     
-    let code = "49*11p"
-    
-    lazy var state = State(io: self, code: code)
+    lazy var state = State(io: self, code: "")
     var hudShown = false
     @IBOutlet var hudView: UIView!
     @IBOutlet var stringModeLabel: UILabel!
+    @IBOutlet var terminatedLabel: UILabel!
     @IBOutlet var outputLabel: UITextView!
     @IBOutlet var playPauseButton: UIButton!
     @IBOutlet var stepButton: UIButton!
@@ -28,6 +27,8 @@ class FungeWorldViewController: UIViewController, IOProtocol {
             stepButton.isEnabled = isPaused
         }
     }
+    var isTerminated = false
+    var code = ""
 
     var scene: FungeWorldScene!
     override func viewDidLoad() {
