@@ -249,4 +249,12 @@ class FungeWorldViewController: UIViewController, IOProtocol {
             alert.showEdit("Input", subTitle: prompt)
         })
     }
+    
+}
+
+extension FungeWorldViewController: CodeEditorViewControllerDelegate {
+    func didFinishEditingCode(code: String) {
+        self.code = code
+        reset()
+    }
 }
