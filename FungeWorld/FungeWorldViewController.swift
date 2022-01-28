@@ -105,7 +105,10 @@ class FungeWorldViewController: UIViewController, IOProtocol {
                 case .playfieldChange(x: let x, y: let y, newInstruction: let newInstruction):
                     await self.scene.animatePlayfieldChange(x: x, y: y, newInstruction: newInstruction)
                 case .terminate:
-                    print("TODO: Terminate")
+                    isTerminated = true
+                    terminatedLabel.isHidden = false
+                    stepButton.isEnabled = false
+                    playPauseButton.isEnabled = false
                 }
             }
         }
