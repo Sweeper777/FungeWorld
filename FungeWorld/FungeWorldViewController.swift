@@ -110,6 +110,7 @@ class FungeWorldViewController: UIViewController, IOProtocol {
                     stepButton.isEnabled = false
                     playPauseButton.isEnabled = false
                 }
+                outputLabel.scrollRectToVisible(CGRect(x: 0, y: outputLabel.contentSize.height - 1, width: 1, height: 1), animated: false)
             }
         }
         
