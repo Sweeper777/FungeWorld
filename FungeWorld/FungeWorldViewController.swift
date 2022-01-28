@@ -119,7 +119,7 @@ class FungeWorldViewController: UIViewController, IOProtocol {
     func makeAnimationTask() -> Task<Void, Never> {
         Task { [weak self] in
             guard let `self` = self else { return }
-            while !Task.isCancelled {
+            while !Task.isCancelled && !self.isTerminated {
                 await self.makeOneStepAnimationTask().value
             }
         }
