@@ -67,6 +67,9 @@ class FungeWorldViewController: UIViewController, IOProtocol {
             UIAction(title: "Load...", image: UIImage(systemName: "square.and.arrow.up")) { _ in
                 
             },
+            UIAction(title: "Restart", image: UIImage(systemName: "arrow.counterclockwise")) { [weak self] _ in
+                self?.reset()
+            },
         ])
         menuButton.showsMenuAsPrimaryAction = true
     }
