@@ -172,10 +172,14 @@ class BefungeKeyboardView: UIView {
     }
     
     override var intrinsicContentSize: CGSize {
-        CGSize(width: 0, height: 270)
+        CGSize(width: 400, height: 270)
     }
     
     @IBAction func didTapDeleteKey() {
+        guard textInput.text.isNotNilNotEmpty else {
+            return
+        }
+        
         var selectedRange = textInput.selectedRange
         if selectedRange.length == 0 {
             let newStart = max(0, selectedRange.location - 1)
