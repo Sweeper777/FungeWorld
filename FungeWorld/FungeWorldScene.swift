@@ -12,10 +12,10 @@ class FungeWorldScene : SCNScene {
     var camera: FungeWorldCamera!
 
     func setup() {
-        setupCamera()
         setupFloor()
         setupInstructions()
         setupInstructionPointer()
+        setupCamera()
         addLight(position: SCNVector3(0, 10, State.rows))
         addLight(position: SCNVector3(State.columns, 10, 0))
         addLight(position: SCNVector3(State.columns, 10, State.rows))
@@ -25,10 +25,10 @@ class FungeWorldScene : SCNScene {
     private func setupCamera() {
         cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
-        cameraNode.position.y = 10
-        cameraNode.eulerAngles.x = -1
-        cameraNode.position.x = 1
-        cameraNode.position.z = 1
+        instructionPointer.addChildNode(cameraNode)
+        cameraNode.position.z = -10
+        cameraNode.eulerAngles.x = .pi
+        cameraNode.eulerAngles.z = -3 * .pi / 2
     }
 
     func addLight(position: SCNVector3) {
