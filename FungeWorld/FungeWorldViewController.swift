@@ -33,20 +33,10 @@ class FungeWorldViewController: UIViewController, IOProtocol {
     var scene: FungeWorldScene!
     override func viewDidLoad() {
         super.viewDidLoad()
-        scene = FungeWorldScene()
-        scene.state = state
-        scene.setup()
-        sceneView.scene = scene
-        sceneView.pointOfView = scene.cameraNode
-        scene.camera = FungeWorldCamera(
-                cameraNode: sceneView.pointOfView!,
-                xRange: -1...Float(State.columns),
-                yRange: 3...16,
-                zRange: -1...Float(State.rows)
-        )
+        reset()
+        
         zoomGR = UIPinchGestureRecognizer(target: self, action: #selector(didZoom))
         sceneView.addGestureRecognizer(zoomGR)
-
         updateHudToggleButtonTitle()
         updateOutputDisplay()
         setupMenu()
