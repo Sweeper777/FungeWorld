@@ -1,15 +1,8 @@
 import SceneKit
 
 class FungeWorldCamera {
-    enum Orientation {
-        case horizontal, vertical
-    }
-
     private let cameraNode: SCNNode
-    private let xRange: ClosedRange<Float>
-    private let yRange: ClosedRange<Float>
-    private let zRange: ClosedRange<Float>
-    private let zoomRange: ClosedRange<CGFloat> = 30...90
+    private let zoomRange: ClosedRange<CGFloat> = 15...120
 
     var zoom: CGFloat {
         get {
@@ -21,18 +14,8 @@ class FungeWorldCamera {
         }
     }
 
-    init(cameraNode: SCNNode, xRange: ClosedRange<Float>, yRange: ClosedRange<Float>, zRange: ClosedRange<Float>) {
+    init(cameraNode: SCNNode) {
         self.cameraNode = cameraNode
-        self.xRange = xRange
-        self.yRange = yRange
-        self.zRange = zRange
-    }
-
-    func move(dx: Float, dy: Float) {
-        cameraNode.position.x += dx
-        cameraNode.position.x = xRange.clamp(cameraNode.position.x)
-        cameraNode.position.z += dy
-        cameraNode.position.z = zRange.clamp(cameraNode.position.z)
     }
 }
 
