@@ -108,6 +108,19 @@ class CodeEditorView: UIScrollView {
             }
  
             contentOffset.x = x
+            
+            var y: CGFloat = contentOffset.y
+ 
+            if caretPositionRect.minY - contentOffset.y < oneCharSize.height {
+                y += (caretPositionRect.minY - contentOffset.y) - oneCharSize.height
+                y = max(0, y)
+            } else if ((caretPositionRect.minY - contentOffset.y) - frame.height) > -oneCharSize.height {
+                y = caretPositionRect.minY - frame.height
+                y += oneCharSize.height
+                y = min(y, contentSize.height - frame.height)
+            }
+ 
+            contentOffset.y = y
         }
     }
     
