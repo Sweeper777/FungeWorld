@@ -90,8 +90,6 @@ enum BefungeNodeGenerator {
         
         let material = SCNMaterial()
         material.diffuse.contents = UIColor.green
-        material.specular.contents = UIColor.white
-        material.shininess = 1
         node.geometry?.firstMaterial = material
         node.eulerAngles.x = .pi / 2
         
