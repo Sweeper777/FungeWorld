@@ -202,7 +202,9 @@ class FungeWorldViewController: UIViewController, IOProtocol {
     }
 
     func writeError(_ message: String) {
-        SCLAlertView().showError("Error", subTitle: message, closeButtonTitle: "OK")
+        DispatchQueue.main.async {
+            SCLAlertView().showError("Error", subTitle: message, closeButtonTitle: "OK")
+        }
     }
 
     var inputCharBuffer = [UnicodeScalar]()
@@ -228,12 +230,14 @@ class FungeWorldViewController: UIViewController, IOProtocol {
     
     func readInput(withPrompt prompt: String) async -> String {
         return await withCheckedContinuation({ continuation in
-            let alert = SCLAlertView(appearance: .init(showCloseButton: false))
-            let textField = alert.addTextField("Input")
-            alert.addButton("OK") {
-                continuation.resume(returning: textField.text ?? "")
+            DispatchQueue.main.async {
+                let alert = SCLAlertView(appearance: .init(showCloseButton: false))
+                let textField = alert.addTextField("Input")
+                alert.addButton("OK") {
+                    continuation.resume(returning: textField.text ?? "")
+                }
+                alert.showEdit("Input", subTitle: prompt)
             }
-            alert.showEdit("Input", subTitle: prompt)
         })
     }
     
