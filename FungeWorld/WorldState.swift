@@ -18,3 +18,7 @@ final class WorldState {
         self.state = state
     }
 }
+
+extension WorldState: Codable {
+    
+}
