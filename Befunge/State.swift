@@ -194,3 +194,16 @@ extension StringProtocol {
         return view
     }
 }
+
+extension UnicodeScalar: Codable {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encode(self.value)
+    }
+    
+    public init(from decoder: Decoder) throws {
+        self.init(try decoder.singleValueContainer().decode(UInt32.self))!
+    }
+    
+
+}
