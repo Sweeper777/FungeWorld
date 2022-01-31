@@ -1,4 +1,4 @@
-public struct Array2D<T>: Sequence, ExpressibleByArrayLiteral{
+public struct Array2D<T: Codable>: Sequence, ExpressibleByArrayLiteral, Codable {
 
     public let columns: Int
     public let rows: Int
@@ -117,7 +117,7 @@ public struct Array2D<T>: Sequence, ExpressibleByArrayLiteral{
     }
 }
 
-public struct Position: Hashable, RawRepresentable {
+public struct Position: Hashable, RawRepresentable, Codable {
     public init?(rawValue: Int) {
         x = rawValue / 1000
         y = rawValue % 1000
