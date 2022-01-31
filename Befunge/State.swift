@@ -8,7 +8,7 @@ public protocol IOProtocol {
     func readChar() async throws -> UnicodeScalar
 }
 
-public enum Direction : CaseIterable, Codable {
+public enum Direction : CaseIterable {
     case up, down, left, right
 
     var translationFunction: (Position) -> Position {
@@ -25,7 +25,7 @@ public enum Direction : CaseIterable, Codable {
     }
 }
 
-public enum StateChange: Codable {
+public enum StateChange {
     case push(Int)
     case pop
     case turn(to: Direction)
@@ -35,7 +35,7 @@ public enum StateChange: Codable {
     case terminate
 }
 
-public final class State: Codable {
+public final class State {
     public var stack: [Int] = []
     public static let columns = 80
     public static let rows = 25
@@ -170,15 +170,6 @@ public final class State: Codable {
         }
         return String(sourceCode.trailingSpacesTrimmed)
     }
-    
-    public enum CodingKeys: CodingKey {
-        case stack
-        case playfield
-        case instructionPointer
-        case direction
-        case stringMode
-        case terminated
-    }
 }
 
 extension StringProtocol {
@@ -193,17 +184,4 @@ extension StringProtocol {
 
         return view
     }
-}
-
-extension UnicodeScalar: Codable {
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        try container.encode(self.value)
-    }
-    
-    public init(from decoder: Decoder) throws {
-        self.init(try decoder.singleValueContainer().decode(UInt32.self))!
-    }
-    
-
 }
