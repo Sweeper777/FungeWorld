@@ -8,7 +8,13 @@ class FungeWorldViewController: UIViewController, IOProtocol {
     @IBOutlet var sceneView: SCNView!
     @IBOutlet var cameraOrientationToggleButton: UIButton!
     
-    lazy var state = State(io: self, code: "")
+    lazy var worldState = WorldState(state: State(io: self, code: ""))
+    
+    var state: State {
+        get { worldState.state }
+        set { worldState.state = newValue }
+    }
+    
     var hudShown = false
     @IBOutlet var hudView: UIView!
     @IBOutlet var stringModeLabel: UILabel!
@@ -22,13 +28,14 @@ class FungeWorldViewController: UIViewController, IOProtocol {
     var zoomGR: UIPinchGestureRecognizer!
     var stackController: BefungeStackViewController!
     var animationTask: Task<Void, Never>?
-    var isPaused = true {
-        didSet {
-            stepButton.isEnabled = isPaused
+    var code: String {
+        get {
+            worldState.code
+        }
+        set {
+            worldState.code = newValue
         }
     }
-    var isTerminated = false
-    var code = ""
 
     var scene: FungeWorldScene!
     override func viewDidLoad() {
@@ -105,7 +112,7 @@ class FungeWorldViewController: UIViewController, IOProtocol {
                 case .playfieldChange(x: let x, y: let y, newInstruction: let newInstruction):
                     await self.scene.animatePlayfieldChange(x: x, y: y, newInstruction: newInstruction)
                 case .terminate:
-                    isTerminated = true
+                    worldState.playingState = .terminated
                     terminatedLabel.isHidden = false
                     stepButton.isEnabled = false
                     playPauseButton.isEnabled = false
@@ -119,29 +126,31 @@ class FungeWorldViewController: UIViewController, IOProtocol {
     func makeAnimationTask() -> Task<Void, Never> {
         Task { [weak self] in
             guard let `self` = self else { return }
-            while !Task.isCancelled && !self.isTerminated {
+            while !Task.isCancelled && self.worldState.playingState != .terminated {
                 await self.makeOneStepAnimationTask().value
             }
         }
     }
     
     @IBAction func playPauseButtonDidTap() {
-        guard (animationTask == nil) == isPaused else { return }
+        guard (animationTask == nil) == (worldState.playingState == .paused) else { return }
         
         if let task = animationTask { // should pause
             playPauseButton.configuration?.image = UIImage(systemName: "play.fill")
             task.cancel()
             animationTask = nil
-            isPaused = true
+            worldState.playingState = .paused
+            stepButton.isEnabled = false
         } else { // should play
-            isPaused = false
+            worldState.playingState = .playing
+            stepButton.isEnabled = true
             playPauseButton.configuration?.image = UIImage(systemName: "pause.fill")
             animationTask = makeAnimationTask()
         }
     }
 
     @IBAction func hudToggleButtonDidTap() {
-        guard (animationTask == nil) == isPaused else { return }
+        guard (animationTask == nil) == (worldState.playingState == .paused) else { return }
         
         Task { [weak self] in
             guard let `self` = self else { return }
@@ -187,6 +196,7 @@ class FungeWorldViewController: UIViewController, IOProtocol {
             stackController = vc
         } else if let vc = segue.destination as? CodeEditorViewController {
             vc.code = state.toSourceCode()
+            vc.delegate = self
         }
     }
     var outputBuffer = [UnicodeScalar]()
@@ -244,8 +254,7 @@ class FungeWorldViewController: UIViewController, IOProtocol {
     func reset() {
         animationTask?.cancel()
         animationTask = nil
-        isPaused = true
-        isTerminated = false
+        worldState.playingState = .paused
         stringModeLabel.isHidden = true
         terminatedLabel.isHidden = true
         updateOutputDisplay()
